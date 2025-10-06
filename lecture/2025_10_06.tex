@@ -1,0 +1,61 @@
+\chapter{2025 10 06}
+Da wir für viele Themen die in Analysis 3 behandelt werden, Resultate aus der Mastheorie benötigen,
+fangen wir mit einigen Grundlagen der Topologie an. Da man für Thopologie nix braucht (man muss nur ein bisschen mit Mengen spielen).
+\section{Topologische Grundbegriffe}
+
+Im Folgenden geht es darum den Konvergenz Begriff zu verallgemeinern. 
+Dazu betrachten wir Räume, gerade noch soviel Struktur tragen, dass man von stetigen
+Funktionen, Grenzwerten, Kompaktheit und so weiter sprechen kann.
+
+Zur wiederholung betrachten wir folgendes Beispiel. 
+
+\ex{Offene $\epsilon$-Kugel}
+{
+    Sei $(X,d)$ ein metrischer Raum und $O$ die Menge aller offenen Teilmengen von $X$,
+    wobei $O \subseteqq X$ ist offen, wenn $\forall x \in O \exists \varepsilon > 0$ so dass die $\varepsilon$-Kugel
+    $$
+        U_\varepsilon(x) = \{ y \in X : d(y,x) < \varepsilon \}
+    $$
+    ganz in $O$ enthalten ist. 
+    Die Menge $O \subseteq \mathcal{P}(X)$ hat die Eigenschaften:
+    \begin{enumerate}
+        \item $\emptyset, X \in O$,
+        \item $O_1, O_2 \in O \implies O_1 \cap O_2 \in O$,
+        \item $O_i \in O, i \in I$ Indexmenge beliebig $\implies \bigcup_{i \in I} O_i \in O$.
+    \end{enumerate}
+    Wörtlich bedeutet (1), dass sowohl die leere Menge als auch der ganze Raum
+    offen sind. (2), dass der Schnitt zweier offener Mengen wieder offen ist.
+    Und (3) dass die Vereinigung beliebig vieler offener Mengen wieder offen ist.
+}
+Diese Eigenschaften bilden den Ausgangspunkt unserer Verallgemeinerung. Und wir erhalten die folgende Definition.
+
+
+\dfn{Topologie}
+{
+    Sei $X$ eine nichtleere Menge. Eine Menge $\mathcal{T} \subseteq \mathcal{P}(X)$ von Teilmengen 
+von $X$ heißt \emph{Topologie} auf $X$, wenn $\mathcal{T}$ folgende Eigenschaften hat.
+\begin{itemize}
+    \item[(O1)] $\emptyset \in \mathcal{T}, \; X \in \mathcal{T}$.
+    \item[(O2)] Aus $O_1, O_2 \in \mathcal{T}$ folgt $O_1 \cap O_2 \in \mathcal{T}$.
+    \item[(O3)] Aus $O_i \in \mathcal{T}, \; i \in I$, mit einer beliebigen Indexmenge $I$ folgt 
+    $\bigcup_{i \in I} O_i \in \mathcal{T}$.
+\end{itemize}
+Die Elemente von $\mathcal{T}$ heißen \emph{offene Mengen}. Das Paar $(X, \mathcal{T})$ 
+bezeichnet man als \emph{topologischen Raum}.
+}
+
+\ex{Topologien}
+{
+\begin{itemize}
+    \item[(i)] \textbf{Diskrete Topologie:} Sei $X \neq \emptyset$ und $\mathcal{T} = \mathcal{P}(X)$.
+    \item[(ii)] \textbf{Indiscrete (Klumpen) Topologie:} $\mathcal{T} = \{\emptyset, X\}$.
+    \item[(iii)] \textbf{cofinite Topologie:} Sei $X \neq \emptyset$ und  $\mathcal{T}, \mathcal{O} \subseteq \mathcal{P}(X)$ 
+    definiert durch
+$$
+\mathcal{T} := \{ A \subseteq X : A = \emptyset \;\text{oder}\; X \setminus A \;\text{endlich} \}
+\quad \text{und} \quad
+\mathcal{O} := \{ A \subseteq X : A = X \;\text{oder}\; A \;\text{endlich} \}.
+$$
+\end{itemize}
+
+}
