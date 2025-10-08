@@ -1,7 +1,21 @@
-\chapter{2025 10 06}
+\chapter{}
+\section{Organisatorisches}
+Alle Infomationen sind Online zu finden aber für die form von der Mitschrift sollte hier etwas stehen.:
+Die LVa ist eine UE + Vo. 
+\subsection{Übung}
+Für die Übung benötigt man ca. 60\% der Käuze und zwei positive Tafeleistungen.
+Man darf einmal fehlen + nachbringen aber ohne guten Grund. Ansonsten braucht man einen guten grund (meine Oma ist gestoreben,
+ist ab dem zweiten mal kein guter Grund).
+\subsection{Vorlesung}
+Die Vorlesung ist ein Tafelvortag. 
+Prüfung teilt sich auf in schriftlich und mündlich ... steht alles in der Email. für die Form reicht der text
+
+\section{Topologische Grundbegriffe} 
+
 Da wir für viele Themen die in Analysis 3 behandelt werden, Resultate aus der Mastheorie benötigen,
-fangen wir mit einigen Grundlagen der Topologie an. Da man für Thopologie nix braucht (man muss nur ein bisschen mit Mengen spielen).
-\section{Topologische Grundbegriffe}
+fangen wir mit einigen Grundlagen der Topologie an. Da man für Topologie nix braucht (man muss nur ein bisschen mit Mengen spielen).
+
+\bigskip
 
 Im Folgenden geht es darum den Konvergenz Begriff zu verallgemeinern. 
 Dazu betrachten wir Räume, gerade noch soviel Struktur tragen, dass man von stetigen
@@ -20,7 +34,7 @@ Zur wiederholung betrachten wir folgendes Beispiel.
     Die Menge $O \subseteq \mathcal{P}(X)$ hat die Eigenschaften:
     \begin{enumerate}
         \item $\emptyset, X \in O$,
-        \item $O_1, O_2 \in O \implies O_1 \cap O_2 \in O$,
+        \item $O_1, O_2 \in O \implies O_1 \bigcap O_2 \in O$,
         \item $O_i \in O, i \in I$ Indexmenge beliebig $\implies \bigcup_{i \in I} O_i \in O$.
     \end{enumerate}
     Wörtlich bedeutet (1), dass sowohl die leere Menge als auch der ganze Raum
@@ -37,14 +51,14 @@ Diese Eigenschaften bilden den Ausgangspunkt unserer Verallgemeinerung. Und wir 
 von $X$ heißt \emph{Topologie} auf $X$, wenn $\mathcal{T}$ folgende Eigenschaften hat.
 \begin{itemize}
     \item[(O1)] $\emptyset \in \mathcal{T}, \; X \in \mathcal{T}$.
-    \item[(O2)] Aus $O_1, O_2 \in \mathcal{T}$ folgt $O_1 \cap O_2 \in \mathcal{T}$.
+    \item[(O2)] Aus $O_1, O_2 \in \mathcal{T}$ folgt $O_1 \bigcap O_2 \in \mathcal{T}$.
     \item[(O3)] Aus $O_i \in \mathcal{T}, \; i \in I$, mit einer beliebigen Indexmenge $I$ folgt 
     $\bigcup_{i \in I} O_i \in \mathcal{T}$.
 \end{itemize}
 Die Elemente von $\mathcal{T}$ heißen \emph{offene Mengen}. Das Paar $(X, \mathcal{T})$ 
 bezeichnet man als \emph{topologischen Raum}.
 }
-
+\bigskip
 \ex{Topologien}
 {
 \begin{itemize}
@@ -58,5 +72,52 @@ $$
 \mathcal{O} := \{ A \subseteq X : A = X \;\text{oder}\; A \;\text{endlich} \}.
 $$
 \end{itemize}
+    \nt{Wir überprüfen das die cofinite Topologie eine Topologie ist.\\
+    Um das eizuhsehen muss man kurz hinschauen. Im Vergleich dazu muss 
+    man das bei der diskreten und indiscrete Topologie nicht machen.
+    \begin{itemize}
+        \item[(O1)] Sei $V \subset \mathcal{T}$:
+        \begin{enumerate}
+            \item[1. Fall] $Y = \emptyset: \bigcup V = \emptyset$ 
+            \item[2. Fall] $V = \emptyset: \bigcup V = \emptyset$
+        Wähle $O \in V$ dann gilt $X\setminus \bigcap V \subset X \setminus O$ endlich. 
+        \footnote{$\bigcup V := \{x \mid \forall v \in \mathcal{V}: x \in V\}$}
+        \end{enumerate}
+        \item[(O2)] Sei $V \in \mathcal{T}$ endlich, dann gilt $V = \emptyset: \bigcap V = X$
+        \item[(O3)] Sei $V + \emptyset$, dann gilt $X \setminus \bigcup V = \underset{\text{endlich}}{\bigcap}$. ist endlich
+    \end{itemize}
+    }
+}
 
+\ex{Eine Metrik induziert eine Topologie}
+{
+Sei $(X,d)$ ein metrischer Raum. mit $X \times X \to \mathbb{R}$ Dann ist $U_{r}(x) = \{y \in X : d(x,y) < r\}$
+eine offene Menge für alle $x \in X$ und $r > 0$. Wir definieren darauf die Topologie 
+$$\mathcal{T} = \{ O \subseteq X \mid \forall x \in O \exists r > 0 : U_r(x) \subseteq O \}.$$  
+Um einzusehen, dass $\mathcal{T}$ eine Topologie ist, müssen wir die drei Eigenschaften überprüfen bzw. schon zwei mal hinschauen.
+\begin{itemize}
+    \item[(O1)] $\emptyset, X \in \mathcal{T}$.
+    \item[(O2)] Sei $V \in \mathcal{T}, x\in \bigcup V$. Dann wähle $V \in \mathcal{V}$ 
+    und $r > 0$ so dass $U_r(x) \subseteq V$. Dann gilt auch $U_r(x) \subseteq V \subset \bigcup V$.
+    \item[(O3)] Sei $\mathcal{V} \subset \mathcal{T}$ endlich, $x \in \bigcap V$. Dann für jedes $V \in \mathcal{V}$ wähle
+    $r_V > 0$ so dass $U_{r_V}(x) \subseteq V$. 
+    Dann gilt auch $U_{r_V}(x) \subseteq \bigcap V \Rightarrow \underset{V \in \mathcal{V}}{\bigcap} U_{r_V}(x) \subseteq \bigcap V$.
+    Das noch etwas genauer aufgetröselt: $\underset{V \in \mathcal{V}}{\bigcap}\{y \in X \mid d(x,y) < r_V\} 
+    = \{y \in X \mid \forall V \in \mathcal{V}: d(x,y) < r_V\}$.
+\end{itemize}
+}
+
+\ex{}
+{
+Betrachte $\mathbb{Z}$. Für $k \in \mathbb{Z}$ und $l \ge 1$ sei $U_{k,l} := \{k+nl \mid n \in \mathbb{Z}\}$. 
+Weiters definiere $\mathcal{T} := \{ k \in \mathbb{Z} \mid \forall x \in = \exists l \in \mathbb{Z}, l \ge ; U_{k,l} \subset 0\}$.
+Dann ist $\mathcal{T}$ eine Topologie auf $\mathbb{Z}$.
+\begin{itemize}
+    \item[(O1)] $\emptyset, \mathbb{Z} \in \mathcal{T}$.
+    \item[(O2)] Sei $V \subset \mathcal{T}$, $y\in \bigcup V$. 
+    Dann wähle $V \in \mathcal{V}$ und $x \in \mathbb{Z}, l \ge 1$ so dass $U_{x,l} \subseteq V$.
+    Dann gilt auch $U_{x,l} \subseteq V \subset \bigcup V$.
+    \item[(O3)] Sei $V \subset\mathcal{B} endlich x \in \bigcap V$ Ein $V \in \mathcal{V}$ 
+    wähle $l_v \in \mathbb{Z}. l_v \ge 1$ so dass $U_{x,l_v} \subseteq V$.
+\end{itemize}
 }
