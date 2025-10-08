@@ -90,7 +90,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Theorem}{Satz}
+\newtcbtheorem[auto counter, number within=section]{Theorem}{Satz}
 {%
 	enhanced,
 	breakable,
@@ -100,7 +100,7 @@
 	%borderline west = {2pt}{0pt}{mytheoremfr},
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = myg!85!black,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -110,7 +110,7 @@
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{theorem}{Satz}
+\newtcbtheorem[auto counter, number within=chapter]{theorem}{Satz}
 {%
 	enhanced,
 	breakable,
@@ -120,7 +120,7 @@
 	%borderline west = {2pt}{0pt}{mytheoremfr},
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = mytheoremfr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -149,7 +149,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{corollary}{Korollar}
+\newtcbtheorem[use counter from=Theorem]{corollary}{Korollar}
 {%
 	enhanced
 	,breakable
@@ -158,7 +158,7 @@
 	,boxrule = 0sp
 	,sharp corners
 	,detach title
-	,before upper = \tcbtitle\par\smallskip
+	,before upper = \tcbtitle\par\bigskip
 	,coltitle = myp!85!black
 	,fonttitle = \bfseries\sffamily
 	,description font = \mdseries
@@ -173,7 +173,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Lenma}{Lemma}
+\newtcbtheorem[use counter from=Theorem]{Lenma}{Lemma}
 {%
 	enhanced,
 	breakable,
@@ -182,7 +182,7 @@
 	boxrule = 0sp,
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = mylenmafr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -192,7 +192,7 @@
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{lenma}{Lemma}
+\newtcbtheorem[use counter from=Theorem]{lenma}{Lemma}
 {%
 	enhanced,
 	breakable,
@@ -202,7 +202,7 @@
 	borderline west = {2pt}{0pt}{mylenmafr},
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = mylenmafr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -217,7 +217,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Prop}{Proposition}
+\newtcbtheorem[use counter from=Theorem]{Prop}{Proposition}
 {%
 	enhanced,
 	breakable,
@@ -226,7 +226,7 @@
 	boxrule = 0sp,
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = mypropfr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -236,7 +236,7 @@
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{prop}{Proposition}
+\newtcbtheorem[use counter from=Theorem]{prop}{Proposition}
 {%
 	enhanced,
 	breakable,
@@ -245,7 +245,7 @@
 	boxrule = 0sp,
 	sharp corners,
 	detach title,
-	before upper = \tcbtitle\par\smallskip,
+	before upper = \tcbtitle\par\bigskip,
 	coltitle = mypropfr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
@@ -260,7 +260,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{claim}{Behauptung}
+\newtcbtheorem[use counter from=Theorem]{claim}{Behauptung}
 {%
 	enhanced
 	,breakable
@@ -269,7 +269,7 @@
 	,boxrule = 0sp
 	,sharp corners
 	,detach title
-	,before upper = \tcbtitle\par\smallskip
+	,before upper = \tcbtitle\par\bigskip
 	,coltitle = mytheoremfr
 	,fonttitle = \bfseries\sffamily
 	,description font = \mdseries
@@ -283,16 +283,16 @@
 % EXAMPLE BOX
 %================================
 
-\newtcbtheorem[number within=section]{Example}{Beispiel}
+\newtcbtheorem[use counter from=Theorem]{Example}{Beispiel}
 {%
 	colback=white,
 	,breakable
 	,colframe = myexamplefr
-	,coltitle = myexampleti
+	,coltitle = black
 	,boxrule = 1pt
 	,sharp corners
 	,detach title
-	,before upper=\tcbtitle\par\smallskip
+	,before upper=\tcbtitle\par\bigskip
 	,fonttitle = \bfseries
 	,description font = \mdseries
 	,separator sign none
@@ -300,16 +300,16 @@
 }
 {ex}
 
-\newtcbtheorem[number within=chapter]{example}{Beispiel}
+\newtcbtheorem[use counter from=Theorem]{example}{Beispiel}
 {%
 	colback=white,
 	,breakable
 	,colframe = myexamplefr
-	,coltitle = myexampleti
+	,coltitle = black
 	,boxrule = 1pt
 	,sharp corners
 	,detach title
-	,before upper=\tcbtitle\par\smallskip
+	,before upper=\tcbtitle\par\bigskip
 	,fonttitle = \bfseries
 	,description font = \mdseries
 	,separator sign none
@@ -333,12 +333,12 @@
     colframe=defredframe,
     boxrule=0.5pt,              % dünner Rand
     detach title,
-    before upper=\tcbtitle\par\smallskip,
+    before upper=\tcbtitle\par\bigskip,
     fonttitle=\bfseries\color{black}
   }
 }
 
-\newtcbtheorem[number within=section]{Definition}{Definition}{mydefred}{df}
+\newtcbtheorem[use counter from=Theorem]{Definition}{Definition}{mydefred}{df}
 
 \definecolor{defredbg}{HTML}{FFF5F5}   % sehr hellrot im Hintergrund
 \definecolor{defredframe}{HTML}{CC0000} % kräftiger Rand
@@ -352,11 +352,11 @@
     colframe=defredframe,
     boxrule=0.5pt,              % dünner Rand
     detach title,
-    before upper=\tcbtitle\par\smallskip,
+    before upper=\tcbtitle\par\bigskip,
     fonttitle=\bfseries\color{black}
   }
 }
-\newtcbtheorem[number within=chapter]{definition}{Definition}{mydefred}{df}
+\newtcbtheorem[use counter from=Theorem]{definition}{Definition}{mydefred}{df}
 
 %================================
 % NOTE BOX
@@ -508,43 +508,6 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 
-% % redefine matrix env to allow for alignment, use r as default
-% \renewcommand*\env@matrix[1][r]{\hskip -\arraycolsep
-%     \let\@ifnextchar\new@ifnextchar
-%     \array{*\c@MaxMatrixCols #1}}
-
-
-%\usepackage{framed}
-%\usepackage{titletoc}
-%\usepackage{etoolbox}
-%\usepackage{lmodern}
-
-
-%\patchcmd{\tableofcontents}{\contentsname}{\sffamily\contentsname}{}{}
-
-%\renewenvironment{leftbar}
-%{\def\FrameCommand{\hspace{6em}%
-%		{\color{myyellow}\vrule width 2pt depth 6pt}\hspace{1em}}%
-%	\MakeFramed{\parshape 1 0cm \dimexpr\textwidth-6em\relax\FrameRestore}\vskip2pt%
-%}
-%{\endMakeFramed}
-
-%\titlecontents{chapter}
-%[0em]{\vspace*{2\baselineskip}}
-%{\parbox{4.5em}{%
-%		\hfill\Huge\sffamily\bfseries\color{myred}\thecontentspage}%
-%	\vspace*{-2.3\baselineskip}\leftbar\textsc{\small\chaptername~\thecontentslabel}\\\sffamily}
-%{}{\endleftbar}
-%\titlecontents{section}
-%[8.4em]
-%{\sffamily\contentslabel{3em}}{}{}
-%{\hspace{0.5em}\nobreak\itshape\color{myred}\contentspage}
-%\titlecontents{subsection}
-%[8.4em]
-%{\sffamily\contentslabel{3em}}{}{}  
-%{\hspace{0.5em}\nobreak\itshape\color{myred}\contentspage}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TABLE OF CONTENTS
@@ -591,4 +554,3 @@
 	  \end{tikzpicture}}%
 	\@starttoc{toc}}
 \makeatother
-
