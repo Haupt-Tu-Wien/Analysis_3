@@ -31,13 +31,13 @@ Aber nach dem man darauf aufmerksam gemacht wurde, ist es sehr lustig.
 \bigskip
 
 Betrachten wir also die Topologie 
-$\mathcal{T} := \{ O \subseteq \mathbb{Z} \mid \forall x \in O \exists l \in \mathbb{Z}, l \ge 1 : U_{x,l} \subseteq O\}$.
+$$\mathcal{T} := \{ O \subseteq \mathbb{Z} \mid \forall x \in O \exists l \in \mathbb{Z}, l \ge 1 : U_{x,l} \subseteq O\}$$
 \begin{itemize}
     \item Sei $U_{k,l} \in \mathcal{T}, x \in U_{k,l}$. \\
-    Dann gilt $$U_{x,l}=U_{k,l} \text{ endlich}$$
+    Dann gilt: $U_{x,l}=U_{k,l} \text{ endlich}$
     Denn mit $n_x \in \mathbb{Z}: x = k + n_x l$. erhalten wir: \\
     \begin{itemize}
-        \item Sei $y \in U_{x,l}: y = x + n_y l = U_{k,l} \ni k + (n_x + n_y)l$.\\
+        \item Sei $y \in U_{x,l}: y = x + n_y l = U_{k,l} \ni k + (n_x + n_y)l$.
         \item Sei $y \in U_{k,l}: y = k + n_y l = U_{x,l} \ni x + (n'_y - n_{x})l$.
     \end{itemize}
 
@@ -54,12 +54,21 @@ $\mathcal{T} := \{ O \subseteq \mathbb{Z} \mid \forall x \in O \exists l \in \ma
     
 \end{itemize}
 
-\dfn{}{
+\dfn{Halbordnung und Infimum}{
 
-Sei $X$ eine Menge. Betrachte $\mathbb{T}(x) := \{\mathcal{T}(X)\subset \mathcal{P}(X)\mid \mathcal{T} \text{Topologie auf } X\}$.  
-
+Sei $X$ eine Menge. 
+Betrachte 
+$\mathbb{T}(x) := \{\mathcal{T}(X)\subset \mathcal{P}(X)\mid \mathcal{T} \text{Topologie auf } X\}$.  
+Dan nennen wir 
 \begin{enumerate}
-  \item $\mathbb{T}(X)$ ist halbgeordnet mit 
-  
+  \item $\mathbb{T}(X)$ ist halbgeordnet mit $\subset$ 
+  Seien $\mathcal{T}_1, \mathcal{T}_2 \in \mathbb{T}(x)$
+  Dann ist $\mathcal{T}_1 \subseteq \mathcal{T}_2$ Eine Hablbordnung das heißt
+  $\forall O \subseteq X: O \in \mathcal{T}_1 \Rightarrow \mathcal{T}_2$
+  \item Weiters betrachten wir
+  $\{\emptyset, X\} \in \mathbb{T} \text{ und } \forall \mathcal{T} \in \mathbb{T}: \{\emptyset,X\}\subset \mathcal{T}$
+  $\mathcal{P}(X) \in \mathbb{T}(X) $ und $\forall \mathcal{T} \in \mathbb{T}(X): \mathcal{T}\subset \mathbb{P}$
+  \item $\mathbb{V} \subseteq \mathbb{T}(X)$ Dann gilt: $\mathbb{V} \neq \emptyset$ 
+  hat ein Infimum in $\mathbb{T}(X)$.
 \end{enumerate}
 }

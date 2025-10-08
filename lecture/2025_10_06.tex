@@ -3,12 +3,15 @@
 Alle Infomationen sind Online zu finden aber für die form von der Mitschrift sollte hier etwas stehen.:
 Die LVa ist eine UE + Vo. 
 \subsection{Übung}
-Für die Übung benötigt man ca. 60\% der Käuze und zwei positive Tafeleistungen.
-Man darf einmal fehlen + nachbringen aber ohne guten Grund. Ansonsten braucht man einen guten grund (meine Oma ist gestoreben,
-ist ab dem zweiten mal kein guter Grund).
+Für das Positive absolvieren der Übung benötigt man ca. 60\% der Käuze und zwei positive Tafeleistungen.
+Man darf einmal fehlen + nachbringen aber ohne guten Grund.
+Für weiteres fehlen braucht man einen guten Grund (meine Oma ist gestoreben,
+ist ab dem zweiten mal kein guter Grund mehr).
 \subsection{Vorlesung}
 Die Vorlesung ist ein Tafelvortag. 
-Prüfung teilt sich auf in schriftlich und mündlich ... steht alles in der Email. für die Form reicht der text
+Prüfung teilt sich auf in schriftlich und mündlich. Die schriftliche Prüfung ist als Ticket für die Mündliche zu verstehen.
+Der stoff der Schriftlichen prüfug sind die Übungsbeispiel.
+Der Stoff der Mündlichen Prüfung ist der Inhalt der Vorlesung (Wichtig hierbei der Vorlesung heißt nicht ihrgendeine Vorlesung).
 
 \section{Topologische Grundbegriffe} 
 
@@ -86,15 +89,20 @@ $$
         \item[(O2)] Sei $V \in \mathcal{T}$ endlich, dann gilt $V = \emptyset: \bigcap V = X$
         \item[(O3)] Sei $V + \emptyset$, dann gilt $X \setminus \bigcup V = \underset{\text{endlich}}{\bigcap}$. ist endlich
     \end{itemize}
+    Damit haben wir (Unser Professor alias Mathegott in der Vorlesung) gezeigt das die cofinite Topologie Tatsächlich eine 
+    Topologie ist -auch wen man schon mal hinschauen muss um das zu sehen-.
     }
 }
 
-\ex{Eine Metrik induziert eine Topologie}
+Wir witmen uns nun noch weiteren Beispielen für Topologien. 
+
+\ex{Eine durch eine Metrik induziert Topologie}
 {
 Sei $(X,d)$ ein metrischer Raum. mit $X \times X \to \mathbb{R}$ Dann ist $U_{r}(x) = \{y \in X : d(x,y) < r\}$
 eine offene Menge für alle $x \in X$ und $r > 0$. Wir definieren darauf die Topologie 
 $$\mathcal{T} = \{ O \subseteq X \mid \forall x \in O \exists r > 0 : U_r(x) \subseteq O \}.$$  
 Um einzusehen, dass $\mathcal{T}$ eine Topologie ist, müssen wir die drei Eigenschaften überprüfen bzw. schon zwei mal hinschauen.
+\dots oder dreimal:
 \begin{itemize}
     \item[(O1)] $\emptyset, X \in \mathcal{T}$.
     \item[(O2)] Sei $V \in \mathcal{T}, x\in \bigcup V$. Dann wähle $V \in \mathcal{V}$ 
@@ -107,7 +115,7 @@ Um einzusehen, dass $\mathcal{T}$ eine Topologie ist, müssen wir die drei Eigen
 \end{itemize}
 }
 
-\ex{}
+\ex{Geometrische Regression}
 {
 Betrachte $\mathbb{Z}$. Für $k \in \mathbb{Z}$ und $l \ge 1$ sei $U_{k,l} := \{k+nl \mid n \in \mathbb{Z}\}$. 
 Weiters definiere $\mathcal{T} := \{ k \in \mathbb{Z} \mid \forall x \in = \exists l \in \mathbb{Z}, l \ge ; U_{k,l} \subset 0\}$.
