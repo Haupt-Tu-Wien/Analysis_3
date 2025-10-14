@@ -1,0 +1,411 @@
+\chapter{}
+Ein großes Problem in der Mathematik ist die Benennung von Objekten.
+Hier wird einem diese Problem deutlich vor Augen geführt.
+Um eine kleine Orientierung zu bieten lege ich jetzt fest, und hoffe, dass
+ich mich auch daran halte, welche schriftarten ich für welche Objekte festlegen
+möchte.
+\nt{
+Notation:
+\begin{itemize}
+    \item Standart Menge:  $A,B,C, \dots X$
+    \item Umgebungen (Spezifischere Mengen): $\mathscr{A}, \mathscr{B}, \mathscr{C}, \dots \mathscr{X}$
+    \item Topologie (Menge mit Offenen Mengen): $\mathcal{A}, \mathcal{B}, \mathcal{C}, \dots \mathcal{X}$
+    \item Filter (Menge mit bestimmten Eigenschaften): $\mathfrak{A}, \mathfrak{B}, \mathfrak{C}, \dots \mathfrak{X}$
+    \item Punkte (Elemente der Menge); $a,b,c, \dots x$
+\end{itemize}
+}
+
+Wir haben ( leider\footnote{Die Mathematik wäre möglicherweise einfacher, mit weniger} ) 
+noch mehr Objekte, und mehr schriftarten würden nicht zur besseren
+Übersichtlichkeit beitragen.  - Ich persönlich, weiß auch das ich früher 
+oder noch früher durcheinander kommen werde wen ich neben:
+mathcal{}, mathbf{} mathfrak{}, mathbb{}, mathscr{} noch mehr schriftarten verwende.-
+\footnote{ Es sind so schon zu vile für meine geschmack.}
+\footnote{$\mathcal{S} \mathbf{S} \mathfrak{S} \mathbb{S} \mathscr{S}$} 
+
+
+\dfn{Dicht, Häufungspunkt, Isolierter Punkt}
+{
+    Sei $\langle X, \mathcal{T}\rangle$ ein Topologischer Raum und $A \subset X$.
+\begin{itemize}
+    \item $A$ ist \textbf{dicht} in X, falls $\bar{A} = X$.
+    \item $x \in X$ ist ein \textbf{Häufungspunkt} von $A$, falls:
+     $\forall 0 \in \mathcal{T} : x \in O \Rightarrow 0 \cap A \neq \emptyset$.
+    \item $x \in X$ ist ein \textbf{isolierter Punkt} von $A$, falls:
+     $\exists 0 \in \mathcal{T} : x \in O : 0 \cap A = \{x\}$.
+\end{itemize}
+}
+
+\dfn{Umgebung}
+{
+    Sei $\langle X, \mathcal{T}\rangle$ ein Topologischer Raum und $x \in X$.
+    Eine Menge $\mathcal{U} \subset X$ heißt \textbf{Umgebung} von $x$, falls
+    $$
+    \exists O \in \mathcal{T} : x \in O \subset \mathcal{U}
+    $$.
+}
+
+\dfn{Umgebungsfilter}
+{
+   Für eine nichtleere Menge $M$ heißt $\mathfrak{F} \subseteq \mathcal{P}(M)$ 
+   ein \emph{Filter} auf $M$, wenn
+\begin{enumerate}
+  \item[(F1)] $\mathfrak{F} \neq \emptyset$ und $\emptyset \notin \mathfrak{F},$
+  \item[(F2)] $F_1 \cap F_2 \in \mathfrak{F}$, falls $F_1, F_2 \in \mathfrak{F},$
+  \item[(F3)] $F_2 \in \mathfrak{F}$, falls $F_1 \in \mathfrak{F}$
+   und $F_1 \subseteq F_2 \subseteq M.$
+\end{enumerate} 
+}
+
+\mlenma{}{
+
+  Sei $\langle X, \mathcal{T}\rangle$ ein topologischer Raum und 
+  $x \in X$. Dann ist die Menge aller Umgebungen 
+  $$
+  \mathscr{U}(x) = \{ U \in \mathcal{T} \mid x \in U \}
+  $$
+  von $x$ ein Filter auf $X$.
+}
+\begin{proof}{Lemma: 3.0.4}\\
+Wir überprüfen die Filtereigenschaften.:
+    
+    \begin{itemize}
+    \item[(F1)]$x \in \mathscr{U}(x)$ und $X \in \mathcal{T}, x \in X \subseteq X$ 
+    Damit haben wir
+          $$
+          \emptyset \notin \mathscr{U}(x) \text{ und } 
+          \forall U \in \mathscr{U}(x): x \in U
+          $$
+    \item[(F2)] $U_1, U_2 \in \mathcal{U}(x) \ \forall O_1, O_2 \in \mathcal{O} 
+    \text{ mit } x \in O_1 \subseteq U_1, \ x \in O_2 \subseteq U_2$ \\
+          $$
+          \Rightarrow x \in O_1 \cap O_2 \subseteq U_1 \cap U_2 \\
+          \Rightarrow U_1 \cap U_2 \in \mathcal{U}(x)
+          $$
+    \item[(F3)] $U \in \mathscr{U}(x), V \supseteq$ Wähle 
+        $$
+        O \in \mathcal{T} \text{ und } x \in O \subseteq \mathscr{U} \subseteq V
+        $$
+    \end{itemize}
+    
+\end{proof}
+
+Hir ist meine Notationelle einführung schon an seine Grenze gekommen. 
+Wie nehmen sie die Menge (Also U) aller Umgebungen von $x$ und nennen sie $\mathscr{U}(x)$.
+aber wir zeigen das es ein Filter ist. Damit wäre ja $\mathfrak{U}(x)$ 
+die Richtige Notation.
+- Ich wil konsistent bleiben aber habe es schon aufgegeben. -
+
+\mprop{}
+{
+    Sei $\langle X, \mathcal{T} \rangle$ Top-Raum 
+    und $\langle Y, \mathcal{V} \rangle$ Top-Raum
+    Dann gilt:
+\begin{enumerate}
+    \item $\forall O \in X \Leftrightarrow (\forall x \in O: O \in \mathscr{U}(x))$
+    \item Sei $f : X \to Y$, dann gilt: $f$ stetig $\Leftrightarrow$
+    $$
+    \forall x \in X  \forall V \in \mathcal{V}(f(x)) \in \mathscr{U}^X(f(x))
+    \exists u \in \mathscr{U}^Y(f(x)): f(u) \subseteq \mathscr{U}^Y(f(U)) 
+    \subseteq V
+    $$
+    \item Sei $A \in X$, dann ist $\overline{A} = \{ x \in X \mid \forall u
+     \in \mathscr{U}(x) : U \cap A \neq \emptyset \}$
+\end{enumerate}
+}
+
+\begin{proof}{Prop: 3.0.5}\\
+\begin{enumerate}
+    \item 
+    \begin{itemize}
+        \item["$\Rightarrow$"] 
+        Sei $x \in O \in \mathcal{T}$, dann gilt:
+        $$
+        x \in O \subseteq 0
+        $$
+        \item["$\Leftarrow$"] 
+        $\forall x \in O$ wähle $\mathscr{Q}_x \subseteq O$ 
+        Dann haben wir:
+        $$
+            \{x\} \subseteq O_x \subseteq O\\
+             \Rightarrow 
+            \bigcup_{x \in O} \{x\} \subseteq 
+            \underbrace{\bigcup_{x \in O} \mathscr{Q}_x}_{\text{ Offen}} \subseteq 
+            \bigcup_{x \in O} O = O
+        $$
+    \end{itemize}
+    \item    
+    \begin{itemize}
+        \item["$\Rightarrow$"] 
+        Sei $x \in X$, $V \in \mathscr{U}^Y(f(x))$. Wähle $Q \in \mathfrak{V}$ \\
+        mit $f(x) \in Q \subseteq V$ \\
+        $\Rightarrow f^{-1}(Q) \in \mathcal{T}$  Das Folgt aus unseer Charakterisierung
+        von stetigen Funktionen. \\
+        Betrachte $x \in f^{-1}(Q) \in \mathscr{U}^X(x)$ damit haben wir:
+        $$
+        f(f^{-1}(Q)) \subseteq Q \subseteq \mathfrak{V}
+        $$
+        \item["$\Leftarrow$"]
+        Sei $O \in \mathfrak{V}$ 
+        Wir wollen zeigen dass, das Vollständige Urbild wieder offen ist.
+        Sei $x \in f^{-1}(O)$, d.h. ($f(x) \in O \Rightarrow O 
+        \in \mathscr{U}^Y(f(x))$) \\
+        Wähle $U \in \mathscr{U}^X(x)$ mit $f(U) \subseteq O$ \\
+        $$\Rightarrow U \subseteq f^{-1}(f(U)) \subseteq f^{-1}(O)$$
+        und 
+        $$U\in \mathscr{U}^X(x) \Rightarrow f^{-1}(O) \in \mathscr{U}^X(x)
+        \Rightarrow f^{-1}(O) \in \mathcal{T}$$
+    \end{itemize}
+    \item
+    \begin{itemize}
+        \item["$\subseteq$"]
+        Sei $x \notin \overline{A}$, d.h. 
+        $x \in X\setminus \overline{A}$ (Wobei $ X \setminus \overline{A}$) 
+        ist offen $: \leftrightarrow \text{ Offen } \Leftrightarrow
+        X\setminus \overline{A} \in \mathscr{U}(x)$ \\
+        $$
+        \overline{A} \supseteq A \Rightarrow X\setminus \overline{A} 
+        \Rightarrow A \cap (X\setminus \overline{A}) = \emptyset
+        $$
+        \item["$\supseteq$"]
+        Sei $x \in X$ und $\exists U \in \mathscr{U}(x) :U \cap A = \emptyset$ 
+        wähle $O \in \mathcal{T}$ mit $x \in O \subseteq U$ \\
+        $$
+        \Rightarrow O \cap A = \emptyset \Rightarrow A \subseteq X \setminus O
+        $$ 
+        $$
+        \Rightarrow \overline{A} \subseteq X \setminus O \Rightarrow x \in \overline{A}
+        $$
+    \end{itemize}
+\end{enumerate}
+\end{proof}
+
+\mlenma{}
+{
+    \begin{itemize}
+        \item $\langle X, \mathcal{T} \rangle$ Topologischer-Raum, dann ist $id_X$ stetig.
+        \item $\langle X, \mathcal{T} \rangle$, $\langle Y, \mathcal{V} \rangle$
+        und $\langle Z, \mathcal{W} \rangle$
+        Topologische-Räume und $f : X \to Y$ und $g : Y \to Z$ stetig, dann ist
+        $g \circ f : X \to Z$ stetig.
+    \end{itemize}
+}
+
+\begin{proof}{Lemma: 3.0.6}\\
+    \begin{itemize}
+        \item $X \overset{id:X}{\to} X$ Sei $O \in \mathcal{T}$, dann gilt:
+        $$
+        id_X^{-1}(O) = O \in \mathcal{T}
+        $$
+        \item $X \overset{f}{\to} Y \overset{g}{\to} Z$ 
+        Sei $O \in \mathcal{W}$, dann gilt:
+        $$
+        g^{-1}(O) \in \mathcal{V} \text{ und } f^{-1}(g^{-1}(O)) \in \mathcal{T}
+        $$
+        $$\Rightarrow (g \circ f)^{-1}(O) = f^{-1}(g^{-1}(O)) \in \mathcal{T}
+        $$
+        $$
+        \Rightarrow g \circ f \text{ ist stetig.}
+        $$
+    \end{itemize}
+\end{proof}
+
+\nt{
+Zur wiederholung: Aus Analysis 1 wissen wir das jede 
+Folge $(x_n)_{n \in \mathbb{N}}$ hat höchstens einen Grenzwert.
+
+\begin{proof}{Eindeutigkeit des Grenzwerts}\\
+Seien  $x_n \to x$ und $x_n \to y$ mit $x \neq y (\Leftrightarrow d(x,y) > 0)$.\\
+Wähle $N_1, N_2\in \mathbb{N}$, sodass 
+$d(x_n, x) < \frac{d(x,y)}{3} \forall n \geq N_1$, und
+$d(x_n, y) < \frac{d(x,y)}{3}$ 
+$ \forall n \geq N_2$.\\
+Dann folgt für $N := \max\{N_1, N_2\}$ der Widerspruch:
+$$
+    d(x,y) \leq d(x, x_N) + d(x_N, y)
+    < \frac{d(x,y)}{3} + \frac{d(x,y)}{3}
+    = \frac{2\,d(x,y)}{3}
+    < d(x,y).
+$$
+\end{proof}
+}
+
+ Im Folgenden Betrachten wir Hausdorff-Räume. Das sind 
+ Räume in denen sich Punkte trennen lassen 
+ (Die T2-Eigenschaft bzw. Hausdorff-Eigenschaft). Diese Eigenschaft ist 
+ im Grunde vergleichbar mit der Eindeutigkeit von Grenzwerten in
+ metrischen Räumen.
+
+\dfn{Hausdorff-Raum}
+{
+Ein topologischer Raum $\langle X, \mathcal{T} \rangle$
+heißt \emph{Hausdorff-Raum} oder \emph{$(T2)$-Raum}, 
+wenn folgendes Trennungsaxiom erfüllt ist:
+\begin{center}
+    \textbf{(T2)} \quad 
+    Zu je zwei Punkten $x, y \in X$, $x \neq y$, gibt es disjunkte offene Mengen 
+    $O_x$ und $O_y$ mit $x \in O_x$ und $y \in O_y$.
+\end{center}
+}
+
+Bevor wir weiter mit der Hausdorff-Eigenschaft arbeiten, betrachten wir
+bzw definieren wir noch gerichtete Mengen.\\
+\textbf{Die nebenbei viel mehr sinn machen um das Riemann Integral zu definieren.}
+
+\dfn{Gerichtete Menge}
+{
+    Sei $I$ eine nicht leere Menge und $\leq$ eine Relation auf $I$. 
+Dann heißt $(I, \leq)$ eine \textit{gerichtete Menge}, wenn $\leq$ folgenden drei Bedingungen genügt:
+
+\begin{itemize}
+    \item[\textbullet] \textbf{Reflexivität:} \\
+    $$\forall i \in I : \; i \leq i.$$
+
+    \item[\textbullet] \textbf{Transitivität:} \\
+    $$\forall i, j, k \in I : \; (i \leq j \land j \leq k) \Rightarrow i \leq k.$$
+
+    \item[\textbullet] \textbf{Richtungseigenschaft:} \\
+    $$\forall i, j \in I \; \exists k \in I : \; i \leq k \land j \leq k.$$
+\end{itemize}
+}
+
+Nach dem Wir jetzt wissen was eine gerichtete Menge ist, 
+können wir uns auchgleich die Riemansumme anschauen.
+
+\ex{Riemansumme}
+{
+    Wir nennen das Paar 
+$$
+\mathcal{R} = \bigl((\xi_j)_{j=0}^{n(\mathcal{R})}, \, (\eta_j)_{j=1}^{n(\mathcal{R})}\bigr)
+$$
+eine \emph{Riemann-Zerlegung} eines Intervalls $[a,b]$, falls
+$$
+a = \xi_0 < \xi_1 < \dots < \xi_{n(\mathcal{R})} = b, 
+\qquad \eta_j \in [\xi_{j-1}, \xi_j], \quad j=1,\dots,n(\mathcal{R}),
+$$
+und nennen
+$$
+|\mathcal{R}| := \max \{\, \xi_j - \xi_{j-1} \; ; \; j=1,\dots,n(\mathcal{R}) \,\}
+$$
+die \emph{Feinheit der Zerlegung}.
+
+Weiter sei 
+$$
+\mathcal{R}_1 \preceq \mathcal{R}_2 \;:\Longleftrightarrow\; |\mathcal{R}_2| \leq |\mathcal{R}_1|
+$$
+Ist $\Re$ die Menge aller solcher Zerlegungen, dann ist $(\Re,\preceq)$ eine gerichtete Menge.
+In diesem Beispiel ist $\preceq$ sicher nicht antisymmetrisch.
+
+\medskip
+
+Dieser gerichteten Menge und der aus dem letzten Beispiel werden wir bei der Einführung 
+des Integrals wieder begegnen.
+}
+
+\mprop{}
+{
+    Sei $\langle X, \mathcal{T} \rangle$ ein Topologischer Raum.
+    Dann sind folgende Aussagen äquivalent:
+\begin{itemize}
+    \item[(i)] $X$ ist ein Hausdorff-Raum.
+    \item[(ii)] Jede Folge in $X$ hat höchstens einen Grenzwert
+\end{itemize}
+}
+
+\begin{proof}{Prop: 3.0.9}\\
+    \begin{itemize}
+\item[(i) $\Rightarrow$ (ii)] 
+    Wären $x, y$ zwei verschiedene Grenzwerte, so könnten wir disjunkte Umgebungen 
+    $U \in \mathcal{U}(x)$ und $V \in \mathcal{U}(y)$ wählen und infolge 
+    $i_1 \in I$ und $i_2 \in I$ derart wählen, dass 
+    $$
+    x_i \in U \quad \text{für alle } i \geq i_1
+    \qquad \text{und} \qquad
+    x_i \in V \quad \text{für alle } i \geq i_2.
+    $$
+    Da $I$ gerichtet ist, gibt es ein $i \in I$ mit $i \geq i_1$ und $i \geq i_2$, 
+    und daher $x_i \in U \cap V$, was aber im Widerspruch zu 
+    $U \cap V = \emptyset$ steht.
+
+\item[(ii) $\Rightarrow$ (i)] Beweis durch contraposition.([$\neg$(ii) $\Rightarrow$ $\neg$(i)])\\
+    \begin{itemize}
+    \item    Wir definieren eine gerichtete Menge:\\
+    Wähle $x, y \in X$ und $x \neq y$. \\
+    Da $(X,\mathcal{T})$ Hausdorff ist, existieren offene Mengen 
+    $O_x, O_y \in \mathcal{T}$ mit
+    $$
+    x \in O_x, \quad y \in O_y \quad \text{und} \quad O_x \cap O_y = \varnothing.
+    $$
+
+    Sei nun
+    $$
+    I := \left\{\, (O_1, O_2) \in \mathcal{T} \times \mathcal{T} \;\middle|\; 
+    x \in O_1 \ \land \ y \in O_2 \,\right\}
+    $$
+    und definiere die Ordnung
+    $$
+    (O_1, O_2) \preceq (O_1', O_2') 
+    \; :\Longleftrightarrow \;
+    O_1' \subseteq O_1 \ \land \ O_2' \subseteq O_2.
+    $$
+    \item Damit ist $(I, \preceq)$ gerichtet.\\
+    
+    \begin{itemize}
+        \item Reflexivität: 
+        $$
+        (O_x, O_y) \in I\text{ und }(O_x, O_y) \preceq (O_x, O_y)
+        $$.
+        \item Transitivität: Für $(O_1, O_2) \preceq (O_1', O_2')$ und 
+        $(O_1', O_2') \preceq (O_1'', O_2'')$
+        gilt offensichtlich auch 
+        $$
+        (O_1, O_2) \preceq (O_1'', O_2'')
+        $$.
+        \item Richtungseigenschaft: 
+         Für $(O_1, O_2), (O_1', O_2') \in I$ ist
+        $$
+        (O_1 \cap O_2, \; O_1' \cap O_2') \in I
+        $$
+        ist gröber
+    \end{itemize}
+    \item Die Menge $\{O_1 \cap O_2 \mid (O_1, O_2) \in I \}$
+    ist nicht leer, da $(x, y) \in I$.
+
+    Wähle nun eine $\alpha : I \to \underset{(O_1, O_2) \in I}{\bigcup}$  eine Abbildung \\
+    mit 
+    $$
+    \forall (O_1, O_2) \in I :\alpha(O_1, O_2) \in O_1 \cap O_2
+    $$
+    \footnote{Das ist die Stelle an der das Auswahlaxiom verwendet wird. Also lobtpreiset das Auswahlaxiom.
+    (Das Auswahlaxiom ist in der Zermelo-Fraenkel-Mengenlehre nicht beweisbar, aber auch nicht widerlegbar.)}
+
+    \item Es fehlt noch zu zeigen, dass $\alpha$ ein konvergiertes Netz ist.\\
+    $$
+    \lim_{(O_1,O_2)} \alpha(O_1,O_2) = x .
+    $$
+
+    Sei $U \in \mathscr{U}(x)$, wähle $O \in \mathcal{T}$ : $x \in O \subseteq U$
+
+    $$
+    \forall (O_1, O_2) \in I : \exists \ O \Rightarrow (O_1, O_2) \succeq (O, O_x) 
+    \Rightarrow O_1 \cap O_2 \subseteq O_1 \subseteq O \footnote{Das geht wegen dem Auswahl axiom}
+    $$
+    mit $i_0 := (O, x)$\\
+    Auf der anderen Seite haben wir: \\
+    $\forall (O_1, O_2) \in I : O_2 \subseteq O 
+    \quad \text{(Das selbe spiel umgekehrt)} $
+
+    Sei $U \in \mathscr{U}(y)$, wähle $O \in \mathcal{T} : y \in O \subseteq U$
+
+    $$
+    \forall (O_1, O_2) \in I : O_2 \subseteq O 
+    \Rightarrow \alpha((O_1, O_2)) \in O_1 \cap O_2 \subseteq O_2 \subseteq O \subseteq U
+    $$
+
+\end{itemize}
+\end{itemize}
+\end{proof}
+
+Die Richtung (ii) $\Rightarrow$ (i) hat keinen wirklichen 
+Mehrwert - Ausser dass wir über zwei offene Mengen indexiert haben (WOW)-.
+Wir haben diese Richtung also Vorallem dem Beweis zu zu liebe gemacht.
