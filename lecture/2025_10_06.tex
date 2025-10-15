@@ -1,30 +1,30 @@
 \chapter{}
 \section{Organisatorisches}
-Alle Infomationen sind Online zu finden aber für die form von der Mitschrift sollte hier etwas stehen.:
-Die LVa ist eine UE + Vo. 
+Alle Infomationen sind Online zu finden aber für die Form von der Mitschrift sollte hier etwas stehen:
+Die LVa ist eine UE + VO. 
 \subsection{Übung}
-Für das Positive absolvieren der Übung benötigt man ca. 60\% der Käuze und zwei positive Tafeleistungen.
-Man darf einmal fehlen + nachbringen aber ohne guten Grund.
-Für weiteres fehlen braucht man einen guten Grund (meine Oma ist gestoreben,
-ist ab dem zweiten mal kein guter Grund mehr).
+Für das Positive absolvieren der Übung benötigt man ca. 60\% der Kreuze und zwei positive Tafeleistungen.
+Man darf einmal fehlen + nachbringen aber nicht ohne guten Grund.
+Für weiteres fehlen braucht man einen guten Grund ("meine Oma ist gestorben"
+ist ab dem zweiten Mal kein guter Grund mehr).
 \subsection{Vorlesung}
 Die Vorlesung ist ein Tafelvortag. 
-Prüfung teilt sich auf in schriftlich und mündlich. Die schriftliche Prüfung ist als Ticket für die Mündliche zu verstehen.
-Der stoff der Schriftlichen prüfug sind die Übungsbeispiel.
-Der Stoff der Mündlichen Prüfung ist der Inhalt der Vorlesung (Wichtig hierbei der Vorlesung heißt nicht ihrgendeine Vorlesung).
+Die Prüfung teilt sich auf in schriftlich und mündlich. Die schriftliche Prüfung ist als Ticket für die Mündliche zu verstehen.
+Der Stoff der Schriftlichen Prüfung sind die Übungsbeispiele.
+Der Stoff der Mündlichen Prüfung ist der Inhalt der Vorlesung (Wichtig hierbei: "der Vorlesung" heißt hier nicht irgendeine Vorlesung, sondern jene, die zum Zeitpunkt der Entstehung des Skriptes gehalten wurde).
 
 \section{Topologische Grundbegriffe} 
 
-Da wir für viele Themen die in Analysis 3 behandelt werden, Resultate aus der Mastheorie benötigen,
+Da wir für viele Themen die in Analysis 3 behandelt werden, Resultate aus der Maßtheorie benötigen,
 fangen wir mit einigen Grundlagen der Topologie an. Da man für Topologie nix braucht (man muss nur ein bisschen mit Mengen spielen).
 
 \bigskip
 
-Im Folgenden geht es darum den Konvergenz Begriff zu verallgemeinern. 
-Dazu betrachten wir Räume, gerade noch soviel Struktur tragen, dass man von stetigen
+Im Folgenden geht es darum, den Konvergenzbegriff zu verallgemeinern. 
+Dazu betrachten wir Räume, welche gerade noch soviel Struktur tragen, dass man von stetigen
 Funktionen, Grenzwerten, Kompaktheit und so weiter sprechen kann.
 
-Zur wiederholung betrachten wir folgendes Beispiel. 
+Zur Wiederholung betrachten wir folgendes Beispiel. 
 
 \ex{Offene $\epsilon$-Kugel}
 {
@@ -45,7 +45,7 @@ Zur wiederholung betrachten wir folgendes Beispiel.
     Und (3) dass die Vereinigung beliebig vieler offener Mengen wieder offen ist.
 }
 
-Diese Eigenschaften bilden den Ausgangspunkt unserer Verallgemeinerung. Und wir erhalten die folgende Definition.
+Diese Eigenschaften bilden den Ausgangspunkt unserer Verallgemeinerung. Und wir erhalten die folgende Definition:
 
 
 \dfn{Topologie}
@@ -84,8 +84,8 @@ $$
 $$
 \end{itemize}
 \begin{proof}
-Die Beispiele sind so schon sehr schön aber noch schöner sind sie wenn wir nicht nur glauben 
-müssen das es Topologien sind sondern es auch überprüfen können.
+Die Beispiele sind so schon sehr schön, aber noch schöner sind sie, wenn wir nicht nur glauben 
+müssen das es Topologien sind, sondern es auch überprüfen können.
 \begin{itemize}
     \item[(i)] Diskrete Topologie: Überprüfung durch hinsehen.
     \item[(ii)] Indiscrete Topologie: Überprüfung durch hinsehen.
@@ -104,24 +104,24 @@ müssen das es Topologien sind sondern es auch überprüfen können.
     \end{enumerate}
 \end{itemize}
 
-Damit haben wir (Das wir impliziert das es eine art Gruppen arbeit ist. 
-Diese Implikation ist grundlegend falsch was jedem beusucher einer Vorlesung klar sein sollte.)
-gezeigt das die cofinite Topologie Tatsächlich eine 
+Damit haben Wir (Das "Wir" impliziert das es eine Art Gruppenarbeit ist. 
+Diese Implikation ist grundlegend falsch was jedem Beusucher einer Vorlesung klar sein sollte.)
+gezeigt das die kofinite Topologie Tatsächlich eine 
 Topologie ist.
 
 \end{proof}
 }
 
 
-Wir witmen uns nun noch weiteren Beispielen für Topologien. 
+Wir widmen uns nun noch weiteren Beispielen für Topologien. 
 
-\ex{Eine durch eine Metrik induziert Topologie}
+\ex{Eine durch eine Metrik induzierte Topologie}
 {
 Sei $\langle X,d \rangle $ ein metrischer Raum. mit $X \times X \to \mathbb{R}$ Dann ist $U_{r}(x) = \{y \in X : d(x,y) < r\}$
 eine offene Menge für alle $x \in X$ und $r > 0$. Wir definieren darauf die Topologie 
 $$\mathcal{T}_d = \{ O \subseteq X \mid \forall x \in O \exists r > 0 : U_r(x) \subseteq O \}.$$  
 
-Auch hier wollen wir noch zeigen das es sich tatsächlich um eine Topologie handelt.
+Auch hier wollen wir noch zeigen, dass es sich tatsächlich um eine Topologie handelt.
 \begin{proof}
 Um einzusehen, dass $\mathcal{T}_d$ eine Topologie ist, müssen wir wieder 
 die drei Eigenschaften überprüfen bzw. schon zwei mal hinschauen.\dots oder dreimal:
@@ -132,9 +132,9 @@ die drei Eigenschaften überprüfen bzw. schon zwei mal hinschauen.\dots oder dr
     X \subseteq X, \quad 
     \forall x \in X, \; r > 0 : \{ y \in X \mid d(x,y) < r \} \subseteq X
     $$
-    Hierbei ist interessant zu bermerken das die leere Menge eine Teilmenge jeder Menge ist, 
+    Hierbei ist interessant zu bemerken, dass die leere Menge eine Teilmenge jeder Menge ist, 
     also insbesondere auch eine Teilmenge von der Umgebung $U_r(x)$.
-    Da Eine Menge der Form $U_r(x)$ nie leer sein kann, da $x \in X$ und $d(x,x) = 0 < r$, 
+    Da eine Menge der Form $U_r(x)$ nie leer sein kann, da $x \in X$ und $d(x,x) = 0 < r$, 
     Das heist das $U_r(x)$ immer zumindest das Element $x$ selbst enthält. 
 
     \item[(O2)] Sei $V \in \mathcal{T}_d, x\in \bigcup V$. Dann wähle $V \in \mathcal{V}$ 
@@ -149,7 +149,7 @@ die drei Eigenschaften überprüfen bzw. schon zwei mal hinschauen.\dots oder dr
     $$
     U_{r_V}(x) \subseteq \bigcap V \Rightarrow \underset{V \in \mathcal{V}}{\bigcap} U_{r_V}(x) \subseteq \bigcap V
     $$
-    Das noch etwas genauer aufgetröselt: 
+    Das noch etwas genauer aufgedröselt: 
     $$
     \underset{V \in \mathcal{V}}{\bigcap}\{y \in X \mid d(x,y) < r_V\} 
     = \{y \in X \mid \forall V \in \mathcal{V}: d(x,y) < r_V\}
