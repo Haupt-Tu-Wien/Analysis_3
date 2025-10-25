@@ -97,5 +97,272 @@ Das bedeutet (vgl.: Kaltenbäck: Aufabau Analysis )
 \section{Produkttopologie}
 
 
+Betrachte eine Menge $X$ die nicht leer ist und eine Menge 
+$Y_x$ mit $x \in X$. Damit definieren wir:
+$$
+\prod_{x \in X} Y_x := \left\{ f : X \to \bigcup_{x \in X} Y_x 
+\mid \forall x \in X : f(x) \in Y_x \right\}.
+$$
+
+Weiters führen wir die Notation:
+$$
+Y_1 \times Y_2 := \{(y_1,y_2): y_1 \in Y_1, y_2 \in Y_2\}
+$$
+\nt
+{
+    Analog zu der Eingeführten Notation schreiben wir:\\
+    Für ein Element $f \in \prod_{x \in X} Y_x$ schreiben wir auch als 
+    Tupel $(y_x)_{x \in X}$ was $(f(x))_{x \in X}$ entspricht.
+}
+
+\dfn{Produkttopologie}
+{
+Sei $X$ eine nicht leere Menge, $(Y_x, x \in X)$ eine Familie von Mänen
+die nicht leer sind, und für jedes $x \in X$ sei 
+$(Y_x, \mathcal{T}_x)$ ein topologischer Raum. Wir betrachten:
+$$
+S:= \{\pi_x^{-1}(O_x) \mid x \in X, O_x \in \mathcal{T}_x\}
+$$
+Die von S erzeugte Topologie ist die \textbf{Produkttopologie} und
+wir schreiben auch :$\prod_{x \in X} T_x$
+}
+
+\nt{
+\dfn{Produkttopologie (Kaltenbäck)}
+{
+    Sei $X$ eine nicht leere Menge und für jedes $x \in X$ 
+    sei $(Y_x, \mathcal{V}_x)$ ein topologischer Raum. 
+    Die \textbf{Produkttopologie} auf 
+    $\prod_{x \in X} Y_x$ ist die initiale Topologie bezüglich der 
+    Projektionen 
+    $$
+    \pi_x : \prod_{x \in X} Y_x \to Y_x, 
+    \quad (y_x)_{x \in X} \mapsto y_x,
+    $$
+    für alle $x \in X$.
+}
+}
+
+\mprop{}
+{
+  Sei (I, $\preccurlyeq$) eine gerichtete Menge und 
+  $\varphi : I \to \prod_{x \in X} Y_x$ ein Netz.
+  Weiter sein $g \in \prod_{x \in X} Y_x$. Dann gilt:
+  $$
+  \lim_{i \in I} \varphi(i) = g \Leftrightarrow \forall x_0 \in X :
+  \lim_{i \in I} (\pi_{x_0}\circ \varphi)(i) = \pi_{x_0}(g) 
+  $$
+  Was Punkteweise Konvergenz bedeutet.
+}
+
+\begin{proof}{Proposition: 5.2.3:}\\
+    \begin{itemize}
+        \item["$\Rightarrow$":]
+        Die Richtung ist klar, da die Projektionen $(\pi_{x_{0}})$ stetig sind. 
+        und stetigkeit erhält Konvergenz.Dh. es folgt aus der Definition
+        von $S$.
+        \item["$\Leftarrow$":]
+        Sei $U \in \mathcal{U}^{\prod_{x \in X} Y_x}(g)$.
+        Dann gilt:
+        \begin{equation*}
+        \begin{split}
+        &\exists O \in \prod_{x \in X} \mathcal{T}_x : g \in O \subseteq U\\
+        &\Rightarrow \exists x_1, \ldots, x_n \in X, 
+        O_{x_1} \in \mathcal{T}_{x_1}, \ldots, O_{x_n} \in \mathcal{T}_{x_n} :
+        g \in \bigcap_{k=1}^{n} \pi_{x_k}^{-1}(O_{x_k}) \subseteq O \subseteq U\\
+        &\forall k \in \{1, \ldots, n \}: g \in \pi_{x_k}^{-1}(O_{x_k}) \in \prod_{x \in X} \mathcal{T}_x\\
+        &\Rightarrow \forall k \in \{1, \ldots, n \} : \pi_{x_k}(g) \in O_{x_k} ( \text{Umgebung von} g(x_k)) \\
+        &\overset{\text{VS}}{\Rightarrow} \text{ Wähle } i_k \in I :
+        \forall i \succeq i_k : 
+        \underbrace{(\pi_{x_k} \circ \varphi)(i) \in O_{x_k}}_{\Leftrightarrow \phi(i) \in \pi_{x_k}^{-1}(O_{x_k})}\\
+        &\text{Wähle } i_k \in I : \forall i \succeq i_k : \forall k \in \{1, \ldots, n\} :
+        \varphi(i) \in \pi_{x_k}^{-1}(O_{x_k})\\
+        &\Leftrightarrow \varphi(i) \in \bigcap_{k=1}^{n} \pi_{x_k}^{-1}(O_{x_k}) \subseteq U\\
+        \end{split}
+        \end{equation*}
+    \end{itemize}
+    
+\end{proof}
+
+\mprop{}
+{
+    Sei $X$ überbzählbar, $\mid Y_k\mid \geq 2$ für alle $x \in X$.
+    Dann gibt es keine Metrik $d$ auf $\prod_{x \in X} Y_x$ 
+    so dass $d$ die Produkttopologie induziert.
+}
+
+\mlenma{}
+{
+    $\langle Z, d \rangle$ ein Metrischer Raum. $z \in Z \Rightarrow 
+    \exists U_n, n \in \mathbb{N}$\footnote{ Abzählbar viele} 
+    Umgebungen von z mit $\bigcap_{n=1}^{\infty} U_n = \{z\}$
+}
+\begin{proof}{Lemma: 5.2.5:}\\
+    Sei $n \in \mathbb{N}$.
+    Definiere $U_n := B_{1/2}(z)$.
+    Sei:
+    $$
+    w \in \bigcap_{n=1}^{\infty} B_{1/2}(z) \Rightarrow d(w,z) < 1/n \quad 
+    \forall n \in \mathbb{N}
+    $$
+    Dann gilt $d(w,z) = 0 \Rightarrow w = z$.
+\end{proof}
+
+\begin{myproof}{Proposition: 5.2.4:}\\
+    Sei $f \in \prod_{x \in X} Y_x, \quad U_n \in \mathcal{U}^{\prod_{x \in X}Y_x}
+    (f(x_n)) \forall n \in \mathbb{N}$.
+
+    Wähle $  O_n \in \prod_{x \in X} \mathcal{T}_x : f \in O_n \subseteq U_n.$ \\
+Vereinigung von endlichen Durchschnitten von Mengen aus (char. erzeugte Top.). \\
+Wähle 
+$$ 
+\begin{cases}
+x_{n,1}, \ldots, x_{n,m_n} \in X \\
+O_{x_{n,1}}, \ldots, O_{x_{n,m_n}} \in \mathcal{T}_{x_{n,m_n}}
+\end{cases}
+$$
+So dass: $f \in \bigcap_{k=1}^{m_n} \pi_{x_{n,k}}^{-1}(O_{x_{n,k}}) \subseteq O_n \subseteq U_n.$\\
+$\Rightarrow f \in \bigcap_{n=1} \bigcap_{k=1}^{m_n} \pi_{x_{n,k}}^{-1}(O_{x_{n,k}}).$\\
+Da $X$ überbzählbar ist, gibt es ein $x_0 \in \{x_{n,j} \mid n \in \mathbb{N},\, j \in \{1, \ldots, m_n\}\} \not\subseteq X$ \\
+Das geht da X überbzählbar ist,
+$Y_{x_0} \setminus \{f(x_0)\} \neq \emptyset
+  \quad (\text{da } |Y_{x_0}| \ge 2 \ \forall x \in X) \\
+  \rightsquigarrow \text{wähle } y \in Y_{x_0} \setminus \{f(x_0)\}$\\
+Definiere:
+$$
+\tilde{f}(x) = 
+  \begin{cases}
+    f(x), & x \ne x_0, \\
+    y, & x = x_0.
+  \end{cases}
+$$
+$\Rightarrow \tilde{f} \neq f$ und\\
+$\Rightarrow \tilde{f} \in \bigcap_{n\in \mathbb{N}}
+\bigcap_{j=1}^{m_n} \pi_{x_{n,j}}^{-1}(O_{x_{n,j}}) \subseteq
+\bigcap_{n \in \mathbb{N}} U_n.$\\
+\end{myproof}
+
+\nt
+{
+    \textbf{Wiederholung:} $\langle X, \mathcal{T} \rangle$ Topologischer Raum.\\
+    $K \subseteq X$ heißt Kompakt 
+    $\Leftrightarrow \forall C \in \mathcal{T} : \cup C \supseteq K 
+    \Rightarrow (\exists C^{'} \subseteq C \text{ endlichen } : \cup C^{'} \supseteq K)$.
+}
+
+\mprop{}
+{
+    $\langle X, \mathcal{T} \rangle$ topologischer Raum.
+    Dann sind folgende Aussagen äquivalent:
+    \begin{itemize}
+        \item[(i)] $K \subseteq X$ ist endlichen $\Rightarrow$ ist kompakt.
+        \item[(ii)] $K_1, \dots, K_n \subseteq X$ sind kompakt $\Rightarrow$ 
+        $K_1 \cup \ldots \cup K_n$ ist kompakt.
+
+        \item[(iii)] $K \subseteq X$ ist kompakt $A \subseteq X$ abgeschlossen $\Rightarrow$
+        $K \cap A$ ist kompakt.
+        \item[(iv)] Sei $\langle Y, \mathcal{V} \rangle$ $K \subseteq X$ kompakt
+        und $f : X \to Y$ stetig. Dann ist $f(K)$ kompakt.
+    \end{itemize}
+}
+
+\begin{proof}{Proposition: 5.3.2:}\\
+    \begin{itemize}
+        \item[(i)]$K = \{x_1,\ldots,x_n\}$, $C \subseteq \mathcal{T}$ mit $\cup C \supseteq K$.\\
+        Für $j \in \{1, \ldots, n\}$ wähle $O_j \in C$ mit $x_j \in O_j$.\\
+        Dann ist $K = \{x_1, \ldots, x_n\} \subseteq \bigcup_{j=1}^{n} O_j$.
+        \item[(ii)] Sei $C \subseteq \mathcal{T}$ mit $\cup C \supseteq K_1 \cup \ldots \cup K_n$.\\
+        $\Rightarrow \forall j \in \{1, \ldots, n\} : \cup C \supseteq K_j$.\\
+        $\Rightarrow \forall j \in \{1, \ldots, n\} : \exists C_j \subseteq C$ endlich
+        mit $\cup C_j \supseteq K_j$.\\
+        $\Rightarrow \bigcup \underbrace{C^{'} := \{O \mid \exists j \in \{1, \ldots, n\} : O \in C_j\}}_{\text{endlich}}$
+        $\supseteq K_1 \cup \ldots \cup K_n$.
+        \item[(iii)] Sei $C \subseteq \mathcal{T}$ mit $\cup C \supseteq K \cap A$.\\
+        $C \cup \{X \setminus A\} \subseteq \mathcal{T} 
+        \rightsquigarrow \bigcup C \cup (X \setminus A) \supseteq K \cap A$.\\
+        Wähle $O_1, \ldots, O_m \in C$ so dass\\
+        $O_1 \cup \ldots \cup O_n \cup (X \setminus A) \supseteq K$.\\
+        Dann gilt $(O_1 \cup \ldots \cup O_n \cap (X \setminus A)) \cap A\supseteq K \cap A$.\\
+        \item[(iv)] Sei $C \subseteq \mathcal{V}$ mit $\cup C = \bigcup_{O \in C} O \supseteq f(K)$.\\
+        $\Rightarrow \underbrace{f^{-1}(\bigcup_{O \in C} O)}_{\bigcup_{O\in C}
+        \underbrace{f^{-1}(O)}_{\text{offen}}} \supseteq K$.\\
+        Definiere $D:= \{f^{-1}(O) \mid O \in C\} \subseteq \mathcal{T}$ und $\cup D \supseteq K$.\\
+        Wähle $O_1, \ldots, O_n \in C$ so dass $\bigcup_{j=1}^{n} f^{-1}(O_j) \supseteq K$.\\
+        $\Rightarrow f(\bigcup_{j=1}^{n} f^{-1}(O_j)) \supseteq f(K)$.\\
+        wobei $f(\bigcup_{j=1}^{n} f^{-1}(O_j)) = \bigcup_{j=1}^{n} f(f^{-1}(O_j)) \subseteq \bigcup_{j=1}^{n} O_j$.\\
+    \end{itemize}
+\end{proof}
 
 
+\begin{corollary}{}
+    _
+    \begin{itemize}
+        \item[(i)] Sei $\langle X, \mathcal{T} \rangle$ Hausdorff'scher Raum: $K \subseteq X$ kompakt 
+        $\Rightarrow K$ ist abgeschlossen.
+        \item[(ii)] Sei $\langle X, \mathcal{T} \rangle$ Topologischer Raum, X kompakt,
+        $\langle Y, \mathcal{V} \rangle$ Hausdorff'scher Raum,
+        $f : X \to Y$ stetig und bijektiv. Dann ist $f^{-1} : Y \to X$ stetig.
+    \end{itemize}
+\end{corollary}
+
+\mlenma{}{
+    Sei $\langle X, \mathcal{T} \rangle$ ein Hausdorff'scher Raum.
+    Und $K_1, K_2 \subseteq X$ kompakt, $\neq \emptyset$  und disjunkt.
+    $\Rightarrow \exists O_1, O_2$ offen und disjunkt,
+    so dass $K_1 \subseteq O_1$ und $K_2 \subseteq O_2$.
+}
+
+\begin{proof}{Lemma 5.3.4:}\\
+  \begin{itemize}
+    \item[1. Schritt:] Sei $x \in X, K \subseteq X$ kompakt, $x \notin K$.\\
+    $\forall y \in K : x \neq y \overset{X \text{ Hausdorff}}{\Rightarrow} 
+    \text{ wähle } O_y, \tilde{O}_y \text{ offen mit } 
+    O_y \cap \tilde{O}_y = \emptyset, x \in O_y, y \in \tilde{O}_y.$\\
+    $K = \bigcup_{y \in K} \{y\} \subseteq\tilde{O}_y 
+    \overset{K \text{ kompakt}}{\Rightarrow}$
+    wähle $y_1, \ldots, y_n \in K : K \subseteq \bigcup_{j=1}^{n} \tilde{O}_{y_j}.$\\
+    $$
+    \underbrace{\bigcup_{j=1}^n \tilde{O}_{y_j}}_{\text{offen, } \supseteq K}
+    \cap
+    \underbrace{\bigcap_{j=1}^n O_{y_j}}_{\text{offen, } x \in}
+    = 
+    \bigcup_{j=1}^n [\tilde{O}_{y_j} \cap \bigcap_{k=1}^n O_{y_k}]
+    \subseteq
+    \bigcup_{j=1}^n [\tilde{O}_{y_j} \cap O_{y_j}]
+    = \emptyset
+    $$
+    \item[2. Schritt:] Sei $K_1, K_2 \subseteq X$ kompakt, disjunkt.\\
+    Für jedes $x \in K_1$ wähle $O_x, \tilde{O}_x$ disjunkt und 
+    $x \in \tilde{O}_x$, $K_2 \subseteq O_x$.\\
+    $K_1 = \bigcup_{x \in K_1} \{x\} \subseteq \tilde{O}_x
+    \overset{K_1 \text{ kompakt}}{\Rightarrow}$
+    wähle $x_1, \ldots, x_m \in K_1 : K_1 \subseteq 
+    \bigcup_{i=1}^{m} \tilde{O}_{x_i}.$\\
+    $$
+    \underbrace{\bigcup_{j=1}^n \tilde{O}_{x_j}}_{\text{offen, } \supseteq K_1}
+    \cap
+    \underbrace{\bigcap_{j=1}^n O_{x_j}}_{\text{offen, } \supseteq K_2}
+    = \emptyset 
+    \quad (\text{wie oben})
+    $$
+  \end{itemize}
+\end{proof}
+
+
+
+\begin{proof}{Korollar 5.3.3:}\\
+    \begin{itemize}
+        \item[(i)] Sei $K \subseteq X$ kompakt und $x \in X \setminus K$.\\
+        $\overset{Lemma \ 5.3.4}{\Rightarrow} 
+        \exists O_1, O_2 $ Offen und disjunkt, $x \in O_1, O_2 \supseteq K$\\
+
+        $\Rightarrow x \in O_1 \subseteq X \setminus K$\\ 
+        Also ist $X \setminus K$ offen und $K$ abgeschlossen.
+        \item[(ii)] Betrachte $Y \overset{f^{-1}}{\longrightarrow}X$
+        Sei $A \subseteq X$ abgeschlossen.\\
+        $\overset{\text{ Proposition \ 5.3.2}}{\Rightarrow} A = A \cap X$ ist kompakt.\\
+        $\Rightarrow f(A) \subseteq Y $ ist kompakt.\\
+        $\overset{Y \text{ Hausdorff}}{\Rightarrow} f(A)$ ist abgeschlossen.\\
+    \end{itemize}
+
+\end{proof}
