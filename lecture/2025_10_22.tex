@@ -73,14 +73,14 @@ Sei $X \neq \emptyset \mathcal{T}_x, x \in X$  ein topologischer Raum
     \begin{itemize}
         \item[(i)] $X$ ist kompakt. 
         ($\forall C \subseteq \mathcal{T}), 
-        \cup C = X \Rightarrow \exists \tilde{C} 
-        \subseteq C$ endlich mit $\cup \tilde{C} = X$)
+        \bigcup C = X \Rightarrow \exists \tilde{C} 
+        \subseteq C$ endlich mit $\bigcup \tilde{C} = X$)
         \item[(i*)] Sei $\mathcal{B}$ eine Basis von $\mathcal{T}$.
         Dann gilt:
         $$
         \forall C \subseteq \mathcal{B}, 
-        \cup C = X \Rightarrow \exists \tilde{C} 
-        \subseteq C \text{ endlich mit } \cup \tilde{C} = X .
+        \bigcup C = X \Rightarrow \exists \tilde{C} 
+        \subseteq C \text{ endlich mit } \bigcup \tilde{C} = X .
         $$
         \item[(i**)] Sei $(A_i)_{i \in I}$ eine Familie abgeschlossener 
         Mengen in 
@@ -94,20 +94,20 @@ Sei $X \neq \emptyset \mathcal{T}_x, x \in X$  ein topologischer Raum
         Dann gilt:
         $$
         \forall C \subseteq \mathcal{S}, 
-        \cup C = X \Rightarrow \exists \tilde{C} 
-        \subseteq C \text{ endlich mit } \cup \tilde{C} = X .
+        \bigcup C = X \Rightarrow \exists \tilde{C} 
+        \subseteq C \text{ endlich mit } \bigcup \tilde{C} = X .
         $$  
         \item[(iii)] Jedes Netz in $X$ hat ein Teilnetz,
          welches einen Grenzwert hat
     \end{itemize}
 }
 
-\begin{proof}
+\begin{proof}{Satz: 6.0.5 (Erster Teil):}\\
     \begin{itemize}
         \item{[(i) $\Rightarrow$ (i*)]}:
         Klar, da jede Basis eine Teilmenge der Topologie ist.
         \item{[(i*) $\Rightarrow$ (i)]}: 
-        Sei $C \subseteq \mathcal{T}$ mit $\cup C \supseteq K$ beliebig.\\
+        Sei $C \subseteq \mathcal{T}$ mit $\bigcup C \supseteq K$ beliebig.\\
         Für jedes $O \in C$ gibt es eine Teilmenge 
         $\mathcal{B}_O \subseteq \mathcal{B}$ mit
         $$
@@ -115,7 +115,7 @@ Sei $X \neq \emptyset \mathcal{T}_x, x \in X$  ein topologischer Raum
         $$
         Also gilt: 
         $$
-        \cup C = \bigcup_{O \in C} O 
+        \bigcup C = \bigcup_{O \in C} O 
         = \bigcup_{O \in C} \bigcup \mathcal{B}_O
         $$
         Betrachte nun die Menge 
@@ -128,7 +128,7 @@ Sei $X \neq \emptyset \mathcal{T}_x, x \in X$  ein topologischer Raum
         U_1, \ldots, U_n \in D: \bigcup_{j=1}^n U_j \supseteq K.
         $$
         Wähle $O_j \in C : U_j \in \mathcal{B}_{O_j}
-        \Rightarrow U_j \subseteq \cup \mathcal{B}_{O_j} = O_j $\\
+        \Rightarrow U_j \subseteq \bigcup \mathcal{B}_{O_j} = O_j $\\
         Dann gilt: 
         $K \subseteq \bigcup_{j=1}^n U_j \subseteq \bigcup_{j=1}^n O_j$
 
@@ -150,7 +150,7 @@ Sei $X \neq \emptyset \mathcal{T}_x, x \in X$  ein topologischer Raum
         Sei $\forall J \subseteq I$ endlich mit 
         $\bigcap_{i \in J} A_i \ne \emptyset$.
         Das heißt $\forall J \subseteq I$ endlich mit
-        $ \cup_{i \in J} O_i \neq X$.\\
+        $ \bigcup_{i \in J} O_i \neq X$.\\
         Also $\{O_i:i\in I\}$ hat kein endliche Teilfamilie,
         die $X$ überdeckt ($\nexists J : \text{ endlich mit } 
         \bigcup_{i \in J} O_i = X$).
@@ -177,20 +177,172 @@ Die andere würde ich gerne nicht Behandeln, da sie lang ist und ich müde.
 
 \thm{Die eine Implikation, die nicht klar ist}
 {
+(ii)$\Rightarrow$(i)
+}
+
+
+\begin{proof}{Satz: 6.0.6:}\\
 Wir machen einen Beweis durch \textbf{Kontraposition}:
-Angenommen $\neq$ (ii) gilt $\Rightarrow$ (i)
-\footnote{Wir wollen Zeigen (ii)$\Rightarrow$(i)}.
+Angenommen $\neq$ (ii) gilt $\Rightarrow$ (i) gilt nicht.
 \begin{itemize}
     \item[1.] Sei 
     $$
-    Q:=\{C \subseteq \mathcal{T} : \cup C = X \forall \tilde{C}\subseteq C
-     \text{endlich}; \cup \tilde{C} = X\} \neq \emptyset
+    Q:=\{C \subseteq \mathcal{T} : \bigcup C = X \forall \tilde{C}\subseteq C
+     \text{endlich}; \bigcup \tilde{C} = X\} \neq \emptyset
     $$
     Sei $\tilde{Q} \subseteq Q$ Total geordnet durch Inklusion.
     Zu zeigen ist dann: $D \in Q$
     \begin{itemize}
         \item $\forall \tilde{T} \in \tilde{Q}: \tilde{C} \subseteq 
         \mathcal{T} \Rightarrow \bigcup \tilde{C} \subseteq X $.
+        \item Wähle $C_o \in \tilde{Q} : \bigcup C_o = X. \bigcup 
+        D= \bigcup \bigcup_{C \in\tilde{Q}} \tilde{C} \supseteq \bigcup C_o = X$.
+        \item Seien $O_1, \ldots, O_n \in D$ \\
+        wähle $\tilde{C}_1, \ldots, 
+        \tilde{C}_n \in \tilde{Q} : O_j \in C \in \tilde{C}_j$ mit $ j=1, \ldots, n$\\
+        Daraus folgt: $\bigcup_{j=1}^n O_j \neq X$.
     \end{itemize}
+    \item[2.] Wähle $C_o \in Q$ maximales Element.\\
+    $\mathcal{S}:=l_o \cap S$\\
+    Zeige $\bigcup \mathcal{S}_o = X$\\
+    Angenommen $x \notin \bigcup \mathcal{S}_o$ Wähle $O_o \in l_o. x \in O_o$\\
+    Wähle $V_1, ..., V_n \in S: x \in \bigcap_{j=1}^n V_j \subseteq O_o$\\
+    $\Rightarrow \forall j \in \{1, \ldots, n\}: \forall V_j \notin \mathcal{S}_o$\\
+    $\Rightarrow \forall j \in \{1, \ldots, n\}: V_j \in \{1,\ldots,n\} : V_j \notin 
+    C_o$\\
+    $$
+    C_o \cup \{V_j\}\supsetneq C_o \Rightarrow C_o \cup \{V_j\} \notin Q 
+    \Rightarrow W_{j,1},\ldots,W_{j,n}\cup V_j = X
+    $$
+    $$
+    \Rightarrow \bigcup_{j=1}^n (W_{j,1},\ldots,W_{j,n})\cup \bigcap_{j=1}^n V_j = X
+    $$
+    $$
+    \text{Sei } x \in X 
+    \quad \begin{cases}
+    x \in \bigcap_{j=i}^n V_j, \\[0.3em]
+    x \in \bigcap_{j=1}^n V_j.
+    \end{cases}
+    \text{Wähle }j :x : \notin V_j \Rightarrow x \in W_{j,1} \cup \ldots \cup W_{j,n} 
+    \subseteq \bigcup_{j=1}^n (U_{j,1} \cup \ldots \cup U_{j,nj})
+    $$
+Damit haben wir einen Wiederspruch da wir eine endliche Teilüberdeckung mit Mengen aus $C_o$
 \end{itemize}
-}
+\end{proof}
+
+\begin{proof}{Satz: 6.0.5 (Rest):}\\
+\begin{itemize}
+  \item{[(iii) $\Rightarrow$ (i)]}:
+    Diese Implikation zeigen wir wieder durch Kontraposition. Wir betrachten also
+    $\neg (i) \Rightarrow \neg (iii)$.\\
+    Sei also $C \subseteq \mathcal{T}$ mit $\bigcup C = X$,endlich,
+    $$
+    \forall \tilde{C} \subseteq C \text{ endlich }: \bigcup \tilde{C} \neq X .
+    $$
+    $I:=\{\tilde{C}\subseteq C\mid \tilde{C}\text{ endlich }\}, \tilde{C} \preceq_I \tilde{\tilde{C}}$
+    Damit ist $(I, \preceq_I)$ eine gerichtete Menge.\\
+    \begin{itemize}
+        \item Reflexivität: $\tilde{C} \preceq_I \tilde{C}$.
+        \item Transitivität: Sei $\tilde{C}_1 \preceq_I \tilde{C}_2$ und 
+        $\tilde{C}_2 \preceq_I \tilde{C}_3$. \\
+        Dann ist:
+        \begin{equation*}
+        \begin{split}
+        \tilde{C}_1 \subseteq \tilde{C}_2 &\text{ und } 
+        \tilde{C}_2 \subseteq \tilde{C}_3.\\
+        &\text{ Also ist } \\
+        \tilde{C}_1 \subseteq \tilde{C}_3 &\text{ und somit } 
+        \tilde{C}_1 \preceq_I \tilde{C}_3.
+        \end{split}
+        \end{equation*}
+        \item Gerichtetheit: Sei $\tilde{C}_1, \tilde{C}_2 \in I$.
+        $\Rightarrow \tilde{C}_1 \cup\tilde{C}_2 \in I$ damit \\
+        $$
+        \tilde{C}_1 \subseteq \tilde{C}_1 \cup \tilde{C}_2 \text{ und }
+        \tilde{C}_2 \subseteq \tilde{C}_1 \cup \tilde{C}_2
+        $$.
+        \end{itemize}
+    Definiere nun das Netz $\varphi : I \to X$ und 
+    $$
+    \forall \tilde{C} \in I: \varphi(\tilde{C}) \subseteq X 
+    \underbrace{\setminus\bigcup \tilde{C}}_{\neq \emptyset}
+    $$
+    Sei $J$ eine gerichtete Menge und $\kappa : J \to I$ 
+    ein Teilnetz von $\varphi$.
+    \footnote{ $\forall i \in I \exists j_0 \in J \forall j \geq j_0: \kappa(j)\geq i$}\\
+    Zu zeigen ist, dass $\varphi \circ \kappa$ keinen Grenzwert
+    \begin{equation*}
+    \begin{split}
+    \lnot (\forall U \in \mathscr{U}(x) \exists j_0 \in J \forall j \succeq_J j_0 &:
+    \varphi \circ\kappa(j) \in U)\\
+    \Leftrightarrow&\\
+    (\exists U \in \mathscr{U}(x) \forall j_0 \in J \exists j \succeq_J j_0 &:
+    \varphi \circ \kappa(j) \notin U)
+    \end{split}
+    \end{equation*}
+    Wähle $O_o \in C: x \in O_o \in \mathscr{U}(x)$
+    Sei $i_o := \{O_o\}\in I_o$. Für jedes $\tilde{C} \in I, \tilde{C} \geq \{O_o\}: 
+    \phi(\tilde{C}) \notin \cup \tilde{C} \supseteq \{O_o\}$.
+    Wähle $j_0 \in J \forall j \succeq_J j_0 : \kappa(j) \succeq_I \{O_o\} \Rightarrow
+    \varphi \circ \kappa(j) \notin O_o \forall j \succeq_J j_0$.
+    Damit haben wir eigentlich schon mehr als notwendig gezeigt also jetzt folgern
+    wir aus dem mehr das weniger :-)
+    $$
+    U:= O_o \text{ Sei } j_0 \in J \forall j \text{ Wähle } i \in J : j \succeq_J j_0 \wedge j \geq_J i
+    \Rightarrow \varphi \circ \kappa(i) \notin O_o
+    $$
+    \item{[(i**) $\Rightarrow$ (iii)]}:
+    \begin{itemize}
+    \item Sei $I$ eine gerichtete Menge und 
+    $\varphi : I \to X$ ein Netz in $X$.
+    $$
+    \left
+    \{\underbrace{ \{ \varphi(i)_1 \mid j \ge i \}}_{\text{abgeschlossene Menge}} \mid i \in I 
+    \right\}
+    $$
+    $$
+    \{ \varphi(i_1)_1 \mid j \geq i_1 \} \cap \cdots \cap \{ \varphi(i_n)_1 \mid j \geq i_n \}
+    \supseteq
+    \{ \varphi(i_{n+1})_1 \mid j \geq i_{0} \} \ne \emptyset
+    $$
+    \item Wähle $x \in \bigcap_{i \in I} \overline{\{ \varphi(i)_1 \mid j \geq i \}}$
+    \item $J := \{(j,u) \in I \times \mathscr{U}(x) \mid \varphi(i) \in u \} (\neq \emptyset 
+    \forall j \in I: (j,X)\in J)$
+    $(j,u) \succeq_J (\tilde{j},\tilde{U}): \Leftrightarrow i \geq \tilde{j} \text{ und } u 
+    \subseteq \tilde{U}$
+    \begin{itemize}
+        \item Reflexivität, und Transitivität vererben sich von $I$ und $\mathscr{U}(x)$.
+        \item Gerichtetheit: Sei $(j_1, U_1), (j_2, U_2) \in J$.
+        Wähle $j_0 \in I : j_0 \geq_I j_1, j_0 \geq_I j_2$.
+        Wähle $U_0 \in \mathscr{U}(x) : U_0 \subseteq U_1 \cap U_2$.
+        Dann ist $(j_0, U_0) \succeq_J (j_1, U_1)$ und 
+        $(j_0, U_0) \succeq_J (j_2, U_2)$.
+    \end{itemize}
+    $$
+    \kappa :
+    \begin{cases}
+    J\mapsto I \\
+    (j,U) \mapsto j
+    \end{cases}
+    $$
+    Wen $\kappa$ monoton ist und $\forall i \in I \exists j \in J : \kappa(j) \geq i$.\\
+    Dann ist $\varphi \circ \kappa$ ein Teilnetz von $\varphi$.\\
+    (Also $\forall i \in I \exists (j,U) \in J : \kappa((j,U)) = j \geq i$)\\
+    $$
+    (j,u) \succeq_J (\tilde{j},\tilde{U}) \Leftrightarrow j \leq_I \tilde{j} \wedge U \supseteq \tilde{U}
+    $$
+    $\Rightarrow j \leq_I \tilde{j}$\\
+    Sei $i \in I$ Wähle $j:=(i,X) \in J \kappa((i,x))= i\geq j$.
+    \item Wähle $i_o \in I$ Wähle $l \in I$ und $l \geq i_o \wedge \phi(l) \in U,
+    (l,U) \in J$\\
+    Sei 
+    $$(j,\tilde{U}) \preceq_J (l,U) \Rightarrow j \leq_I l \wedge \tilde{U} \subseteq U
+    $$.
+    $$
+    \Rightarrow \varphi \circ \kappa (j,\tilde{U}) = \varphi(j) \in \tilde{U} \subseteq U
+    $$.
+    Also konvergiert das Teilnetz gegen $x$.
+    \end{itemize}
+
+\end{itemize}
+\end{proof}
