@@ -1,0 +1,327 @@
+\chapter{}
+\mlenma{}
+{
+
+    Sei $\langle x, \mathcal{T} \rangle$ ein topologischer Raum und $K \subseteq X$.
+    Dann sind folgende Aussagen äquivalent:
+    \begin{enumerate}
+        \item[(i)] $K$ ist kompakte Teilmenge von $X$.bezüglich auf $\mathcal{T}$.
+        \item[(ii)]  $K$ ist betrachtet als Teilmenge des Teilraums
+        $\langle K, \mathcal{T}_K \rangle$ ein kompakter Raum.
+    \end{enumerate}
+}
+
+
+\begin{proof}{Lemma 7.0.1:}\\
+    \begin{enumerate}
+    \item[$(i) \Rightarrow (ii)$:] 
+    Sei $\mathcal{V} \subseteq \mathcal{T}_K$ eine offene Überdeckung von $K$ in $(K, \mathcal{T}_K)$. 
+    Zu $V \in \mathcal{V}$ existiert ein $U_V \in \mathcal{T}$ mit $U_V \cap K = V$, womit 
+    $\mathcal{U} := \{U_V : V \in \mathcal{V}\} \subseteq \mathcal{T}$ eine offene Überdeckung von 
+    $K$ in $(X, \mathcal{T})$ ist. 
+    Voraussetzungsgemäß gibt es $U_{V_1}, \ldots, U_{V_n} \in \mathcal{U}$ derart, dass 
+    $U_{V_1} \cup \ldots \cup U_{V_n} \supseteq K$ und folglich
+    $$
+    V_1 \cup \ldots \cup V_n 
+    = (U_{V_1} \cap K) \cup \ldots \cup (U_{V_n} \cap K) 
+    = (U_{V_1} \cup \ldots \cup U_{V_n}) \cap K 
+    = K.
+    $$
+
+    \item[$(ii) \Rightarrow (i)$:]
+    Für eine Überdeckung $\mathcal{U} \subseteq \mathcal{T}$ von $K$ ist
+    $$
+    \mathcal{V} := \{U \cap K : U \in \mathcal{U}\}
+    $$
+    eine offene Überdeckung von $K$ in $(K, \mathcal{T}_K)$. 
+    Voraussetzungsgemäß existiert eine endliche Teilüberdeckung 
+    $U_1 \cap K, \ldots, U_n \cap K$, womit auch 
+    $U_1 \cup \ldots \cup U_n \supseteq K$.
+    \end{enumerate}
+    
+\end{proof} 
+
+\thm{Satz von Tychonoff}
+{
+    Sei $I$ eine Menge und seien $\langle X_i, \mathcal{T}_i \rangle$, $i \in I$, topologische Räume. 
+    mit $I \neq \emptyset$ und $X_i \neq \emptyset \forall i \in I$. 
+    Weiters sei  $X := \prod_{i \in I} X_i$, und  $\mathcal{T}$ die Produkttopologie auf $X$. 
+    Dann sind folgende Aussagen äquivalent:
+    \begin{enumerate}
+    \item[(i)]$\langle X, \mathcal{T} \rangle$ ist kompakt.
+    \item[(ii)] Für jedes $i \in I$ ist $\langle X_i, \mathcal{T}_i \rangle$ kompakt.
+    \end{enumerate}
+}
+
+\begin{proof}{Satz: 7.0.2 (Tychonoff):}\\
+    \begin{enumerate}
+    \item[$(i) \Rightarrow (ii)$:] 
+    Angenommen, $(X, \mathcal{T})$ ist kompakt. 
+    Für ein festes $j \in I$ betrachten wir die kanonische Projektion
+    $$
+    \pi_j : X \to X_j, \quad \pi_j((x_i)_{i \in I}) = x_j.
+    $$
+    Die Projektion $\pi_j$ ist stetig und surjektiv: 
+    Stetigkeit folgt aus der Definition der Produkttopologie, 
+    Surjektivität, weil alle $X_i \neq \emptyset$ sind. 
+    Da das stetige Bild eines kompakten Raumes kompakt ist, 
+    folgt aus der Kompaktheit von $X$ die Kompaktheit von $\pi_j(X) = X_j$. 
+    Somit ist $(X_j, \mathcal{T}_j)$ kompakt für alle $j \in I$.
+
+    \item[$(ii) \Rightarrow (i)$:] 
+    Angenommen, jedes $(X_i, \mathcal{T}_i)$ ist kompakt. 
+    Wir zeigen, dass $X = \prod_{i \in I} X_i$ kompakt ist.
+
+    Nach dem Netz-Kriterium für Kompaktheit genügt es zu zeigen, 
+    dass jedes Netz $(f_\lambda)_{\lambda \in \Lambda}$ in $X$ 
+    einen Häufungspunkt besitzt.
+
+    Für jedes $i \in I$ betrachten wir das Bildnetz 
+    $(f_\lambda(i))_{\lambda \in \Lambda}$ in $X_i$. 
+    Da $X_i$ kompakt ist, besitzt dieses Netz mindestens einen Häufungspunkt $y_i \in X_i$. 
+
+    Wir definieren die Menge
+    $$
+    \mathcal{H} := \{ g : D_g \to \bigsqcup_{i \in I} X_i \mid 
+    D_g \subseteq I,\ g(i) \in X_i \text{ und } g(i) \text{ ist Häufungspunkt von } 
+    (f_\lambda(i))_{\lambda \in \Lambda} \}.
+    $$
+    Diese Menge $\mathcal{H}$ ist nichtleer, 
+    da für jedes einzelne $i \in I$ die Funktion $g_i = \{(i, y_i)\}$ darin liegt.
+
+    Wir ordnen $\mathcal{H}$ durch Inklusion: 
+    $g \le h$ genau dann, wenn $D_g \subseteq D_h$ und $h|_{D_g} = g$ gilt.
+
+    Sei nun $\mathcal{N} \subseteq \mathcal{H}$ eine totalgeordnete Teilmenge. 
+    Definiere 
+    $$
+    D_h := \bigcup_{g \in \mathcal{N}} D_g, 
+    \quad h(i) := g(i) \text{ für ein } g \in \mathcal{N} \text{ mit } i \in D_g.
+    $$
+    Dann ist $h$ wohldefiniert, 
+    und für jedes $i \in D_h$ ist $h(i)$ ein Häufungspunkt von $(f_\lambda(i))$. 
+    Somit liegt $h \in \mathcal{H}$. 
+    Also besitzt jede Kette in $\mathcal{H}$ eine obere Schranke. 
+
+    Nach dem Lemma von Zorn existiert daher ein maximales $f \in \mathcal{H}$ 
+    mit Definitionsbereich $D_f \subseteq I$.
+
+    Angenommen, $D_f \neq I$. 
+    Dann gibt es $i_0 \in I \setminus D_f$. 
+    Da $X_{i_0}$ kompakt ist, hat $(f_\lambda(i_0))$ einen Häufungspunkt $x_{i_0} \in X_{i_0}$. 
+    Setze 
+    $$
+    h := f \cup \{(i_0, x_{i_0})\}, \quad D_h = D_f \cup \{i_0\}.
+    $$
+    Dann ist $h \in \mathcal{H}$, aber $h$ erweitert $f$ echt – 
+    Widerspruch zur Maximalität von $f$. 
+    Also gilt $D_f = I$.
+
+    Damit ist $f \in X = \prod_{i \in I} X_i$. 
+    Wir zeigen nun, dass $f$ ein Häufungspunkt des Netzes $(f_\lambda)$ ist.
+
+    Eine Basis der Produkttopologie besteht aus Mengen 
+    $$
+    W = \prod_{i \in I} U_i, 
+    $$
+    wobei $U_i$ offen in $X_i$ ist und $U_i = X_i$ für fast alle $i$. 
+    Für solches $W$ mit $f \in W$ hängt nur endlich viele Koordinaten von $U_i$ ab. 
+    Da $f(i)$ Häufungspunkt von $(f_\lambda(i))$ ist, 
+    gibt es für jede dieser endlichen Koordinaten 
+    ein $\lambda$, sodass $f_\lambda(i) \in U_i$ gilt. 
+    Für endlich viele Indizes können diese Bedingungen gleichzeitig erfüllt werden, 
+    also existiert $\lambda$ mit $f_\lambda \in W$.
+
+    Somit ist $f$ Häufungspunkt von $(f_\lambda)$. 
+    Da jedes Netz einen Häufungspunkt besitzt, ist $X$ kompakt.
+    \end{enumerate}
+\end{proof}
+
+\dfn{Durchmesser, Totalbeschränkt}
+{
+    Sei $\langle X, d\rangle$ ein metrischer Raum. $Y\subseteq X$ sei eine Teilmenge.
+    \begin{itemize}
+        \item Wir definieren $\delta(Y):= \diam(Y):= \sup\{ d(x, y) : x, y \in Y \} \in [0, \infty]$
+        als den \emph{Durchmesser} von $Y$.
+        \item Der Raum $(X, d)$ heißt \emph{totalbeschränkt}, wenn für jedes $\varepsilon > 0$ 
+        eine endliche Überdeckung von $X$ durch Mengen mit Durchmesser kleiner als $\varepsilon$ existiert.
+        Also $\forall \epsilon >0 \exists M_1,\dots,M_n \subseteq X$ mit 
+        $$
+        \bigcup_{i=1}^n M_i  \supseteq Y \quad \forall i: \diam(M_i) < \epsilon
+        $$
+    \end{itemize}
+}
+
+\mlenma{}
+{
+    \begin{itemize}
+    \item[(i)] Sei $Y$ Totalbeschränkt dann ist $Y$ beschränkt. 
+    \item[(ii)] Sei $Y$ Totalbeschränkt $\Leftrightarrow$ $\forall \epsilon >0 \exists x_1, \ldots, x_n \in Y$
+    so dass 
+    $$
+    Y \subseteq \bigcup_{i=1}^n U_{\epsilon}(x_i, \epsilon)
+    $$
+    \end{itemize}
+}
+
+\begin{proof}{Lemma 7.0.3:}\\
+    \begin{itemize}
+    \item[(i)]
+    \begin{itemize}
+         $Y = \emptyset \quad \checkmark$
+        \item $Y \neq \emptyset$ Sei $y \in Y$ beliebig
+        Wähle $M_{x_1}, \ldots, M_{x_n} \subset X$, 
+        $$
+        \bigcup_{k=1}^n M_{x_k} \supset Y 
+        \quad \text{und} \quad 
+        \delta(M_{x_k}) < 1.
+        $$
+        O.B.d.A. sei $M_l \neq \emptyset \forall l$ Wähle $y_l \in M_l$.\\
+        Wähle $l_0: y \in M_{l_0}$ und $\tilde{l_0}: x \in M_{\tilde{l_0}}$.\\
+        Sei $x \in Y$ mit 
+        $$
+        d(x,y)\le
+        \underbrace{d(x,y_{\tilde{l_0}})}_{<1}+
+        \underbrace{d(y_{\tilde{l_0}},y_{l_0})}_{\leq \max_{i,j} d(y_i,y_j)}+
+        \underbrace{d(y_{l_0},y)}_{<1}.
+        $$
+        \footnote{$\displaystyle \max_{i,j}\{d(y_i,y_j)\mid i,j \in \{1,\dots,n\}\}$}
+        Definiere $R:= 2 + \max_{i,j} d(y_i,y_j)$
+        damit ist $Y \subseteq U_R(y)$ also beschränkt.
+    \end{itemize}
+    \item[(ii)]
+    Um den teil zu beweisen zeigen wir das
+    $$
+    \bigcup_{i=1}^n M_i  \supseteq Y  \forall i: \diam(M_i) < \epsilon
+    \Leftrightarrow 
+    \exists x_1, \ldots, x_n \in Y : Y \subseteq \bigcup_{i=1}^n U_{\epsilon}(x_i, \epsilon)
+    $$
+\begin{itemize}
+    \item "$\Rightarrow$":
+    \item Sei $\varepsilon > 0$.  
+    Wähle $M_1, \ldots, M_m$ mit 
+    $$
+    \bigcup_{k=1}^m M_k \supseteq Y, 
+    \qquad 
+    \delta(M_k) < \varepsilon.
+    $$
+
+    o.B.d.A. sei $M_k \neq \emptyset$.  
+    Wähle $y_k \in M_k \Rightarrow M_k \subset U_{\tfrac{\varepsilon}{2}}(y_k) \subset U_{\varepsilon}(y_k)$.
+
+    Daraus folgt:
+    $$
+    Y \subset \bigcup_k M_k \subset \bigcup_k U_{\varepsilon}(y_k).
+    $$
+    \item "$\Leftarrow$":
+    \item Sei $\varepsilon > 0$ wähle $y\supseteq \bigcup_{k=1}^m U_{\varepsilon / 3}(x_k)$.
+    Dann ist $\delta(U_{\varepsilon / 3}(x_k)) \leq \frac{2}{3}\varepsilon < \varepsilon$.
+    \end{itemize}
+\end{itemize}
+\end{proof}
+
+\thm{}
+{
+Für eine Teilmenge $K$ eines metrischen Raumes $\langle X, d \rangle$ sind folgende Aussagen äquivalent:
+\begin{itemize}
+    \item[(i)] $K$ ist kompakt in $\langle X, \mathcal{T_d} \rangle$.
+    Wobei $\mathcal{T_d}$ die von $d$ induzierte Topologie ist.
+    \item[(ii)] Jede Folge in $K$ hat eine gegen einen Punkt in $K$ konvergente Teilfolge.
+    \item[(iii)] $K$ ist total beschränkt, und $\langle K, d|_{K \times K} \rangle$ 
+    ist ein vollständig metrischer Raum.
+\end{itemize}
+}
+
+\begin{proof}{Satz 7.0.4:}\\
+    \begin{itemize}
+        \item[(i) $\Rightarrow$ (ii)] 
+        Betrachte $\langle K, \mathcal{T_{d|_K }}\rangle$ und eine Folge $\alpha: \mathbb{N} \to K$.
+        Wähle $I$ eine gerichtete Menge und $\kappa: I \to \mathbb{N}$
+        so dass $\alpha \circ \kappa : I \to K$ ein Teilnetz in $K$ ist.
+        und so das $\lim_{i \in I} (\alpha \circ \kappa)(i) = : y \in K$ existiert.
+        ($\forall n \in \mathbb{N} \exists i_0 \in I \forall i \geq i_0:  \kappa(i) \geq n$)
+        $$
+        \{U_{1/n}(y) : n \in \mathbb{N}\} \text{ist Umgebung}
+        $$
+        Wir definieren rekursiv die Folge $(n_k)_{k=1}^{\infty}$ in $n_k \in \mathbb{N}: n_1 < n_2 < \ldots
+        \forall k : \alpha(n_k) \in U_{1/k}(y)$.;
+        \begin{itemize}
+            \item[k=1:] Wähle $i_1 \in I: \forall i \geq i_1 : d((\alpha \circ \kappa)(i), y) \in U_1(y)$
+            Wähle $n_1 := \kappa(i_1)$
+            \item[k->k+1] Angenommen wir haben $n_1 < n_2 < \ldots < n_k$ konstruiert.
+            Wähle $i_{\tilde{k}} \in I: \forall i \geq i_{\tilde{k}} : \kappa(i) > n_k+1$
+            Wähle $i \in I: i \geq i_k$ so dass $i \geq i_{\tilde{k}}$
+            $\Rightarrow n_{k+1}\geq n_k+1$ und damit $\alpha(n_{k+1})\in U_{1/k+1}(y)$
+            Sei nun $\varepsilon > 0$.  
+            Wähle $k_0$ so, dass $\frac{1}{n_{k_0}} < \varepsilon$.  
+        \end{itemize}
+        Damit gilt für alle $k \geq k_0$:
+        $$
+        \alpha(n_k) \in U_{\frac{1}{k}}(y) \subseteq U_{\frac{1}{k_0}}(y) \subseteq U_{\varepsilon}(y).
+        $$
+
+        Also folgt:
+        $$
+        \lim_{k \to \infty} \alpha(n_k) = y.
+        $$
+        \item[$\neq(iii) \Rightarrow \neq(ii)$]
+        Sei $\langle Y, d|_{Y \times Y} \rangle$ nicht vollständig.
+        Wähle eine Cauchyfolge $(x_n)_{n=1}^{\infty}$ in $Y$ die nicht konvergiert.
+        $\overset{\Laughey}{\Rightarrow} (x_n)_{n\in \mathbb{N}}$ hat keine konvergente Teilfolge.
+        \nt{
+        \Laughey
+        Da $Y$ totalbeschränkt ist, gibt es für $\epsilon = 1$
+        eine endliche Überdeckung von $Y$ durch Mengen mit Durchmesser kleiner als $1$.
+        Also gibt es $M_1, \ldots, M_k \subset Y$ mit 
+        $$
+        \bigcup_{i=1}^k M_i \supseteq Y, \quad \forall i: \diam(M_i) < 1.
+        $$
+        Da unendlich viele Folgenglieder in $Y$ liegen,
+        gibt es ein $M_{i_1}$ das unendlich viele Folgenglieder enthält.
+        Wähle daraus eine Teilfolge $(x_n^{(1)})_{n=1}^{\infty}$.
+        Induktiv wählen wir nun für $m \geq 1$ eine Teilfolge $(x_n^{(m)})_{n=1}^{\infty}$
+        von $(x_n^{(m-1)})_{n=1}^{\infty}$ und eine Menge $M_{i_m}$
+        so dass unendlich viele Folgenglieder von $(x_n^{(m)})_{n=1}^{\infty}$ in $M_{i_m}$ liegen.
+        Wähle nun $y_m := x_m^{(m)}$ für $m \in \mathbb{N}$.
+        Dann ist $(y_m)_{m=1}^{\infty}$ eine Teilfolge von $(x_n)_{n=1}^{\infty}$
+        so dass für alle $m,n \in \mathbb{N}$ gilt:
+        $$
+        d(y_m, y_n) < 1.
+        $$
+        Widerspruch zur Wahl von $(x_n)_{n=1}^{\infty}$ als Cauchyfolge.
+        }
+       
+        \end{itemize}
+     
+\end{proof}
+
+\mlenma{}
+{
+    Sei $\langle X, d \rangle$ ein metrischer Raum $(x_n)_{n\in \mathbb{N}}$ 
+    eine Cauchyfolge in $X$. und $(x_{n_n})$ eine Teilfolge von $(x_n)$.mit $\lim_{n \to \infty} x_{n_n} = x$.
+    $$
+    \Rightarrow \lim_{n \to \infty} x_n = x.
+    $$  
+}
+
+\begin{proof}{Lemma 7.0.5:}\\
+    Sei $\varepsilon > 0$ beliebig.
+    Wähle $N_1$, sodass für alle $n, m \ge N_1$ gilt:
+    $$
+    d(x_n, x_{m}) < \frac{\varepsilon}{2}.
+    $$
+    Wähle $k_0$, sodass für alle $n \ge k_0$ gilt:
+    $$
+    d(x_{n_1}, x) < \frac{\varepsilon}{2}.
+    $$
+    Mit $n_1 < n_2 < \dots$
+    Wähle $k_1$, sodass für alle $k \ge k_1$ gilt: $n_k \ge N_1$
+    Sei $k \ge \max\{k_0, k_1\}$ und $n \ge N_1$.  
+    Dann folgt:
+    $$
+    d(x_k, x)
+    \leq d(x_n, x_{n_1}) + d(x_{n_1}, x)
+    < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+    = \varepsilon.
+    $$
+\end{proof}
