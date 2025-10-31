@@ -90,7 +90,7 @@
     da für jedes einzelne $i \in I$ die Funktion $g_i = \{(i, y_i)\}$ darin liegt.
 
     Wir ordnen $\mathcal{H}$ durch Inklusion: 
-    $g \le h$ genau dann, wenn $D_g \subseteq D_h$ und $h|_{D_g} = g$ gilt.
+    $g \le h$ genau dann, wenn $D_g \subseteq D_h$ und $h\vert_{D_g} = g$ gilt.
 
     Sei nun $\mathcal{N} \subseteq \mathcal{H}$ eine totalgeordnete Teilmenge. 
     Definiere 
@@ -224,10 +224,10 @@
 {
 Für eine Teilmenge $K$ eines metrischen Raumes $\langle X, d \rangle$ sind folgende Aussagen äquivalent:
 \begin{itemize}
-    \item[(i)] $K$ ist kompakt in $\langle X, \mathcal{T_d} \rangle$.
-    Wobei $\mathcal{T_d}$ die von $d$ induzierte Topologie ist.
+    \item[(i)] $K$ ist kompakt in $\langle X, \mathcal{T}_d \rangle$.
+    Wobei $\mathcal{T}_d$ die von $d$ induzierte Topologie ist.
     \item[(ii)] Jede Folge in $K$ hat eine gegen einen Punkt in $K$ konvergente Teilfolge.
-    \item[(iii)] $K$ ist total beschränkt, und $\langle K, d|_{K \times K} \rangle$ 
+    \item[(iii)] $K$ ist total beschränkt, und $\langle K, d\vert_{K \times K} \rangle$ 
     ist ein vollständig metrischer Raum.
 \end{itemize}
 }
@@ -235,37 +235,41 @@ Für eine Teilmenge $K$ eines metrischen Raumes $\langle X, d \rangle$ sind folg
 \begin{proof}{Satz 7.0.4:}\\
     \begin{itemize}
         \item[(i) $\Rightarrow$ (ii)] 
-        Betrachte $\langle K, \mathcal{T_{d|_K }}\rangle$ und eine Folge $\alpha: \mathbb{N} \to K$.
-        Wähle $I$ eine gerichtete Menge und $\kappa: I \to \mathbb{N}$
-        so dass $\alpha \circ \kappa : I \to K$ ein Teilnetz in $K$ ist.
-        und so das $\lim_{i \in I} (\alpha \circ \kappa)(i) = : y \in K$ existiert.
-        ($\forall n \in \mathbb{N} \exists i_0 \in I \forall i \geq i_0:  \kappa(i) \geq n$)
+        Betrachte $\langle K, \mathcal{T}_{d}\vert_{K} \rangle$ und eine Folge $\alpha: \mathbb{N} \to K$.\\
+        Wähle eine gerichtete Menge $I$ und die Abbildung  $\kappa: I \to \mathbb{N}$,
+        so dass $\alpha \circ \kappa : I \to K$ ein Teilnetz in $K$ ist.\\
+        Mit $\lim_{i \in I} (\alpha \circ \kappa)(i) = : y \in K$ existiert.
+        (dh. $\forall n \in \mathbb{N} \exists i_0 \in I \forall i \geq i_0:  \kappa(i) \geq n$)\\
+        Damit gibt es Umgebungen von $y$ der Form
+        $\{U_{1/n}(y) : n \in \mathbb{N}\}$\\
+        Wir definieren rekursiv die Folge 
         $$
-        \{U_{1/n}(y) : n \in \mathbb{N}\} \text{ist Umgebung}
+        (n_k)_{k=1}^{\infty} \text{ mit } n_k \in \mathbb{N}: n_1 < n_2 < \ldots
+        \forall k : \alpha(n_k) \in U_{1/k}(y).
         $$
-        Wir definieren rekursiv die Folge $(n_k)_{k=1}^{\infty}$ in $n_k \in \mathbb{N}: n_1 < n_2 < \ldots
-        \forall k : \alpha(n_k) \in U_{1/k}(y)$.;
         \begin{itemize}
             \item[k=1:] Wähle $i_1 \in I: \forall i \geq i_1 : d((\alpha \circ \kappa)(i), y) \in U_1(y)$
             Wähle $n_1 := \kappa(i_1)$
-            \item[k->k+1] Angenommen wir haben $n_1 < n_2 < \ldots < n_k$ konstruiert.
+            \item[k$\to$ k+1:] Angenommen wir haben $n_1 < n_2 < \ldots < n_k$ konstruiert.\\
             Wähle $i_{\tilde{k}} \in I: \forall i \geq i_{\tilde{k}} : \kappa(i) > n_k+1$
-            Wähle $i \in I: i \geq i_k$ so dass $i \geq i_{\tilde{k}}$
-            $\Rightarrow n_{k+1}\geq n_k+1$ und damit $\alpha(n_{k+1})\in U_{1/k+1}(y)$
-            Sei nun $\varepsilon > 0$.  
-            Wähle $k_0$ so, dass $\frac{1}{n_{k_0}} < \varepsilon$.  
+            und $i \in I: i \geq i_k$ so dass $i \geq i_{\tilde{k}}$\\
+            $\Rightarrow n_{k+1}\geq n_k+1$ und damit $\alpha(n_{k+1})\in U_{\frac{1}{k+1}}(y)$\\
+            Sei nun $\varepsilon > 0$ wähle $k_0$ so, dass $\frac{1}{n_{k_0}} < \varepsilon$.  \\
+            Damit gilt für alle $k \geq k_0$:
+            $$
+            \alpha(n_k) \in U_{\frac{1}{k}}(y) \subseteq U_{\frac{1}{k_0}}(y) 
+            \subseteq U_{\varepsilon}(y).
+            $$
         \end{itemize}
-        Damit gilt für alle $k \geq k_0$:
-        $$
-        \alpha(n_k) \in U_{\frac{1}{k}}(y) \subseteq U_{\frac{1}{k_0}}(y) \subseteq U_{\varepsilon}(y).
-        $$
 
         Also folgt:
         $$
         \lim_{k \to \infty} \alpha(n_k) = y.
         $$
-        \item[$\neq(iii) \Rightarrow \neq(ii)$]
-        Sei $\langle Y, d|_{Y \times Y} \rangle$ nicht vollständig.
+        \item[$(ii) \Rightarrow (iii)$]
+        Diese Implikation zeigen wir mit dem Kontrapositiv:
+        $\lnot(iii) \Rightarrow \lnot(ii)$\\
+        Sei $\langle Y, d\vert_{Y \times Y} \rangle$ nicht vollständig.
         Wähle eine Cauchyfolge $(x_n)_{n=1}^{\infty}$ in $Y$ die nicht konvergiert.
         $\overset{\Laughey}{\Rightarrow} (x_n)_{n\in \mathbb{N}}$ hat keine konvergente Teilfolge.
         \nt{
@@ -298,7 +302,7 @@ Für eine Teilmenge $K$ eines metrischen Raumes $\langle X, d \rangle$ sind folg
 \mlenma{}
 {
     Sei $\langle X, d \rangle$ ein metrischer Raum $(x_n)_{n\in \mathbb{N}}$ 
-    eine Cauchyfolge in $X$. und $(x_{n_n})$ eine Teilfolge von $(x_n)$.mit $\lim_{n \to \infty} x_{n_n} = x$.
+    eine Cauchyfolge in $X$ und $(x_{n_n})$ eine Teilfolge von $(x_n)$.mit $\lim_{n \to \infty} x_{n_n} = x$.
     $$
     \Rightarrow \lim_{n \to \infty} x_n = x.
     $$  

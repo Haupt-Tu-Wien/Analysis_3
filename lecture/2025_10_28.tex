@@ -1,0 +1,56 @@
+\chapter{}
+
+\mlenma{}
+{
+    Seien $(V_n)_{n \in \mathbb{N}}$ endliche und nicht leere Mengen in $X$. 
+    Und sei 
+    $$
+    f: \dot{\bigcup_{n \geq 1}} V_n \to \dot{\bigcup_{n \geq 0}} V_n
+    $$ eine Abbildung. 
+    Wobei $\forall n \geq 1: f(V_n) \subseteq f(V_{n})\subseteq V_{n+1}$. \\
+    Dann gibt es eine  Folge $(x_n)_{n \in \mathbb{N}}$ mit
+    $$
+    \forall n \in  \mathbb{N}: x_n \in V_n 
+    \text{ und } \forall n \geq 1: f(x_n) = x_{n+1}.
+    $$  
+}
+
+\begin{proof}{Lemma 8.0.1:}\\
+    Sei 
+    $$
+    M:=\{(x_0,\dots,x_n)\mid N \in \mathbb{N}, \quad (\forall n \in \{1,\dots, N\}: x_n \in V_n )
+    \text{ und } (\forall n \in \{1,\dots, N\}: f(x_n) = x_{n+1})\}
+    $$
+    Sei weiters $x_n \in V_n$ beliebig. \\
+    Dann gilt $(f^{(N)}(x_N),\dots f \circ f (x_N), f(x_N), x_N) \in M$.
+    $$
+    \text{Definiere } g: 
+    \begin{cases}
+    \dot{\bigcup}_{n\geq 0} V_n \to M \\
+    x \mapsto (f^{(N)}(x),\dots, f \circ f (x), f(x), x) \text{ Wähle N so dass für } x \in V_N
+    \end{cases}
+    $$
+    Da $g$ injektiv ist, ist $M$ unendlich.\\
+    Wähle  $z_0 \in V_0, \dots, z_n \in V_n$ so dass 
+    $M_{z_0,\dots,z_n} := \{(x_0,\dots,x_k) \in M \mid N \geq n \text{ und } 
+    \forall k \in \{0,\dots,n\}: x_k = z_k\}\}$\\
+    Definiere die Rekursive Folge $(x_n)_{n \in \mathbb{N}}$ 
+    so dass $\forall n \in \mathbb{N}: z_n \in V_n \text{ und } M_{z_0,\dots,z_n}$ ist unendlich.
+    \begin{itemize}
+        \item[n=0:] $V_n$ endlich $M$ unendlich ist. 
+        $M=\bigcup_{x \in V_0} M_{x_0}\Rightarrow \exists z_0 \in V_0: M_{z_0}$ unendlich.
+        \item[n$\to$ n+1:] Angenommen wir haben $z_0,\dots,z_n$ konstruiert.\\
+        \begin{equation*}
+        \begin{split}
+        &\underbrace{M_{z_0,\dots,z_{n+1}}}_{\text{unendlich}} 
+        = \bigcup_{x \in V_{n+1}} M_{z_0,\dots,z_n,x}\\
+        &\Rightarrow \exists z_{n+1} \in V_{n+1}: M_{z_0,\dots,z_{n+1}}
+        \end{split}
+        \end{equation*}
+        unendlich.\\
+        $\forall n \in \mathbb{N} \exists (x_0,\dots,x_n) \in M_{z_0,\dots,z_n}$
+        Damit gilt per Konstruktion: $(x_0,\dots,x_N) \in M, N \geq n, x_0 = z_0,\dots,x_n = z_n$
+        für alle $k \in \{1,\dots,N\}:  f(x_k) = x_{k+1} 
+        \Rightarrow f\underbrace{(x_n)}_{z_n} = \underbrace{x_{n+1}}_{z_{n+1}}$.
+    \end{itemize}
+\end{proof}
