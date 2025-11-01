@@ -2,7 +2,7 @@
 In der letzten haben wir begonnen Satzz 7.0.4 zu beweisen. 
 Uns fehlt noch die Richtung (ii) $\Rightarrow$ (i).
 Um die zu zeigen benötigen wir noch ein Lemma.
-\mlenma{}
+\mlenma{Lemma von König}
 {
     Seien $(V_n)_{n \in \mathbb{N}}$ endliche und nicht leere Mengen in $X$. 
     Und sei 
@@ -71,16 +71,20 @@ Um die zu zeigen benötigen wir noch ein Lemma.
 
 \begin{proof}{(iii)$\Rightarrow$(i) Satz 7.0.5:}\\
 \begin{itemize}
-    \item[(1)] Wir konstruieren rekursiv eine Folge $(Q_n)^{\infty}_{n=1}$ von Funktionen
+    \item[Behauptung (1):]
+     Wir konstruieren rekursiv eine Folge $(Q_n)^{\infty}_{n=1}$ von Funktionen
     mit 
     \begin{itemize}
         \item[(i)]$\forall n \in \mathbb{N}, n\geq 1; \forall A \in Q_n: \delta(A) \leq \frac{1}{n}$ 
         (wobei $\delta(A)$ der Durchmesser von $A$ ist).
         \item[(ii)] $\forall n \geq 1 \forall A \in Q_{n+1} \exists !B \in Q_n: A \subseteq B$
     \end{itemize}
+
+
+    \textbf{Beweis Behauptung (1):}
     \begin{itemize}
         \item[n=1:] Wähle $M_1,\dots,M_n$ so dass
-        $K \subseteq \bigcup_{i = 1}^{n} M_i$ und $\forall i \delta(M_i) \leq 1$.
+        $K \subseteq \bigcup_{i = 1}^{n} M_i$ und $\forall i \delta(M_i) \leq 1$.\\
         Wir definieren $A_m := (M_m \cap K) \setminus \bigcup_{i=1}^{m-1} (M_i \cap K)$.
         \begin{equation*}
         \begin{split}
@@ -125,10 +129,91 @@ Um die zu zeigen benötigen wir noch ein Lemma.
     \end{equation*}
 \end{itemize}
 }
-Definiere $f: \dot{\bigcup}_{n\geq 2} \to \dot{\bigcup}_{n \geq 1}Q_n$
-Sei $A \in Q_n$, Sei $n\geq 2$. So dass $A \in Q_n$ Sei $B \in Q_{n-1}$ mit $B \subseteq A$. 
-Dann ist $f(A) := B$.
-\item[(2)] Sei 
+Definiere 
+$$
+f: \dot{\bigcup}_{n\geq 2} \to \dot{\bigcup}_{n \geq 1}Q_n
+$$
+Sei $A \in Q_n$, Sei $n\geq 2$. So dass $A \in Q_n$ und $B \in Q_{n-1}$
+ mit $B \subseteq A$. 
+Damit $f(A) := B$.
+\item[Behauptung(2):] Sei $(A_n)_{n}^{\infty}$ eine Folge mit $A_n \in Q_n \forall n$
+Dann ($\forall n \geq 2$ gilt: $f(A_n) = A_{n-1}$.)
+$\Rightarrow$
+ ($\exists  x \in X \forall U \supset \mathcal{U}(x)
+\exists n_0 \in \mathbb{N}\forall n \geq n_0: A_n \subseteq U$).\\
+
+
+\textbf{Beweis Behauptung (2):}
+
+$\forall n, m \in \mathbb{N}: n \geq m : A_m \subseteq A_n $
+Wähle $x_n \in A_n$ und $x_m \in A_m$ so dass
+$ d(x_m,x_n) \leq \delta(A_n)\leq \frac{1}{n}$
+Also ist $(x_n)_{n \in \mathbb{N}}$ eine Cauchyfolge in $K$.\\
+$$
+\Rightarrow \exists x \in K : \lim_{n \to \infty} x_n = x.
+$$
+Sei $U \in \mathcal{U}(x)$ offen.
+$\exists r > 0: U_r(x) \subseteq U$.
+Wähle $n_0 \in \mathbb{N}$ so dass $\frac{1}{n_0} < \frac{r}{2}$.
+Wähle weiters $n_2 \in \mathbb{N}$ so dass $\forall n \geq n_2: d(x_n,x) < \frac{r}{2}$.
+Sei $n_0 \geq \max\{n_1,n_2\}$.
+Betrachte nun $n \geq n_0$.
+Damit gilt für $y \in A_n \subseteq A_{n_0}$ dass
+$$
+x_{n_0} \in A_{n_0} \Rightarrow d(y,x_{n_0}) \leq \delta(A_{n_0}) 
+\leq \frac{1}{n_0} < \frac{r}{2}.
+$$
+Dann gilt für alle $n \geq n_0: d(x_n,x_{n_0}) < \frac{r}{2}$.
+$\Rightarrow d(x,y) < r$. das heißt $y \in U_r(x) \subseteq U$.
+
+\item[Behauptung (3):] 
+Jede offene Überdeckung von $K$ besitzt eine endliche Teilüberdeckung.
+Sei $C \in \mathcal{T}$ mit $\bigcup C \supseteq K$.
+Wir definieren die Menge:
+$$
+\hat{Q}_n := \{ A \in Q_n \mid \forall O \in C: A \not\subseteq O \}.
+$$
+
+
+\textbf{Beweis Behauptung (3):}
+
+\begin{itemize}
+    \item[Fall 1:] $\exists n: \hat{Q}_n = \emptyset$\\
+    $\forall A \in Q_n: \exists O \in C: A \subseteq O$.
+    Sei $A \in Q_n$. Dann gibt es ein $O_A \in C$ mit $A \subseteq O_A$.
+    $\Rightarrow \bigcup_{A \in Q_n} O_A \supseteq \bigcup_{A \in Q_n} A = K$.
+    $Q_n$ ist endlich\\
+    $\Rightarrow \{O_A \mid A \in Q_n\}$ ist eine endliche Teilüberdeckung von $C$.
+    \item[Fall 2:] $\forall n: \hat{Q}_n \neq \emptyset$\\
+    Alle $\hat{Q}_n$ sind nicht leer und endlich.\\
+    Betrachte die funktion 
+    $$
+    \hat{f}:= f\vert_{\dot{\bigcup}_{n\geq 2}\hat{Q}_n} : 
+    \dot{\bigcup}_{n\geq 2}\hat{Q}_n \to \dot{\bigcup}_{n \geq 1}\hat{Q}_n
+    $$
+    Wir wollen zeigen, dass die Zielmenge von $\hat{f}$
+    die Menge  $\hat{Q}_{n\geq 1}$ ist.
+    Sei $A \in \hat{Q}_n, f(A) \in Q_{n-1}$ mit $f(A) \supseteq A$.
+    Angenommen $O \in C$ mit $f(A) \subseteq O$.
+    Dann gilt auch $A \subseteq O \Rightarrow f(A) \in \hat{Q}_{n-1}$.\\
+    Also 
+    $$
+    \hat{f}:
+    \dot{\bigcup}_{n\geq 2}\hat{Q}_n \to \dot{\bigcup}_{n \geq 1}\hat{Q}_n
+    $$.
+    Wähle $(A_n)_{n=1}^{\infty}$ mit $A_n \in \hat{Q}_n$ und 
+    $\forall n \geq 2: f(A_n) = A_{n-1}$.\\
+    $\boxed{\textbf{Anwendung vom Lemma 8.0.1 (Lemma von König)}}$\\
+    Wähle $x \in X$ so dass
+    $$
+    \forall U \in \mathcal{U}(x) \exists n_0 \in \mathbb{N} \forall n \geq n_0: A_n \subseteq U.
+    $$
+    Wähle $O\in C: x \in O \Rightarrow O \in \mathcal{U}(x)$ 
+    und $n_0$ so dass $\forall n \geq n_0: A_n \subseteq O$.\\
+    Widerspruch zur Definition von $\hat{Q}_n$.\\
+\end{itemize}
+    Also muss Fall 1 eintreten.
+
 \end{itemize}
 
 \end{proof}
@@ -139,3 +224,211 @@ Dann ist $f(A) := B$.
     wenn der Abschluss $\overline{A}$ von $A$ kompakt ist.
     Wir definieren $A_m := (M_m \cap K) \setminus \bigcup_{i=1}^{m-1} (M_i \cap K)$.
 }
+
+\begin{corollary}{}
+    Sei $\langle X, d \rangle$ ein metrischer Raum. 
+    $A \subseteq X$ ist relativ kompakt
+    $\Leftrightarrow$
+    $A$ ist total beschränkt
+\end{corollary}
+
+\begin{proof}{Korollar 7.0.6:}\\
+    \begin{itemize}
+        \item[(“$\Rightarrow$”)] Sei $A$ relativ kompakt. 
+        Das heißt $\overline{A}$ kompakt. 
+        \item[("$\Leftarrow$" )] Sei $A$ total beschränkt.
+        $\Rightarrow \overline{A}$ ist total beschränkt.\\
+        \nt{
+        $$\delta(M) = sup\{d(x,y) \mid x,y \in M\} 
+        = sup\{d(x,y) \mid x,y \in \overline{A}\} = \delta(\overline{A})
+        $$
+        }
+        Sei $\epsilon > 0$. Wähle $M_1,\dots M_n$ 
+        mit $\bigcup_{i=1}^n M_i \supseteq A$ und
+        $\forall i: \delta(M_i) \geq \epsilon$ für $i \neq j$.
+        $\Rightarrow \bigcup_{i=1}^n \overline{M_i} 
+        = \overline{\bigcup_{i=1}^n M_i} \supseteq \overline{A}$.
+        und $\forall i : \delta(M_i) \geq \epsilon$.
+        Da $X$ vollständig und $\overline{A}$ abgeschlossen ist, ist
+        $\overline{A}$ vollständig womit $\overline{A}$ kompakt ist.
+    \end{itemize}
+    
+\end{proof}
+\fbox{%
+	\parbox{0.9\linewidth}{%
+\thm{Achtung Fehlerhaft!}
+{
+    Sei $\langle X, \| \cdot \|_{\infty} \rangle$ ein vollständig normierter Raum.
+
+}
+\begin{proof}{Satz 8.0.4:}\\
+    $\boxed{\text{Klassisches Argument für Vollständigkeit von } C(X,\mathbb{R})}:$\\
+    Sei $(f_n)_{n \in \mathbb{N}}$ eine Cauchy-Folge in $(C(X,\mathbb{R}),
+     \|\cdot\|_\infty)$.
+
+    \begin{itemize}
+        \item[(1)] Für jedes $x \in X$ gilt:
+        $$
+        \| f_n - f_m \|_\infty \to 0 \quad \Rightarrow \quad |f_n(x) - f_m(x)| \to 0.
+        $$
+        Also ist $(f_n(x))_{n \in \mathbb{N}}$ eine Cauchy-Folge in $\mathbb{R}$.
+
+        \item[(2)] Definiere $f : X \to \mathbb{R}$ durch
+        $$
+        f(x) := \lim_{n \to \infty} f_n(x).
+        $$
+
+        \item[(3)] Sei $\varepsilon > 0$. 
+        Da $(f_n)$ eine Cauchy-Folge in $C(X,\mathbb{R})$ ist, existiert $n_0 \in \mathbb{N}$, sodass
+        $$
+        \forall n,m \geq n_0: \ \| f_n - f_m \|_\infty \le \varepsilon.
+        $$
+        Für alle $x \in X$ gilt dann
+        $$
+        |f_n(x) - f_m(x)| \le \varepsilon.
+        $$
+        Lässt man $m \to \infty$ gehen, folgt
+        $$
+        |f_n(x) - f(x)| \le \varepsilon,
+        $$
+        da der Betrag stetig ist und der Grenzübergang punktweise konvergiert.
+    \end{itemize}
+
+    Also gilt:
+    $$
+    \forall x \in X,\ \forall n \ge n_0:\ |f(x) - f_n(x)| \le \varepsilon,
+    $$
+    und somit
+    $$
+    \forall n \ge n_0:\ \sup_{x \in X} |f(x) - f_n(x)| \le \varepsilon.
+    $$
+    Das heißt:
+    $$
+    \| f - f_n \|_\infty \le \varepsilon \quad \text{für alle } n \ge n_0.
+    $$
+
+    Damit konvergiert $(f_n)$ gleichmäßig gegen $f$, und $f \in C(X,\mathbb{R})$, 
+    da der gleichmäßige Grenzwert stetiger Funktionen wieder stetig ist. 
+    Somit ist $(C(X,\mathbb{R}), \|\cdot\|_\infty)$ vollständig.
+\end{proof}
+}%
+}
+
+\thm{Satz von Asela Ascoli}
+{
+    Sei $\langle X, \mathcal{T} \rangle$ ein kompakter Topologischer Raum.
+    Eine Teilmenge $\mathcal{G} \subseteq C_b(X, \mathbb{R})$ bzw. 
+    $\mathcal{G} \subseteq C_b(X, \mathbb{C})$ ist genau dann bezüglich 
+    der von $\|\cdot\|_\infty$ auf $C_b(X, \mathbb{R})$ bzw. 
+    $C_b(X, \mathbb{C})$ induzierten Metrik total beschränkt, 
+    wenn $\mathcal{G}$ punktweise beschränkt und gleichgradig stetig ist.
+
+    Das heißt, es gelten äquivalent die folgenden beiden Eigenschaften:
+    \begin{itemize}
+        \item[(i)] Für jedes $x \in X$ ist die Menge 
+        $$
+        \{ f(x) \mid f \in \mathcal{G} \}
+        $$
+        beschränkt.
+
+        \item[(ii)] Für jedes $x \in X$ und jedes $\varepsilon > 0$ 
+        existiert eine Umgebung $V \in \mathcal{U}(x)$, so dass
+        $$
+        |f(y) - f(x)| < \varepsilon 
+        \quad \text{für alle } y \in V \text{ und alle } f \in \mathcal{G}.
+        $$
+    \end{itemize}
+}
+
+
+\begin{proof}{Satz 8.0.4 (Ascoli):}\\
+    Sei $\mathcal{G}$ wie oben definiert und erfüllt (i) und (ii). 
+    Wir zeigen, dass $\mathcal{G}$ total beschränkt ist. 
+
+    Sei $\varepsilon > 0$ gegeben. 
+    $ \forall x \in X$ wähle eine Umgebung $V_x \in \mathcal{U}(x)$, 
+    so dass $\forall y \in V_x$ und $\forall f \in \mathcal{G}$ gilt:
+    $$
+    |f(y) - f(x)| < \varepsilon.
+    $$
+
+    Da $\{V_x : x \in X\}$ eine offene Überdeckung von $X$ ist 
+    und $X$ kompakt, existieren endlich viele Punkte 
+    $x_1, \dots, x_n \in X$ mit
+    $$
+    X = \bigcup_{i=1}^{n} V_{x_i}.
+    $$
+
+    Für $i = 1, \dots, n$ gilt also
+    $$
+    |f(x) - f(x_i)| < \varepsilon 
+    \quad \text{falls } x \in V_{x_i},\ f \in \mathcal{G}. 
+    $$
+
+    Nach (i) existiert ein $c > 0$ mit 
+    $$
+    c := \sup\{ |f(x_i)| : i = 1, \dots, n,\ f \in \mathcal{G} \} < +\infty.
+    $$
+    Betrachte die Abgeschlossene  Kugel $K := \overline{B_c^{\mathbb{R}^n}(0)}$ 
+    bzw. $K := \overline{B_c^{\mathbb{C}^n}(0)}$ im $\mathbb{R}^n$ bzw. $\mathbb{C}^n$ 
+    bezüglich der $\|\cdot\|_\infty$–Norm und definieren
+    $$
+    p : \mathcal{G} \to K, \quad p(f) := (f(x_1), \dots, f(x_n))^T.
+    $$
+
+    Da $K$ kompakt ist, folgt dass $K$
+    total beschränkt ist. 
+    Nach \textbf{Korollar 8.0.3} ist daher auch $p(\mathcal{G})$ 
+    total beschränkt. 
+    $\Rightarrow$ existieren endlich viele $f_1, \dots, f_m \in \mathcal{G}$, so dass 
+    für jedes $f \in \mathcal{G}$ ein $k \in \{1, \dots, m\}$ mit
+    $$
+    \|p(f) - p(f_k)\|_\infty < \varepsilon
+    $$
+    existiert, d.\,h.
+    $$
+    |f(x_i) - f_k(x_i)| < \varepsilon \quad \text{für } i = 1, \dots, n.
+    $$
+
+    Wähle $f \in \mathcal{G}$ so das $|f(x_i) - f_k(x_i)| < \varepsilon \quad \text{für } i = 1, \dots, n.$
+    
+    Für jedes $x \in X$ liegt $x$ in einem $V_{x_i}$, und daher folgt von 
+    Oben ($|f(x) - f(x_i)| < \varepsilon 
+    \text{falls } x \in V_{x_i},\ f \in \mathcal{G}.$)
+    
+
+    \begin{equation*}
+    \begin{split}
+        |f(x) - f_k(x)| 
+        &\le |f(x) - f(x_i)| + |f(x_i) - f_k(x_i)| + |f_k(x_i) - f_k(x)| \\
+        &< \varepsilon + \varepsilon + \varepsilon = 3\varepsilon.
+    \end{split}
+    \end{equation*}
+    Also gilt $\|f - f_k\|_\infty \le 3\varepsilon$, womit die offenen Kugeln 
+    $B_{4\varepsilon}(f_k)$, $k = 1, \dots, m$, ganz $\mathcal{G}$ überdecken.
+
+    \bigskip
+    Zur Umkehrung: 
+    Sei $\mathcal{G}$ total beschränkt. 
+    Dann ist $\mathcal{G}$ beschränkt in $(C_b(X,\mathbb{R}),\|\cdot\|_\infty)$ 
+    bzw. $(C_b(X,\mathbb{C}),\|\cdot\|_\infty)$ und somit punktweise beschränkt
+    damit  haben wir getzeigt das (i) gilt.
+
+    Wegen der totalen Beschränktheit existieren für jedes $\varepsilon > 0$ 
+    endlich viele 
+    $f_1, \dots, f_m \in \mathcal{G}$ mit 
+    $\forall f \in \mathcal{G}\ \exists k:\ \|f - f_k\|_\infty < \varepsilon$.\\
+    Sei $x \in X$. 
+    Durch Stetigkeit jedes $f_k$ existieren Umgebungen $V_k \in \mathcal{U}(x)$ 
+    mit $|f_k(y) - f_k(x)| < \varepsilon$ für alle $y \in V_k$.
+    Setze $V := V_1 \cap \dots \cap V_m \in \mathcal{U}(x)$.
+    Für $f \in \mathcal{G}$, $y \in V$ und passendes $k$ gilt dann:
+    \begin{equation*}
+    \begin{split}
+        |f(y) - f(x)| 
+        &\le |f(y) - f_k(y)| + |f_k(y) - f_k(x)| + |f_k(x) - f(x)| \\
+        &< \varepsilon + \varepsilon + \varepsilon = 3\varepsilon.
+    \end{split}
+    \end{equation*}
+    Damit ist auch (ii) erfüllt.
+\end{proof}

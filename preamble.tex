@@ -29,7 +29,7 @@
 \usepackage{varwidth}
 \usepackage{varwidth}
 \usepackage{etoolbox}
-%\usepackage{authblk}
+\usepackage{authblk}
 \usepackage{nameref}
 \usepackage{multicol,array}
 \usepackage{tikz-cd}
@@ -157,7 +157,7 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{corollary}{Korollar}
+\newtcbtheorem[use counter from=Theorem]{Corollary}{Korollar}
 {%
 	enhanced
 	,breakable
@@ -175,6 +175,24 @@
 }
 {th}
 
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[use counter from=Theorem]{corollary}{Korollar}
+{%
+	enhanced
+	,breakable
+	,colback = myp!10
+	,frame hidden
+	,boxrule = 0sp
+	,sharp corners
+	,detach title
+	,before upper = \tcbtitle\par\smallskip
+	,coltitle = myp!85!black
+	,fonttitle = \bfseries\sffamily
+	,description font = \mdseries
+	,separator sign none
+	,segmentation style={solid, myp!85!black}
+}
+{th}
 
 %================================
 % LENMA
