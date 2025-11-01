@@ -1,5 +1,7 @@
 \chapter{}
-
+In der letzten haben wir begonnen Satzz 7.0.4 zu beweisen. 
+Uns fehlt noch die Richtung (ii) $\Rightarrow$ (i).
+Um die zu zeigen benötigen wir noch ein Lemma.
 \mlenma{}
 {
     Seien $(V_n)_{n \in \mathbb{N}}$ endliche und nicht leere Mengen in $X$. 
@@ -54,3 +56,86 @@
         \Rightarrow f\underbrace{(x_n)}_{z_n} = \underbrace{x_{n+1}}_{z_{n+1}}$.
     \end{itemize}
 \end{proof}
+
+\nt{
+    \textbf{Satz 7.0.4:}\\
+    \begin{itemize}
+    \item[(i)] $K$ ist kompakt in $\langle X, \mathcal{T}_d \rangle$.
+    Wobei $\mathcal{T}_d$ die von $d$ induzierte Topologie ist.
+    \item[(ii)] Jede Folge in $K$ hat eine gegen einen Punkt in $K$ konvergente Teilfolge.
+    \item[(iii)] $K$ ist total beschränkt, und $\langle K, d\vert_{K \times K} \rangle$ 
+    ist ein vollständig metrischer Raum.
+\end{itemize}
+    
+}
+
+\begin{proof}{(iii)$\Rightarrow$(i) Satz 7.0.5:}\\
+\begin{itemize}
+    \item[(1)] Wir konstruieren rekursiv eine Folge $(Q_n)^{\infty}_{n=1}$ von Funktionen
+    mit 
+    \begin{itemize}
+        \item[(i)]$\forall n \in \mathbb{N}, n\geq 1; \forall A \in Q_n: \delta(A) \leq \frac{1}{n}$ 
+        (wobei $\delta(A)$ der Durchmesser von $A$ ist).
+        \item[(ii)] $\forall n \geq 1 \forall A \in Q_{n+1} \exists !B \in Q_n: A \subseteq B$
+    \end{itemize}
+    \begin{itemize}
+        \item[n=1:] Wähle $M_1,\dots,M_n$ so dass
+        $K \subseteq \bigcup_{i = 1}^{n} M_i$ und $\forall i \delta(M_i) \leq 1$.
+        Wir definieren $A_m := (M_m \cap K) \setminus \bigcup_{i=1}^{m-1} (M_i \cap K)$.
+        \begin{equation*}
+        \begin{split}
+            &\Rightarrow \bigcup_{m=1}^{n} A_m \\
+            = \bigcup_{m=1}^{n} (M_m \cap K) 
+            &= \left( \bigcup_{m=1}^{n} M_m \right) \cap K = K\\
+        \end{split}
+        \end{equation*}
+        $\forall m \neq m' : \quad A_m \cap A_{m'} = \emptyset$\\
+        Setze $Q_1 := \{A_1,\dots,A_n\}$.
+        \item[n$\to$ n+1:] Angenommen wir haben $Q_1,\dots,Q_n$ konstruiert.\\
+        Wähle $M_1,\dots,M_k$ so dass
+        $K \subseteq \bigcup_{i = 1}^{k} M_i$ und 
+        \(\forall i:\ \delta(M_i) \le \frac{1}{n+1}.\)
+        Setze $$A_m := (M_m \cap K) \setminus \bigcup_{i=1}^{m-1} (M_i \cap K).$$
+        Dann gilt wieder:
+        $$
+        \{A_1,\dots,A_N\}
+        $$
+        Sind Partitionen von K
+    \end{itemize}
+    Definiere $Q_{n+1} := \{ B \cap A_i \mid B \in Q_n,\ i = 1, \ldots, N \}$.Partition von K
+\nt{
+    \textbf{Begründung: Paarweise disjunkt und Vereinigung ergibt K}
+
+\begin{itemize}
+    \item \textbf{Paarweise disjunkt:}
+    $$
+        B \cap A_i,\quad B' \cap A_j
+    $$
+    sind disjunkt, falls entweder $i \neq j$ (da $A_i \cap A_j = \emptyset$) 
+    oder $B \neq B'$ (da $B \cap B' = \emptyset$).
+    
+    \item \textbf{Vereinigung ergibt $K$:}
+    \begin{equation*}
+    \begin{split}
+        &\bigcup_{B \in Q_n} \ \bigcup_{i=1}^N (B \cap A_i) 
+        = \bigcup_{i=1}^N \ \bigcup_{B \in Q_n} (B \cap A_i) \\
+        &= \bigcup_{i=1}^N ( A_i \cap \underbrace{\bigcup_{B \in Q_n} B}_{=K} ) 
+        = \bigcup_{i=1}^N A_i = K.
+    \end{split}
+    \end{equation*}
+\end{itemize}
+}
+Definiere $f: \dot{\bigcup}_{n\geq 2} \to \dot{\bigcup}_{n \geq 1}Q_n$
+Sei $A \in Q_n$, Sei $n\geq 2$. So dass $A \in Q_n$ Sei $B \in Q_{n-1}$ mit $B \subseteq A$. 
+Dann ist $f(A) := B$.
+\item[(2)] Sei 
+\end{itemize}
+
+\end{proof}
+
+\dfn{Relativ Kompakt}
+{
+    Eine Teilmenge $A$ eines topologischen Raumes heißt \textbf{relativ kompakt},
+    wenn der Abschluss $\overline{A}$ von $A$ kompakt ist.
+    Wir definieren $A_m := (M_m \cap K) \setminus \bigcup_{i=1}^{m-1} (M_i \cap K)$.
+}
