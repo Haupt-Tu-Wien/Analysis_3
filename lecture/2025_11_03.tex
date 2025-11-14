@@ -1,0 +1,34 @@
+\chapter{}
+
+\thm{Satz von Arzela-Ascoli}
+{
+    Sei $\langle X, \mathcal{T}\rangle$ Kompakt und (T2) 
+    und $\mathscr{F} \subseteq C(X,\mathbb{R})$
+    dann sind folgende Aussagen äquivalent:
+    \begin{enumerate}
+        \item[(i)] $\mathscr{F}$ ist totalbeschränkt
+        \item[(ii)] $\mathscr{F}$ ist punktweise beschränkt 
+        (dh.: $\forall x \in X: \underset{f \in \mathscr{F}}{\text{ sup }} |f(x)| < \infty$)
+        \item[(iii)] $\mathscr{F}$ ist gleichgradig stetig 
+        (dh.: $\forall x \in X \forall \varepsilon > 0 \, \exists U \in \mathcal{U}(x) 
+        \forall f \in \mathscr{F}: f(U)\subseteq \mathcal{U}_{\epsilon}(f(x))$)
+    \end{enumerate}
+}
+
+\begin{myproof}{Satz 9.0.1}
+    \begin{itemize}
+        \item["$(i) \Rightarrow (ii)$"] $\mathscr{F} \text{ totalbeschränkt }\Rightarrow 
+        \text{ beschränkt } \Rightarrow sup\{\|f\|_{\infty} : f \in \mathscr{F}\} < \infty$
+        $\forall x \in X: \mid f(x)\mid \leq \|f\|_{\infty}$ 
+        $\Rightarrow \mathscr{F} \text{ ist punktweise beschränkt }$
+        Seii $\varepsilon > 0$ Wähle $f_1, \ldots, f_n \in \mathscr{F}$ mit 
+        $\mathscr{F} \subseteq \bigcup_{i=1}^{n} \mathcal{U}_{\frac{\varepsilon}{6}}(f_i)$
+        Sei $x \in X$. Wähle für $i = 1, \ldots, n$ ein $U_i \in \mathcal{U}(x)$ so dass
+        $\mid f_i(y) - f_i(x) \mid < \frac{\varepsilon}{3}$ für alle $y \in U_i$
+        Betrachte $U := \bigcap_{i=1}^{n} U_i $ Sei $y \in \mathcal{U} f \in \mathscr{F}$
+        Wähle $i: f \in \mathcal{U}_{\frac{\varepsilon}{6}}(f_i)$
+        $\mid f(y) - f(x) \mid \leq \mid f(y) - f_i(y) \mid + 
+        \mid f_i(y) - f_i(x) \mid + \mid f_i(x) - f(x) \mid < \frac{\varepsilon}{6} 
+        + \frac{\varepsilon}{3} + \frac{\varepsilon}{6} = \varepsilon$
+    \end{itemize}
+\end{myproof}
