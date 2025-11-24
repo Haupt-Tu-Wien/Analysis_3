@@ -1,1 +1,93 @@
 \chapter{}
+In der Vorlesung geht es um die Einführung der Initialen Topologien
+-Ich denke das es darum geht anhand von dem was mein Auge erblickt-
+
+\section{Kategorielle Betrachtung}
+Weil die Konstrucktion bei einem normalen (Auch bei nicht normalen) menschen
+ein paar knoten im kopf verursacht, wollen wir uns das ganze mal 
+aus der Kategorientheorie anschauen.\\
+Seien $X_i, i\in I$ Mengen und 
+$
+\Phi:
+\begin{cases} Y\to \prod_{i\in I}X_i\\
+    (\alpha_i(y))_{i\in I} \mapsto X_i
+\end{cases}
+$
+eine Abbildung.\\
+ Wobei $\alpha_{i}: \pi_i \circ \Phi \forall i \in I$ 
+
+\begin{tikzpicture}[>=stealth, xscale=1.2, yscale=1.2]
+
+% X oben
+\node (Y) at (0,0) {$Y$};
+
+% Xi und Xj darunter
+\node (Xi) at (0,-2) {$\prod_{i\in I}X_i$};
+
+% Zielräume ganz unten (4 Stück)
+\node (Xk-1) at (-4,-4) {$(X_{k-1},\mathcal{T}_{k-1})$,};
+\node (dots) at (-3,-4) {\quad$\dots$,};
+\node (Xk) at (-2,-4) {$(X_{k},\mathcal{T}_{k})$,};
+\node (X0) at (0,-4) {$\dots$};
+\node (Xj) at (2,-4) {,$(X_{j},\mathcal{T}_{j})$,};
+\node (dots2) at (3,-4) {$\dots$,};
+\node (Xj+1) at (4,-4) {\quad ,$(X_{j+1},\mathcal{T}_{j+1})$};
+
+% f_i, f_j
+\draw[->, dashed] (Y) -- node[left] {$\Phi$} (Xi);
+
+% Xi → Ziele
+\draw[->] (Xi) -- node[left] {$\pi_{k}$} (Xk);
+\draw[->] (Xi) -- node[right] {$\pi_{j}$} (Xj);
+
+% gestrichelte Kompositionen
+\draw[->] (Y) .. controls (-2,-1) .. node[left] {$\alpha_{k}$} (Xk);
+\draw[->] (Y) .. controls (2,-1) .. node[right] {$\alpha_{j}$} (Xj);
+
+\end{tikzpicture}
+
+Davon ausgehend wollen wir eine Topologie auf $Y$ definieren, die sogenannte \textbf{initiale Topologie} 
+bezüglich der Familie von Abbildungen $(\alpha_i)_{i\in I}$.\\
+ 
+
+\begin{tikzpicture}[>=stealth, xscale=1.2, yscale=1.2]
+
+% X oben
+\node (Y) at (0,0) {$\langle Y,\mathcal{V}\rangle$};
+
+% Xi und Xj darunter
+\node (Xi) at (0,-2) {$\langle \prod_{i\in I}X_i,\prod_{i\in I}\mathcal{T}_i \rangle$};
+
+% Zielräume ganz unten (4 Stück)
+\node (Xk-1) at (-4,-4) {$\langle X_{k-1},\mathcal{T}_{k-1}\rangle$,};
+\node (dots) at (-3,-4) {\quad$\dots$,};
+\node (Xk) at (-2,-4) {$\langle X_{k},\mathcal{T}_{k}\rangle$,};
+\node (X0) at (0,-4) {$\dots$};
+\node (Xj) at (2,-4) {,$\langle X_{j},\mathcal{T}_{j}\rangle$,};
+\node (dots2) at (3,-4) {$\dots$,};
+\node (Xj+1) at (4,-4) {\quad ,$\langle X_{j+1},\mathcal{T}_{j+1}\rangle$};
+
+% f_i, f_j
+\draw[->, dashed] (Y) -- node[left] {$\Phi$} (Xi);
+
+% Xi → Ziele
+\draw[->] (Xi) -- node[left] {$\pi_{k}$} (Xk);
+\draw[->] (Xi) -- node[right] {$\pi_{j}$} (Xj);
+
+% gestrichelte Kompositionen
+\draw[->] (Y) .. controls (-2,-1) .. node[left] {$\alpha_{k}$} (Xk);
+\draw[->] (Y) .. controls (2,-1) .. node[right] {$\alpha_{j}$} (Xj);
+
+\end{tikzpicture}
+
+\nt{
+    $\prod_{i \in I} \mathcal{T}_i$ ist die Kleinste Topologie mit 
+    $$\bigcup_{i \in I}\{\pi^{-1}(O_i)\mid \mathcal{O}_i \in \mathcal{T}_i\}$$
+}
+\section{Konstrucktion ohne Zeichnen}
+
+Im folgenden wollen wir zeigen das wenn gilt: 
+Seien $X_i, i \in I$ Mengen mit Topologien $\mathcal{T}_i$ und 
+$\alpha_{i}: \pi_i \circ \Phi \forall i \in I$ und $\pi_i$ stetig $\forall i \in I$
+Dann ist $\Phi$ stetig
+
