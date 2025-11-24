@@ -1,0 +1,193 @@
+\chapter{}
+
+Da ich eine Persönliche Dragödia hatte (ich habe mein Tablet vergessen),
+konnte ich nicht alles mitschreiben. Aber an dieser stelle möchte ich
+mich herzlich bei meinen Vater bedanken, der mir das Tablet gebracht hat. 
+Daher gibt es zumindest den zweiten Teil der Vorlesung. Mit etwas Glück
+kann ich den ersten Teil auch noch nachliefern wen mir jemand seine Notizen
+zur Verfügung stellt.
+(Das ist eine implizit vormulierte Bitte !)\\
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.3\textwidth]{pictures/begging_monk.png}
+\linespread{1}\caption{Begging Monk by John Kenn Mortensen\\ 
+\url{https://creativecommons.org/publicdomain/zero/1.0/deed.en}}
+\end{figure}
+\newpage
+
+\begin{corollary}{Um das Lemma anzuwenden}
+Sei $\mathcal{A}\subseteq C(X,\mathbb{R})$ Punktetrennende Unteralgebra
+mit $1 \in \mathcal{A}, A,B \subseteq X$ Abgeschliossen, $A \cap B = \emptyset$.
+$$\epsilon > 0 \Rightarrow \exists f \in A: \forall x \in X:0\leq f(x)\leq 1
+\forall x \in B: f(x) \geq 1-\epsilon$$
+\end{corollary}
+
+\begin{proof}
+    $\mathcal{A}= \emptyset$.Dann ist das ganze trivial.
+    Sei also $A \neq \emptyset$. Für $a \in A$ Wähle $V_a \in \mathcal{a}$ offen.\\
+    Und $V_a \cap B = \emptyset$
+
+    \nt{
+        $x,y\in X,x\neq y$ Wähle $f \in \mathcal{A}:f(x)\neq f(y)$
+        Dann:
+        $$
+        f^{-1}((f(x)-\delta,f(x)+\delta)), f^{-1}((f(y)-\delta,f(y)+\delta))
+        $$
+        Dann wähle $\delta := |\frac{f(x)-f(y)}{3}|$.\\
+        Dann sind die beiden Mengen disjunkt. \\
+        (Beweis $\langle X,d\rangle$ erfüllt (T2))
+    }
+    $A \subseteq \bigcup_{a \in A}V_a\Rightarrow$ Wähöe $a_1,...,a_n \in A:
+    A \subseteq \bigcup_{i=1}^{n}V_{a_i}$
+\end{proof}
+
+\section{Korrektur}
+
+In der Vorlesungvom 2025.11.04 gab es eine kleine große verwirrung.
+Also ich habe nicht nur mein Tablet vergessen, es ist noch mehr schief gegeanen (What a day).
+Aufjedenfall hat uns, unser Professor (The one and only Woracek) eine Korrektur zukommen lassen.
+Hier ist sie:
+
+\mlenma{Das Lemma (starke Variante)}
+{
+ $ \forall A \subseteq X$ abgeschlossen
+$$\forall z \in X \setminus A
+\exists V \subseteq X
+\forall \epsilon > 0
+\exists f \in \mathcal A$$
+
+sodass
+
+V ist offene Umgebung von z
+$$\wedge
+V \cap A = \emptyset
+\wedge
+\forall x \in X : 0 \leq f(x) \leq 1
+\wedge
+\forall x \in V : f(x) \leq \epsilon
+\wedge
+\forall x \in A : f(x) \geq 1-\epsilon$$
+}
+
+\begin{proof}{Lemma 10.1.1 (starke Variante)}\\
+Wir gehen den beweis schritt für schritt durch
+   \begin{itemize}
+    \item[Schritt 1:] hier haben wir gezeigt dass
+
+$\forall A \subseteq X$ abgeschlossen
+$$
+\forall z \in X \setminus A
+\exists V \subseteq X
+\exists h \in \mathcal A
+\exists \delta \in (0,1]
+$$
+
+sodass
+
+$V$ ist offene Umgebung von z
+$$\wedge
+V \cap A = \emptyset
+\wedge
+\forall x \in X : 0 \leq h(x) \leq 1
+\wedge
+\forall x \in V : h(x) \leq \delta/3
+\wedge
+\forall x \in A : h(x) \geq \delta$$
+
+\item[Schritt 2:] hier haben wir gezeigt dass
+
+Sei h wie in Schritt 1 und definiere 
+$p_n := (1-h^n)^{k^n}$. Dann gilt $"\lim_{n\to\infty} p_n(x) = 0$
+ gleichmaessig für $x \in A und \lim_{n\to\infty} p_n(x) = 1$ gleichmaessig für 
+ $x \in V$".
+
+Der Beweis des oben stehenden Lemmas (starke Variante) ist nun fertig, weil:
+
+Seien A,z gegeben. Waehle V wie in Schritt 1
+. Sei $\epsilon>0$gegeben. Waehle n so gross, dass 
+$$p_n(x) \leq \epsilon fuer alle x \in A$$ und 
+$$p_n(x) \geq 1-\epsilon \forall x \in V. Setze f := 1-p_n.$$
+\end{itemize}
+\end{proof}
+
+zum Korollar:
+\begin{corollary}{}
+$$\forall A,B \subseteq X$
+abgeschlossen und disjunkt
+$$
+\forall \epsilon > 0
+\exists f \in \mathcal A
+$$
+
+sodass
+
+$$
+\forall x \in X : 0 \leq f(x) \leq 1
+\wedge
+\forall x \in A : f(x) \leq \epsilon
+\wedge
+\forall x \in B : f(x) \geq 1-\epsilon
+$$
+\end{corollary}
+
+\begin{proof}{Korollar: 10.1.2}\\
+    Seien $A,B,\epsilon$ gegeben
+\begin{itemize}
+\item  Fuer jedes $z \in A $wenden wir das Lemma an mit der Menge B und dem Punkt z. Dies gibt $V_z$.
+\item Nun reichen endlich viele $V_z$ aus um A zu ueberdecken, waehle solche: $V_{z_1},\dots,V_{z_N}.$
+\item Aus der Eigenschaft des Lemmas waehle nun $f_{z_j}$ für $\epsilon/N$
+\item Betrachte das Produkt dieser $f_{z_j}$. Mit Bernoullischer Ungleichung sieht man dass das Gewuenschte gilt.
+\end{itemize}
+\end{proof}
+
+\section{Weiter in der Vorlesung}
+Nach diesem einschub kommen wir nun zum Nächsten Punkt (alias Satz 10.2.4)
+
+\thm{}
+{
+    Sei $X$ Kompakt, $C(CX,\mathbb{R})$ mit Unteralgebra, nirgends verschwindend und 
+    abgeschlossen bezüglich Komplexer konjugation.
+    $\Rightarrow \overline{\mathcal{A}}^{\infty}=C(X,\mathbb{R})$
+}
+
+\begin{proof}{Satz; 10.2.1}\\
+    Sei $B=\{f\in \mathcal{A}\mid f(x)\in \mathbb{R}\}\subseteq C(X,\mathbb{R})$
+    Unteralgebra von $\mathcal{A}$.
+    Es gelte $\forall \in \mathcal{A}: Re f, im f\in B: Re f = \frac{1}{2}(f+\overline{f})$\\
+    $Im f = \frac{1}{2i}(f-\overline{f})$\\
+    Sei $x \in X$ Wähle $f \in \mathcal{A}: f(x) \neq f(y) \Rightarrow$ entweder $Re f(x) \neq Re f(y)$
+    oder $Im f(x) \neq Im f(y) \Rightarrow B$ ist punktetrennend.\\
+    Aus dem Korollar folgt nun $\overline{B}^{\infty} = C(X,\mathbb{R}) \Rightarrow
+    \overline{\mathcal{A}}^{\infty} = C(X,\mathbb{R})$
+    Sei $f \in C(X,\mathbb{C})$ $Re f \in \overline{B}^{\infty} \subseteq \overline{\mathcal{A}}^{\infty} \Rightarrow
+    f = Re f + i Im f \in \overline{\mathcal{A}}^{\infty}$
+\end{proof}
+
+\thm{}{
+    $X$ kompakt, $T_2$.  $C(X,\mathbb{R}) \supseteq \mathcal{A}$ Unteralgebra $\Rightarrow \mathcal{A}$ ist:
+    $$
+        \mathcal{A}^{t^*} := \{ f \in C(X,\mathbb{R}) \,\mid, 
+        \ker f \supseteq \bigcap_{g \in \mathcal{A}} \ker g \}.
+    $$
+}
+
+\begin{proof}{10.2.2}
+    \begin{itemize}
+        \item[" $\subseteq$":] Sei $f \in \mathcal{A}^{t^*}$. \\
+    Wähle $(g_n)_{n=1}^\infty$, $g_n \in \mathcal{A}$ mit $g_n \to f$.
+
+    $\forall x,y$ mit $e(x) = e(y)$ gilt:\\
+    $0 \in \ker g_n \quad\Rightarrow\quad g_n(x) = g_n(y)$  für alle $n$.\\
+    $\Rightarrow g_n(x) = g_n(y) \to f(x) = f(y)$.
+        \item[“$\supseteq$”] Betrachte 
+    $$
+        Y := X \,\big/\, \bigcap_{g \in \mathcal{A}} \ker g.
+    $$
+    Sei $q : X \to Y$ stetig.\\
+    $\Rightarrow \ker q$ ist Algebra.
+
+    $e(x_1) = e(x_2) \Rightarrow q(x_1) = q(x_2)$.
+    \end{itemize}
+\end{proof}
