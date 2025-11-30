@@ -2,11 +2,11 @@
 In der Vorlesung geht es um die Einführung der Initialen Topologien
 -Ich denke das es darum geht anhand von dem was mein Auge erblickt-
 
-\section{Kategorielle Betrachtung}
+\section{Kommutative Diagramme zur Veranschaulichung}
 Weil die Konstrucktion bei einem normalen (Auch bei nicht normalen) menschen
 ein paar knoten im kopf verursacht, wollen wir uns das ganze mal 
-aus der Kategorientheorie anschauen.\\
-Seien $X_i, i\in I$ Mengen und 
+mit Bildern anschauen (Kommutative Diagramme).\\
+Seien $X_i, i\in I$ Mengen "mit Topologien" und 
 $
 \Phi:
 \begin{cases} Y\to \prod_{i\in I}X_i\\
@@ -14,7 +14,9 @@ $
 \end{cases}
 $
 eine Abbildung.\\
- Wobei $\alpha_{i}: \pi_i \circ \Phi \forall i \in I$ 
+Wobei $\alpha_{i}: \pi_i \circ \Phi,  \forall i \in I$  mit $\pi_i$
+die Projektion auf die $i$-te Komponente ist und damit ist $\pi_i$ stetig     
+$\forall i \in I$.\\
 
 \begin{tikzpicture}[>=stealth, xscale=1.2, yscale=1.2]
 
@@ -91,3 +93,20 @@ Seien $X_i, i \in I$ Mengen mit Topologien $\mathcal{T}_i$ und
 $\alpha_{i}: \pi_i \circ \Phi \forall i \in I$ und $\pi_i$ stetig $\forall i \in I$
 Dann ist $\Phi$ stetig
 
+\dfn{
+    Seien $\rangle X_i,\mathcal{T}_i \langle, i \in I$ topologische, $i \in I$
+    $X$ eine Menge und $f_i: X \to X_i$ Abbildungen, $\forall i \in I$.
+    Die \textbf{initiale Topologie} $\mathcal{T_{\text{init}}}$ auf $X$ bezüglich der Familie von Abbildungen 
+    $(f_i)_{i \in I}$ ist die kleinste Topologie auf $X$, so dass alle Abbildungen $f_i$ stetig sind.   
+    $$
+     \mathcal{T}_{\text{init}} := \text{Topologie erzeugt von } \bigcup_{i \in I}\{f_i^{-1}(O_i) \mid O_i \in \mathcal{T}_i\} 
+    $$
+}
+
+\thm{}
+{
+    Seien $\langle X_i,\mathcal{T}_i \rangle,  i \in I$ topologische Räume, $X$ eine Menge und 
+    $f_i: X \to X_i$ Abbildungen, $\forall i \in I$. 
+    Dann ist die initiale Topologie $\mathcal{T}_{\text{init}}$ auf $X$ bezüglich der Familie von Abbildungen 
+    $(f_i)_{i \in I}$ gegeben durch 
+}
