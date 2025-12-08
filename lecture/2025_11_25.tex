@@ -1,0 +1,312 @@
+\chapter{}
+
+\dfn{}
+{
+$\langle X, \mathcal{T} \rangle$ heißt (T4) wenn:
+$$\forall A, B \subset X \text{ mit } A, B \text{ abgeschlossen und } A \cap B = \emptyset 
+\text{ gibt es offene Mengen } \mathcal{O}_A, \mathcal{O}_B \in \mathcal{T}:$$
+$$\mathcal{O}_A \cap \mathcal{O}_B = \emptyset.\text{ und }
+ A \subset \mathcal{O}_A, B \subset \mathcal{O}_B.$$
+}
+
+\mlenma{}
+{
+    \begin{itemize}
+        \item[(i)] Sei $\langle X, d \rangle$ ein metrischer Raum. 
+        Dann ist $\langle X, \mathcal{T}(d) \rangle$ T4.
+        \item[(ii)] Sei $\langle X, \mathcal{T} \rangle$ Kompakt und (T2). 
+        Dann ist $\langle X, \mathcal{T} \rangle$ T4.
+    \end{itemize}
+}
+
+\begin{proof}{Lemma: 12.01.2 }
+    \begin{itemize}
+        \item [(i)] Sei $A, B \subset X$ abgeschlossen mit
+         $A,B \neq \emptyset A \cap B = \emptyset$.
+         \begin{itemize}
+            \item[Fall:] $x \in A: x \in X\notin B\text{ offen }\implies 
+            \exists \eps_x > 0: U_{\eps_x}(x) \cap B = \emptyset.$
+            \item[Fall:] $y \in B: y \in X\notin A\text{ offen }\implies
+            \exists \delta_y > 0: U_{\delta_y}(y) \cap A = \emptyset.$
+        \end{itemize}
+        Definiere:
+        $$\mathcal{O}_A := \bigcup_{x \in A} U_{\frac{\eps_x}{2}}(x),\quad \text{ offen}$$
+        $$\mathcal{O}_B := \bigcup_{y \in B} U_{\frac{\delta_y}{2}}(y),\quad \text{ offen}$$
+        Angenommen es gibt ein $z \in \mathcal{O}_A \cap \mathcal{O}_B$.
+        Dann gibt es $x \in A, y \in B$ mit
+        $$d(x,y) \leq d(x,z) + d(z,y) < \frac{\eps_x}{2} + \frac{\delta_y}{2}
+        < \eps_x \implies \text{ Widerspruch}.$$ Da 
+        $d(x,y) \geq \eps_x \Rightarrow B\ni y \notin U_{\eps_x}(x) $. und 
+        $d(x,y) \geq \delta_y \Rightarrow A \ni \in U_{\delta_y}(y)$.
+        \item[(ii)] Sei $\langle X, \mathcal{T} \rangle$ Ein Topologischer Raum, (T2) und kompakt.
+        Betrachte $A,B \neq \emptyset \in X $, Kompakt und disjunkt.\\
+        $\Rightarrow$ A,B sind abgeschlossen, $\neq \emptyset$ und disjunkt.
+       $$\Rightarrow \exists \mathcal{O}_A, \mathcal{O}_B \in \mathcal{T}:
+         A \subset \mathcal{O}_A, B \subset \mathcal{O}_B \mathcal{O}_A \cap \mathcal{O}_B = \emptyset.$$
+    \end{itemize}
+\end{proof}
+
+\thm{Lemma von Urysohn}
+{
+Sei $\langle X, \mathcal{T} \rangle$ ein T4 Raum.
+Dann $$\forall A, B \subset X \text{ mit } A, B \neq \emptyset \text{ abgeschlossen und } 
+A \cap B = \emptyset$$
+$$\exists f: X \to [0,1] \text{ stetig mit } f\mid_A = \{0\}, f\mid_B = \{1\}.$$
+}
+
+\begin{tikzpicture}[scale=1.1, line join=round]
+
+% Gesamtraum X als einfacher Rahmen
+\draw[rounded corners=18pt, thick] (0,0) rectangle (11,5);
+\node[anchor=west] at (0.3,4.6) {$X$};
+\node[anchor=west] at (7.4,4.6) {$B^{C}$};
+
+% --------- äußere blaue Schicht: V(3/4) (sehr einfache Kurve) ---------
+%\fill[myblue1]
+%  plot[smooth cycle, tension=0.8]
+%  coordinates{(0.8,0.8) (1.0,4.0) (4.5,4.6) (8.0,4.2) (8.7,3.2) (9.5,2.2) (8.7,1.1) (5.5,0.5) (2.2,0.5)};
+\draw[thick]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(0.8,0.8) (1.0,4.0) (4.5,4.6) (8.0,4.2) (8.7,3.2) (9.5,2.2) (8.7,1.1) (5.5,0.5) (2.2,0.5)};
+\node at (9.7,2.0) {$V(3/4)$};
+
+% --------- mittlere Schicht: V(1/2) ---------
+\fill[myblue1]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(1.3,1.1) (1.4,3.6) (4.3,4.1) (7.3,3.8) (8.0,3.0) (8.5,2.1) (7.4,1.2) (5.0,0.6) (2.4,0.7)};
+%\draw[thick]
+%  plot[smooth cycle, tension=0.8]
+%  coordinates{(1.3,1.1) (1.4,3.6) (4.3,4.1) (7.3,3.8) (8.5,3.0) (8.4,2.1) (7.4,1.3) (5.0,0.9) (2.4,0.9)};
+\node at (8.0,2.9) {$U(3/4)$};
+
+% --------- innere Schicht: V(1/4) ---------
+%\fill[myblue3]
+%  plot[smooth cycle, tension=0.8]
+%  coordinates{(1.8,1.5) (2.0,3.1) (4.0,3.6) (6.2,3.2) (7.2,2.5) (7.0,1.9) (5.8,1.3) (4.1,1.1) (2.5,1.2)};
+\draw[thick]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(1.8,1.5) (2.0,3.1) (4.0,3.6) (6.2,3.2) (7.2,2.5) (7.0,1.9) (5.8,1.3) (4.1,1.1) (2.5,1.2)};
+%\node at (6.5,2.0) {$V(1/2)$};
+
+
+% --------- U(1/2)-Kurve (einfacher Blob um A) ---------
+\fill[myblue2]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(2.0,2.0) (2.0,2.8) (3.6,3.3) (6.2,2.9) (6.5,2.8) (7.0,2.2) (5.7,1.45) (4.1,1.39) (2.5,1.4)};
+\node at (5.5,2.7) {$U(1/2)$};
+\node at (7.0,2.0) {$V(1/2)$};
+
+
+% --------- U(1/4)-Kurve (kleiner Blob um A) ---------
+\draw[thick]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(2.2,2.2) (2.5,2.5) (3.3,2.9) (5.0,2.5) (6.1,1.9) (3.0,1.5) (2.7,1.7)};
+\node at (5.9,2.0) {$V(1/4)$};
+
+
+\fill[myblue3]
+  plot[smooth cycle, tension=0.8]
+  coordinates{(2.5,2.2) (2.5,2.4) (3.3,2.7) (4.0,2.5) (4.7,1.9) (3.0,1.6) (2.9,1.8)};
+\node at (4.5,2.3) {$U(1/4)$};
+% --------- A: innerer Bereich ---------
+\fill[white] (3.3,2.1) circle (0.4);
+\node at (3.3,2.1) {$A$};
+
+% --------- B: gelbe Kugel außerhalb aller Kurven ---------
+\fill[myyellow] (9.8,3.6) circle (0.7);
+\draw[thick] (9.8,3.6) circle (0.7);
+\node at (9.8,3.6) {$B$};
+
+\end{tikzpicture}
+
+
+\mlenma{}
+{
+    Seie $\langle X, \mathcal{T} \rangle$ ein Topologischer, $M\subseteq [0,1]$ dicht und $\{0,1\} \subseteq M$.
+    Definiere $$\alpha : M \to \mathcal{T}$$ mit 
+    \begin{itemize}
+        \item[(i)] $\alpha(0) = \emptyset, \alpha(1) = X$
+        \item[(ii)] $r,s \in M, r < s \implies \overline{\alpha(r)} \subseteq \alpha(s)$ 
+    \end{itemize}
+    Dann gibt es eine stetige Funktion $f: X \to [0,1]$ mit
+    $$\forall r \in M: \{x \in X: f(x) < r\} = \alpha(r).$$
+}
+
+\begin{proof}{Lemma: 12.01.4 }
+   $f$ ist Subbasis der Euglischen Standardtopologie auf $[0,1]$.
+   ($\{(v,1]\mid v \in [0,1))\} \cup \{[0,v)\mid v \in (0,1]\}$).
+   \begin{itemize}
+    \item Sei $v \in [0,1)$.
+    \begin{equation*}
+    \begin{split}
+    f^{-1}((v,1])  &= \{x \in X \mid f(x) > v\} \\
+    &=\{x\in X\mid \exists r \in M: r < v, x \in \alpha(r)\}\\
+    &= \bigcup_{\substack{r \in M \\ r > v}} \alpha(r) \in \mathcal{T}
+    \end{split}
+ \end{equation*}
+ \item Sie v in (0,1].
+ \begin{equation*}
+    \begin{split}
+    f^{-1}((0,v])  &= \{x \in X \mid f(x) > v\} \\
+    &=\{x\in X\mid \exists s \in M: f(x) > s > v\}\\
+    &\overset{\bigstar}{=} \{x \in X \mid \exists s \in M: x \notin \alpha(s), s > v\}\\
+    &= \bigcup_{\substack{s \in M \\ s > v}} X\setminus \alpha(s) 
+    \underbrace{\subseteq}_{(\star \star)}\bigcup_{\substack{s \in M \\ s > v}}
+     X\setminus \overline{\alpha(s)} \in \mathcal{T}
+    \end{split}
+ \end{equation*}
+ Mit ($\bigstar$) $("\subseteq")$ 
+ \begin{equation*}
+    \begin{split}
+    &\forall r \leq s: \alpha(r) \subseteq \alpha(s) \\
+    &\Rightarrow \forall r \leq s: x \notin \alpha(s)\\
+    & \Rightarrow f(x) \leq r < s
+    \end{split}
+ \end{equation*}
+ Wähle also $s' \in M$ mit $s > s' > v$.\\
+ Sei $s > v$ und $s \in M,\quad x\in X\setminus \alpha(s)$\\
+ $(\star \star)$ Es gilt sogar Gleichheit, da Wähle $s' \in M$ mit $s > s' > v 
+ \Rightarrow \overline{\alpha(s')} \subseteq \alpha(r) \Rightarrow x \notin \overline{\alpha(s')}$.
+   \end{itemize}
+\end{proof}
+
+\mlenma{}
+{
+    Sei $X$ ein T4 Raum, $A,B \subset X$ abgeschlossen, $A \cap B = \emptyset$.
+    \begin{equation*}
+    \begin{split}
+    \Rightarrow &\exists M \subseteq [0,1] \text{ dicht mit } \{0,1\} \subseteq M\\
+    &\exists \alpha : M \to \mathcal{T} \text{ mit } \alpha(0) = \emptyset, \alpha(1) = X,\\
+    \forall r,s \in M, r < s &\implies \overline{\alpha(r)} \subseteq \alpha(s) (\star),
+    \end{split}
+    \end{equation*}
+    so dass $\forall r \in M\setminus \{0,1\}: A \subseteq \alpha(r) $und 
+    $B \subseteq X\setminus \overline{\alpha(r)} \quad (\star \star)$.
+}
+
+\begin{proof}{Lemma: 12.01.5}
+    $$M:=\{\frac{k}{2j}\mid j = 0, k = \{0,\dots 2j\} \subseteq [0,1], \ni 0,1\}$$
+    Dicht.
+    Konstruiere rekursiv
+    \begin{equation*}
+    \begin{array}{ccccccc}
+             & 0 & & & 1\\
+    j = 0:   &   & & &  \\
+    j = 1:   &   & \frac{1}{2} & &\\
+    j = 2:   & & & & \\
+    .\\
+    .\\
+    .
+    \end{array}
+\end{equation*}
+\begin{itemize}
+    \item[j=0:] Setze $\alpha(0)=\emptyset, \alpha(1) = X$
+    \item[j = 1:] Wähle $\mathcal{O}_A,\mathcal{O}_B$ offen, disjunkt; 
+    $$ A \subseteq \mathcal{O}_A, B \subseteq \mathcal{O}_B$$
+    Setze $\alpha(\frac{1}{2}) = \mathcal{O}_A$ Dann gilt.\\
+    \begin{itemize}
+        \item[$(\star)$] $A \subseteq \alpha(\frac{1}{2}),
+         B\cup \overline{\alpha(\frac{1}{2})} \subseteq B \cup (X\setminus \mathcal{O}_B) \neq \emptyset
+         \alpha(\frac{1}{2}) = \mathcal{O}_A \subseteq X \setminus \mathcal{O}_B$
+         \item[$(\star \star)$] $\overline{\alpha(\frac{1}{2})} \subseteq \alpha(1) = 1, 
+         \underbrace{\overline{\alpha(0)}}_{\emptyset} \subseteq \alpha(\frac{1}{2})$
+    \end{itemize}
+    \item[j = $\mapsto$ j+1] 
+    \begin{itemize}
+        \item[IV:] Wir haben schon ein $\alpha$ deiniert für $\frac{k}{2^i},i\in j$ und gekürztmit 
+        $(\star),( \star \star)$
+        zu konstruieren ist $\alpha(\frac{2l+1}{2^{j+1}})$ für $l=\{0,\dots,2^{j-1}\}$ so das 
+        $(\star), (\star \star)$ immer noch gelten.
+        \begin{itemize}
+            \item[Fall: $l=2^{j-1}$:] Wähle $\mathcal{O},\mathcal{O}_B$ Offen, disjunkt, $B\subseteq 
+            \mathcal{O}_B$ Offen. Setze $\alpha( \frac{2\ell+1}{2^{i+1}}) = \mathcal{O}$
+        $$
+        \forall r = \frac{k}{2^i}:\quad \overline{\alpha(r)} 
+        \subseteq\overline{\alpha( \frac{2^i - 1}{2^i})}\subseteq\overline{\mathcal{O}}.
+        $$ und $(\star)$ gilt auch für $\frac{2\ell +1}{2^j}$
+        $A \subseteq \alpha(\frac{2^{j-1}}{2^j})\subseteq \mathcal{O}$
+        \begin{equation*}
+            \begin{split}
+                \mathcal{O} \cup \mathcal{O}_B &= \emptyset \Rightarrow \mathcal{O}
+                \subseteq \underset{\text{Abg.}}{X \setminus \mathcal{O}_B}\\
+                &\Rightarrow \overline{\mathcal{O}} \subseteq X \setminus \mathcal{O}_B 
+                \subseteq X \setminus B \\
+                &\Rightarrow \overline{\mathcal{O}}\cup X\setminus B = 
+                \emptyset \quad (\star \star)\text{ gilt auch für} \frac{2 \ell +1}{2^j}
+            \end{split}
+        \end{equation*}
+        \item[Fall: $l = 0$] Wähle $\mathcal{O}_A,\mathcal{O}$ offen, disjunkt mit $A \subseteq \mathcal{O}_A$.
+        Setze 
+        \begin{equation*}
+            \begin{split}
+                \alpha\bigl(\tfrac{1}{2^{j+1}}\bigr) &:= \mathcal{O}_A,\\
+                &\Rightarrow A \subseteq \alpha\bigl(\tfrac{1}{2^{j+1}}\bigr)=\mathcal{O}_A \subseteq 
+        \underbrace{X\setminus \mathcal{O}}_{\text{abg.}},\\
+        & \overline{\alpha\bigl(\tfrac{1}{2^{j+1}}\bigr)} \cap \mathcal{O} = \emptyset 
+          \Leftarrow \overline{\alpha\bigl(\tfrac{1}{2^{j+1}}\bigr)}= \overline{\mathcal{O}_A} \subseteq X \setminus \mathcal{O},\\
+        & \overline{\alpha\bigl(\tfrac{1}{2^{j+1}}\bigr)} \cap (X \setminus \alpha\bigl(\tfrac{1}{2^j}\bigr)) = \emptyset 
+          \Rightarrow \overline{\alpha\bigl(\tfrac{1}{2^{j+1}}\bigr)}\subseteq\alpha\bigl(\tfrac{1}{2^j}\bigr).\\
+        &  \overline{\alpha(\frac{1}{2^{j+1}})} \cap B \subseteq \overline{\alpha(\frac{1}{2^j})}\cap B =\emptyset
+        \end{split}
+        \end{equation*}
+        
+        \item[Fall: $l\in \{1,\dots,2^{l-2}\}$] 
+        \begin{equation*}
+            \begin{split}
+                & \frac{1}{2^i} < \frac{2\ell+1}{2^{i+1}} < \frac{\ell+1}{2^i}.\\
+                &\text{Daraus folgt } \overline{\alpha\left(\frac{1}{2^i}\right)} \subseteq
+                \alpha\left(\frac{2\ell+1}{2^{i+1}}\right).\\
+                &\alpha\left(\frac{1}{2^i}\right),\;
+                X \setminus \alpha\left( \tfrac{\ell+1}{2^i}\right)
+                \quad\text{ sind abgeschlossen und disjunkt}.\\
+                &\text{Wähle nun offene, disjunkte Mengen } \mathcal{O}, \mathcal{O}' \text{ mit}\\
+                &\alpha\left(\tfrac{1}{2^i}\right) \subseteq \mathcal{O},
+                \; X \setminus \alpha\left( \tfrac{\ell+1}{2^i}\right) \subseteq \mathcal{O}'.\\
+                &\text{Setze } \alpha\left( \frac{2\ell+1}{2^{i+1}}\right) := \mathcal{O}.\\
+                &\Rightarrow \alpha\left(\tfrac{1}{2^i}\right) \subseteq \mathcal{O}
+                = \alpha\left( \tfrac{2\ell+1}{2^{i+1}} \right).\\
+                &\alpha\left( \tfrac{2\ell+1}{2^{i+1}} \right)
+                = \mathcal{O} \subseteq X \setminus \mathcal{O}'
+                \quad\Longrightarrow\quad
+                \overline{\alpha\left( \tfrac{2\ell+1}{2^{i+1}} \right)}
+                \subseteq X \setminus \mathcal{O}'.\\
+                & A \subseteq \alpha\left(\tfrac{1}{2^i}\right)
+                \subseteq \alpha\left( \tfrac{2\ell+1}{2^{i+1}} \right).\\
+                & \mathcal{O}' = B \cap \overline{\alpha\left( \tfrac{\ell+1}{2^i} \right)}
+                \supseteq B \cap \alpha\left( \tfrac{2\ell+1}{2^{i+1}} \right).
+            \end{split}
+        \end{equation*}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\end{proof}
+
+\begin{proof}{Satz: 12.01.3}
+    Seien $A, B$ abgeschlossen $\neq \emptyset$ und disjunkt.
+    Wähle $M,\alpha$ aus dem Lemma $\Rightarrow$ stetig $x \in A 
+    \Rightarrow x \in \alpha(r) \forall r > 0 \Rightarrow f(x) = 0$
+    $x \in B \Rightarrow x \notin \alpha(r) \forall r < 1 
+   h \Rightarrow f(x)=1$
+\end{proof}
+
+\nt{ Der Satz ist sogra ein "$\Leftrightarrow$" mit 
+$\mathcal{O}_A = f^{-1}([0,\frac{1}{2}]) \quad 
+\mathcal{O}_B = f^{-1}((\frac{\pi}{2},1])$ z.B}
+
+\nt{
+    Es gilt so lange $\langle X,\mathcal{T} \rangle$ (T2) so dass
+    $$\exists x,y \in X, x \neq y \not\exists f : x \to [0,1]$$ 
+    Stetig und $f(x)=0, f(y)=1$
+    $$ \int_{X} (f \circ T) \mid det dT \mid d \lambda = \int_Y f d\lambda 
+    \lambda^{T-1} << \lambda \text{ und } \frac{d \lambda^{T-1}}{d \lambda} = \mid det dT \mid
+    $$
+    Transformationssformel
+}
+
+\mlenma{}
+{
+    $$ T: \mathbb{R}^n \to \mathbb{R} \text{linear, bijektiv}
+    \Rightarrow \lambda^{T-1}_{n} << \lambda_n \text{ und } 
+    \frac{d\lambda}{d\lambda} = \mid det T\mid$$
+    mit $\lambda_n$ n-dimensionales Lebesgue Maß
+}    
