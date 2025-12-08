@@ -303,9 +303,24 @@ $\mathcal{O}_A = f^{-1}([0,\frac{1}{2}]) \quad
     Transformationssformel
 }
 
+
+\[
+\begin{tikzcd}[row sep=2.2em, column sep=3.5em]
+\lambda^{T^{-1}} 
+    & \lambda \arrow[l, decorate, decoration={snake, amplitude=1.2pt}] \\[0.3em]
+X \arrow[r, "T"] \arrow[dr, "f\circ T"'] &
+Y \arrow[d, "f"] \\[0.3em]
+& \mathbb{R}
+\end{tikzcd}
+\]
+
+
+
+
+
 \mlenma{}
 {
-    $$ T: \mathbb{R}^n \to \mathbb{R} \text{linear, bijektiv}
+    $$ T: \mathbb{R}^n \to \mathbb{R} \text{ linear, bijektiv }
     \Rightarrow \lambda^{T-1}_{n} << \lambda_n \text{ und } 
     \frac{d\lambda}{d\lambda} = \mid det T\mid$$
     mit $\lambda_n$ n-dimensionales Lebesgue Maß
