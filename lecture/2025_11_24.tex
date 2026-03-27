@@ -1,13 +1,16 @@
 \chapter{}
-In der Vorlesung geht es um die Einführung der Initialen Topologien
--Ich denke das es darum geht anhand von dem was mein Auge erblickt-
+In dieser Vorlesung witmen wir uns der Initioalen Topologie. 
+Um sie zu Motivierne betrachten wir zu nächst 
+zwei kommutatuve Diagramme, die die Konstruktion der initialen 
+Topologie veranschaulichen sollen.
 
 \section{Kommutative Diagramme zur Veranschaulichung}
 
-Weil die Konstrucktion bei einem normalen (Auch bei nicht normalen) menschen
-ein paar knoten im kopf verursacht, wollen wir uns das ganze mal 
+Weil die Konstrucktion bei einem normalen (Auch bei nicht normalen)
+menschen
+ein paar Knoten im kopf verursacht, wollen wir uns das ganze mal 
 mit Bildern anschauen (Kommutative Diagramme).\\
-Seien $X_i, i\in I$ Mengen "mit Topologien" und 
+Seien $X_i, i\in I$ Mengen "mit Haxen" und 
 $
 \Phi:
 \begin{cases} Y\to \prod_{i\in I}X_i\\
@@ -28,16 +31,16 @@ $\forall i \in I$.\\
 \node (Xi) at (0,-2) {$\prod_{i\in I}X_i$};
 
 % Zielräume ganz unten (4 Stück)
-\node (Xk-1) at (-4,-4) {$(X_{k-1},\mathcal{T}_{k-1})$,};
+\node (Xk-1) at (-4,-4) {$(X_{k-1})$,};
 \node (dots) at (-3,-4) {\quad$\dots$,};
-\node (Xk) at (-2,-4) {$(X_{k},\mathcal{T}_{k})$,};
+\node (Xk) at (-2,-4) {$(X_{k})$,};
 \node (X0) at (0,-4) {$\dots$};
-\node (Xj) at (2,-4) {,$(X_{j},\mathcal{T}_{j})$,};
+\node (Xj) at (2,-4) {,$(X_{j})$,};
 \node (dots2) at (3,-4) {$\dots$,};
-\node (Xj+1) at (4,-4) {\quad ,$(X_{j+1},\mathcal{T}_{j+1})$};
+\node (Xj+1) at (4,-4) {\quad ,$(X_{j+1})$};
 
 % f_i, f_j
-\draw[->, dashed] (Y) -- node[left] {$\Phi$} (Xi);
+\draw[->, dashed] (Y) -- node[left] {$\exists!$} node[right] {$\Phi$} (Xi);
 
 % Xi → Ziele
 \draw[->] (Xi) -- node[left] {$\pi_{k}$} (Xk);
@@ -71,7 +74,7 @@ bezüglich der Familie von Abbildungen $(\alpha_i)_{i\in I}$.\\
 \node (Xj+1) at (4,-4) {\quad ,$\langle X_{j+1},\mathcal{T}_{j+1}\rangle$};
 
 % f_i, f_j
-\draw[->, dashed] (Y) -- node[left] {$\Phi$} (Xi);
+\draw[->, dashed] (Y) -- node[left] {$\exists!$} node[right] {$\Phi$} (Xi);
 
 % Xi → Ziele
 \draw[->] (Xi) -- node[left] {$\pi_{k}$} (Xk);
@@ -93,16 +96,32 @@ Im folgenden wollen wir zeigen das wenn gilt:
 Seien $X_i, i \in I$ Mengen mit Topologien $\mathcal{T}_i$ und 
 $\alpha_{i}: \pi_i \circ \Phi \forall i \in I$ und $\pi_i$ stetig $\forall i \in I$
 Dann ist $\Phi$ stetig
-
-\dfn{
-    Seien $\rangle X_i,\mathcal{T}_i \langle, i \in I$ topologische, $i \in I$
+\dfn{}
+{
+    Seien $\langle X_i,\mathcal{T}_i \rangle, i \in I$ topologische Räume, $X$ eine Menge
+    und $f_i: X \to X_i$ Abbildungen, $\forall i \in I$.
+    Die \textbf{initiale Topologie} $\mathcal{T}_{\text{init}}$ auf $X$ von $\langle X_i,\mathcal{T}_i\rangle, i \in I$ 
+    bezüglich der $f_i$ ist definiert als die kleinste Topologie die 
+    $$ 
+    \mathcal{T}_{\text{init}} \supseteq \bigcup_{i \in I}\{f_i^{-1}(O_i) \mid O_i \in \mathcal{T}_i\}
+    $$
+    erfüllt.
+}
+    Die Wohl interessanteste eigenschaft ist das 
+$$\forall i \in I: f_i: \langle X, \mathcal{T}_{\text{init}} 
+\rangle \to \langle X_i, \mathcal{T}_i \rangle$$ stetig ist. Das ist sogar
+so ineressant das man sie auch oft wie folgt definiert:
+\dfn{}
+{
+    Seien $\langle X_i,\mathcal{T}_i \rangle, i \in I$ topologische Räume, $i \in I$
     $X$ eine Menge und $f_i: X \to X_i$ Abbildungen, $\forall i \in I$.
-    Die \textbf{initiale Topologie} $\mathcal{T_{\text{init}}}$ auf $X$ bezüglich der Familie von Abbildungen 
+    Die initiale \textbf{Topologie} $\mathcal{T_{\text{init}}}$ auf $X$ bezüglich der Familie von Abbildungen 
     $(f_i)_{i \in I}$ ist die kleinste Topologie auf $X$, so dass alle Abbildungen $f_i$ stetig sind.   
     $$
      \mathcal{T}_{\text{init}} := \text{Topologie erzeugt von } \bigcup_{i \in I}\{f_i^{-1}(O_i) \mid O_i \in \mathcal{T}_i\} 
     $$
 }
+
 
 \thm{}
 {
@@ -117,7 +136,7 @@ Dann ist $\Phi$ stetig
     \end{enumerate}
 }
 
-\begin{proof}{Satz:11.2.2}
+\begin{proof}{Satz:11.2.3}
     \begin{enumerate}
         \item["(i) $\Rightarrow$ (ii)"] Sei $g: \langle Y, \mathcal{V} \rangle \to \langle X, \mathcal{T} \rangle$ eine Abbildung.
         \begin{itemize}

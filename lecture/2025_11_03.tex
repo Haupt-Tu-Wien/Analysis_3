@@ -59,7 +59,7 @@ Jetzt habe ich mir das Lemma durchgelesen und es sieht sehr sinnvoll aus.
         \Rightarrow d(x,y)< \epsilon
     \end{split}
     \end{equation*}
-    Dann folgt $\rangle \Omega, d \langle$ ist totalbeschränkt
+    Dann folgt $\langle \Omega, d \rangle$ ist totalbeschränkt
 }
      
 \begin{proof}{Lemma 9.0.2}\\
@@ -164,7 +164,7 @@ Nachdem wir das Lemma bewiesen haben können wir die Rückrichtnung antreten.
     Dann gilt: $1 \in \overline{\mathcal{A}}^{\|\cdot\|_{\infty}}$
 }
 
-\begin{proof}{Lemma 9.0.3}\\
+\begin{proof}{Lemma 9.0.6}\\
     \begin{itemize}
         \item[(1.)] Wir zeigen:$\exists f \in \mathcal{A} \forall x \in X; f(x)>0$
         Sei $ x \in X \,$ 
@@ -197,7 +197,7 @@ Nachdem wir das Lemma bewiesen haben können wir die Rückrichtnung antreten.
     annehmen dass $1 \in \mathcal{A}$ (wegen Lemma 9.0.6).
 }
 
-\begin{proof}
+\begin{proof}{Satz 9.0.5}\\
     Sei $\mathcal{A}$ Wie in Satz von Stone-Weierstraß. Betrachte $\mathcal{B}:=span(\mathcal{A}\cup \{1\})$
     Dann ist $\mathcal{B}$ eine Unteralgebra das bedeutet ($(\sum_{endl.}\alpha_i f_i + \alpha 1)(\sum_{endl.}\beta_i g_i + \beta 1) = [\cdots] \in \mathcal{A}$) für die gilt:
     \begin{enumerate}
@@ -227,43 +227,108 @@ Nachdem wir das Lemma bewiesen haben können wir die Rückrichtnung antreten.
     \end{split}
 \end{equation*}
 }
-\begin{tikzpicture}[scale=1]
 
-  % großer Kreis
-  \draw (0,0) circle (2cm);
+\begin{tikzpicture}[>=stealth, font=\small]
 
-  % Ellipse um z
-  \draw[fill=blue!10] (-1,0) ellipse (0.7cm and 1cm);
-  \fill (-1,0) circle (1.5pt);
-  \node at (-1.1,0.2) {$z$};
+% ============================================================
+% LINKES PANEL: Topologischer Raum X
+% ============================================================
 
-  % Rechteck A
-  \draw[fill=blue!10] (0.5,0.2) rectangle (1.7,1.5);
-  \node at (1.5,1.1) {$A$};
+% X: äußere Ellipse
+\draw[thick] (0,0) ellipse (3.2cm and 2.6cm);
+\node[above right, gray] at (2.8, 2.2) {$X$};
 
-  % V im Inneren
-  \node at (0,-0.2) {$V$};
+% A: abgeschlossene Menge (links, blau)
+\fill[red!12]  (-2.3, -1.35) rectangle (-0.6, 1.35);
+\draw[red!60, thick] (-2.3, -1.35) rectangle (-0.6, 1.35);
+\node[red!80!black, font=\bfseries] at (-1.45, 0.25) {$A$};
+\node[red!60!black, font=\tiny]     at (-1.45, -0.25) {abgeschlossen};
 
-  % Achse unten: 0, epsilon, 1-epsilon, 1
-  \draw (-2.3,-2.3) -- (2.3,-2.3);
+% V: offene Umgebung von z (rechts, grün, gestrichelt)
+\fill[green!15] (1.2, 0) ellipse (0.88cm and 0.88cm);
+\draw[green!60!black, thick, dashed] (1.2, 0) ellipse (0.88cm and 0.88cm);
+\node[green!50!black, font=\bfseries] at (1.2, 0.25) {$V$};
+\node[green!40!black, font=\tiny] at (1.2, -0.2) {offen};
 
-  % Ticks
-  \draw (-2.3,-2.25) -- (-2.3,-2.35);   % 0
-  \draw (-0.7,-2.25) -- (-0.7,-2.35);   % eps
-  \draw (0.7,-2.25) -- (0.7,-2.35);     % 1-eps
-  \draw (2.3,-2.25) -- (2.3,-2.35);     % 1
+% z: Punkt
+\fill[green!60!black] (1.2, 0.65) circle (2.5pt);
+\node[right, font=\footnotesize] at (1.28, 0.65) {$z$};
 
-  % Beschriftungen
-  \node[below] at (-2.3,-2.35) {$0$};
-  \node[below] at (-0.7,-2.35) {$\varepsilon$};
-  \node[below] at (0.7,-2.35) {$1-\varepsilon$};
-  \node[below] at (2.3,-2.35) {$1$};
+% X \ A Label
+\node[gray!70, font=\footnotesize] at (0.0, -2.0) {$X \setminus A$};
 
-  % f \in A
-  \node[right] at (2.5,-2.3) {$f \in \mathcal{A}$};
+% V ∩ A = ∅ Annotation
+\draw[gray!50, dashed] (-0.6, 0) -- (0.32, 0);
+\node[gray!60, font=\tiny] at (-0.14, 0.22) {$V \cap A = \emptyset$};
+
+% ============================================================
+% PFEIL f von links nach rechts
+% ============================================================
+\draw[->, thick, gray!70] (3.5, 0) -- (4.5, 0);
+\node[above, font=\footnotesize] at (4.0, 0.05) {$f$};
+\node[below, font=\tiny, gray] at (4.0, -0.05) {$\in \mathcal{A}$};
+
+% ============================================================
+% RECHTES PANEL: Graph von f
+% ============================================================
+\begin{scope}[xshift=8.2cm, yshift=-2.2cm]
+
+  % Achsen
+  \draw[->] (-0.3, 0) -- (4.2, 0) node[right, font=\footnotesize] {$x$};
+  \draw[->] (0, -0.2) -- (0, 4.4) node[above, font=\footnotesize] {$f(x)$};
+
+  % y-Ticks und Labels
+  \draw (-0.07,0)   -- (0.07,0)   node[left=4pt, font=\footnotesize] {$0$};
+  \draw (-0.07,0.8) -- (0.07,0.8) node[left=4pt, font=\footnotesize, green!60!black] {$\varepsilon$};
+  \draw (-0.07,3.2) -- (0.07,3.2) node[left=4pt, font=\footnotesize, blue!70!black]  {$1{-}\varepsilon$};
+  \draw (-0.07,4.0) -- (0.07,4.0) node[left=4pt, font=\footnotesize] {$1$};
+
+  % Gestrichelte Führungslinien
+  \draw[green!50, dashed, thin] (0.07, 0.8) -- (3.9, 0.8);
+  \draw[red!40,  dashed, thin] (0.07, 3.2) -- (3.9, 3.2);
+  \draw[gray!40,  dashed, thin] (0.07, 4.0) -- (3.9, 4.0);
+
+  % Farbige Bänder für A und V
+  \fill[red!10]  (0.15, 0) rectangle (0.95, 4.1);
+  \fill[green!12] (2.55, 0) rectangle (3.35, 4.1);
+
+  % Kurve von f
+  \draw[violet!70!red, very thick]
+    (0.15, 3.25)
+    .. controls (0.55, 3.22) and (0.85, 3.20) ..
+    (0.95, 3.22)
+    .. controls (1.30, 3.15) and (1.60, 2.50) ..
+    (1.95, 1.60)
+    .. controls (2.20, 1.00) and (2.40, 0.82) ..
+    (2.55, 0.78)
+    .. controls (2.80, 0.77) and (3.10, 0.77) ..
+    (3.35, 0.78);
+
+  % Wert-Annotationen auf Kurve
+  \node[red!70!black,  font=\tiny, above] at (0.55, 3.22) {$f \geq 1-\varepsilon$};
+  \node[green!60!black, font=\tiny, below] at (2.95, 0.78) {$f \leq \varepsilon$};
+
+  % Bandbezeichnungen unten
+  \node[red!70!black,  font=\footnotesize] at (0.55, -0.35) {$A$};
+  \node[green!60!black, font=\footnotesize] at (2.95, -0.35) {$V$};
+
+\end{scope}
+
+% ============================================================
+% ZUSAMMENFASSUNG unten
+% ============================================================
+\begin{scope}[yshift=-3.4cm]
+  \draw[gray!40, rounded corners=4pt]
+    (-0.2, -0.55) rectangle (7.0, 0.55);
+  \node[font=\footnotesize, gray!80] at (3.4, 0.18)
+    {$\forall\,\varepsilon>0\;\exists\,f\in\mathcal{A}:\;
+      f|_V \leq \varepsilon,\quad f|_A \geq 1-\varepsilon,\quad |f|\leq 1$};
+  \node[font=\tiny, gray!60] at (3.4, -0.22)
+    {$A$ abgeschlossen,\; $z\notin A$,\;
+      $V$ offene Umgebung von $z$,\; $V\cap A=\emptyset$};
+\end{scope}
 
 \end{tikzpicture}
-
 \begin{proof}{Lemma 9.0.7}\\
    \begin{itemize}
     \item[(1.)] Wir zeigen: $\exists h \in \mathcal{A}$ so dass

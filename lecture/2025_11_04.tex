@@ -1,9 +1,90 @@
 \chapter{}
-\begin{corollary}{Um das Lemma anzuwenden}
+In der Letzten Vorlesung haben wir den Satz von Stone-Weierstraß behandelt.
+Zur Wiederholung: Sei $\mathcal{A}$ eine Unteralgebra von $C(X,\mathbb{R})$ 
+die punktetrennend ist und $1 \in \mathcal{A}$, dann gilt 
+$\overline{\mathcal{A}}^{\infty} = C(X,\mathbb{R})$.
+
+\ex{}{$X:=[0,1], \mathcal{A} = \mathbb{R}[z]$}
+Satz folgt wen wir den Spezialfall $1 \in \mathcal{A}$ beweisen Können.
+
+Wir haben auch das Lemma \textbf{9.0.7} angefangen zu beweisen, 
+zur Wiederholung die Aussage: \\
+Sei $\mathcal{A} \subseteq C(X,\mathbb{R})$ Punktetrennende Unteralgebra mit $1 \in \mathcal{A}$, $A \subseteq X$ Abgeschlossen, $z \in X\setminus A$. Dann gilt:
 Sei $\mathcal{A}\subseteq C(X,\mathbb{R})$ Punktetrennende Unteralgebra
-mit $1 \in \mathcal{A}, A,B \subseteq X$ Abgeschliossen, $A \cap B = \emptyset$.
-$$\epsilon > 0 \Rightarrow \exists f \in A: \forall x \in X:0\leq f(x)\leq 1
-\forall x \in B: f(x) \geq 1-\epsilon$$
+mit $1 \in \mathcal{A}, z \in \mathcal{A} \in X $ abgeschlossen mit $z \in X \setminus A$
+Dann gilt:
+\begin{equation*}
+    \begin{split}
+        \exists V \subseteq \mathcal{U}(z) \text{ offen } &: V \cap A = \emptyset \wedge\\
+        \forall \epsilon > 0 \exists f \in \mathcal{A} &: \forall x \in X : 0 \leq f(x) \leq 1\\
+        \forall x \in V &: f(x) \leq \epsilon,\\
+        \forall x \in A &: f(x) \geq 1-\epsilon
+    \end{split}
+\end{equation*}
+Weiter zum Beweis des Lemmas:
+\begin{proof}{Lemma 9.0.7}
+    
+    \begin{enumerate}
+        \item[(1.)] $\exists h \in \mathcal{A}, \delta \in [0,1]$ $V \in \mathcal{U}(z)$  offen:
+        \begin{equation*}
+            \begin{split}
+                \forall x \in X &: 0 \leq h(x) \leq 1\\
+                \forall x \in V &: h(x) \leq \delta/3\\
+                \forall x \in A &: h(x) \geq \delta\\
+                h(z) &= 0
+            \end{split}
+        \end{equation*}
+        Für den rest des schrittes verweise ich auf die Vorlesung vom 2025.11.03
+
+        \item[(2.)] Sei $k \in \bbN : k-1 \leq \frac{1}{\delta} \leq k$\\
+    Für $n \in \mathbb{N}$ sei $p_n:=[1-k^n]^{k^n} \Rightarrow p \in \mathcal{A}. p_n(z) = 1. \forall x \in X:0\leq p_n(x)\leq 1$
+    \begin{itemize}
+        \item[$x \in A$:]
+        \begin{equation*}
+            \begin{split}
+                h(x)^n & < (\frac{\delta}{3})^n \Rightarrow -h(x)^n \geq -(\frac{\delta}{3})^n > -1\\
+                \overset{\text{Bernulli}}{\Rightarrow} (1-h(x)^n)^{k^n} 
+                &\geq 1-k^n(\frac{\delta}{3})^n \\
+                &\geq 1-k^n(\frac{1}{3k})^n = 1-(\frac{1}{3})^n\\
+                k-1 &\leq \frac{1}{\delta}, \delta k \leq 1+\delta \leq z\\
+                \Rightarrow \lim_{n\to\infty} p_n(x) &= 1 \quad \text{ für alle x in V gleichmäßig}
+            \end{split}
+        \end{equation*}
+        \item[$x \in V$:]
+        \begin{equation*}
+            \begin{split}
+                k h(x) &\leq k \delta > 1\\
+                \overset{\text{Bernulli}}{\Rightarrow} (1-k^n h(x)^n) &\leq (1-h(x)^n)^{k^n} \\
+                \Rightarrow 0 \leq p_n(x) &= (1-h(x)^n)^{k^n} (1+k^n h(x)^n)\\
+                &\leq (1-h(x)^n)^{k^n}(1+k^n h(x)^n)\\
+                \leq (1-h(x)^n)^{k^n}(1+k^n h(x)^n) &= \frac{1}{k^n h(x)^n} 
+                \underbrace{1-h(x)^2n^{k^n}}_{\leq 1}\\
+                \leq \frac{1}{k^nh(x)} \leq (\frac{1}{k \delta})^n\\
+                \Rightarrow \lim_{n\to\infty} p_n(x) &= 0 \quad \text{ für alle x in A gleichmäßig}
+            \end{split}
+        \end{equation*}
+        Also erhalten wir: für n hinreichend gorss gilt: $p_n(x) \leq \epsilon$ für alle $x \in A$ 
+        und $p_n(x) \geq 1-\epsilon$ für alle $x \in V$. \\
+        Daraus folt für $f := 1-p_n \in \mathcal{A}$ gilt:
+        \begin{equation*}
+            \begin{split}
+                \forall x \in X : 0 \leq f(x) \leq 1\\
+                \forall x \in V : f(x) \leq \epsilon\\
+                \forall x \in A : f(x) \geq 1-\epsilon
+            \end{split}
+        \end{equation*}
+    \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}{Um das Lemma anzuwenden}
+Sei $\mathcal{A} \subseteq C(X,\mathbb{R})$ Punktetrennende Unteralgebra mit $1 \in \mathcal{A}$, 
+$A,B \subseteq X$ Abgeschlossen und disjunkt $A \cap B = \emptyset$. Dann gilt:
+$$
+\eps > 0 \Rightarrow \exists f \in \mathcal{A} :
+\forall x \in X : 0 \leq f(x) \leq 1 \wedge \forall x \in B:
+f(x) \geq 1-\epsilon \wedge \forall x \in A : f(x) \leq 1 -\epsilon 
+$$
 \end{corollary}
 
 \begin{proof}
@@ -27,10 +108,12 @@ $$\epsilon > 0 \Rightarrow \exists f \in A: \forall x \in X:0\leq f(x)\leq 1
 
 \section{Korrektur}
 
-In der Vorlesungvom 2025.11.04 gab es eine kleine große verwirrung.
-Also ich habe nicht nur mein Tablet vergessen, es ist noch mehr schief gegeanen (What a day).
-Aufjedenfall hat uns, unser Professor (The one and only Woracek) eine Korrektur zukommen lassen.
-Hier ist sie:
+In der Vorlesungvom 2025.11.0 (Lecture 10) gab es eine kleine große verwirrung.
+Diese hat uns nicht nur fast die Menschlichkeit uneres Professors vor augen geführt - nur fasst, 
+er bleibt natürich Göttlich - sondern auch dazu das wir eine korrekur im nachhinen bekommen haben. 
+Das bedeutet für mich das diser Teil der vorlesungs mitschrift eine reine copy and paste aktion ist.
+
+
 
 \mlenma{Das Lemma (starke Variante)}
 {
@@ -52,6 +135,81 @@ V \cap A = \emptyset
 \wedge
 \forall x \in A : f(x) \geq 1-\epsilon$$
 }
+\begin{tikzpicture}[>=stealth, font=\small]
+
+% --- Koordinatensystem für f(x) ---
+\begin{scope}[xshift=7cm]
+  \draw[->] (-0.3,0) -- (5.5,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.8) node[above] {$f(x)$};
+
+  % Epsilon-Linien
+  \draw[dashed, gray] (0,0.35) node[left] {$\epsilon$} -- (5.2,0.35);
+  \draw[dashed, gray] (0,2.15) node[left] {$1-\epsilon$} -- (5.2,2.15);
+  \draw[dashed, gray] (0,2.5) node[left] {$1$} -- (5.2,2.5);
+
+  % Einfachere, klarere Kurve:
+  \draw[blue!70!black, very thick]
+    (0, 2.4) .. controls (0.8,2.35) and (1.2, 2.3) ..
+    (1.7, 0.15) .. controls (2.2, 0.05) and (2.8, 0.05) ..
+    (3.3, 0.15) .. controls (3.8, 2.3) and (4.2, 2.35) ..
+    (5, 2.4);
+
+  % V-Bereich markieren
+  \fill[green!20, opacity=0.5] (1.9,0) rectangle (3.1, 2.6);
+  \draw[green!60!black, dashed] (1.9,0) node[below] {$V$} rectangle (3.1,2.6);
+  \node[green!50!black] at (2.5, -0.35) {$V$ (Umgebung von $z$)};
+
+  % A-Bereiche markieren
+  \fill[red!15, opacity=0.6] (0,0) rectangle (1.0, 2.6);
+  \fill[red!15, opacity=0.6] (4.0,0) rectangle (5.0, 2.6);
+  \node[red!70!black] at (0.5, -0.35) {$A$};
+  \node[red!70!black] at (4.5, -0.35) {$A$};
+
+  % z markieren
+  \fill[green!60!black] (2.5, 0) circle (2pt) node[below] {$z$};
+
+  \node[above, font=\normalsize\bfseries] at (2.5, 2.8) {Funktion $f \in \mathcal{A}$};
+\end{scope}
+
+% --- Linke Seite: Topologisches Bild von X ---
+\begin{scope}
+
+  % X als große Ellipse
+  \draw[thick] (2.5,1.5) ellipse (2.8cm and 2cm);
+  \node[above right] at (5.0, 3.0) {$X$};
+
+  % A als gefüllte rote Menge
+  \fill[red!30] (0.7,1.5) ellipse (0.8cm and 1.1cm);
+  \draw[red!70!black, thick] (0.7,1.5) ellipse (0.8cm and 1.1cm);
+  \node[red!70!black, font=\bfseries] at (0.7, 1.5) {$A$};
+
+  % V als offene grüne Umgebung um z
+  \fill[green!25] (3.5, 1.5) ellipse (0.7cm and 0.7cm);
+  \draw[green!60!black, thick, dashed] (3.5,1.5) ellipse (0.7cm and 0.7cm);
+  \node[green!50!black, font=\bfseries] at (3.5, 2.35) {$V$};
+
+  % z als Punkt
+  \fill[green!60!black] (3.5, 1.5) circle (2.5pt);
+  \node[below right] at (3.5, 1.5) {$z$};
+
+  % X \ A Annotation
+  \node[gray] at (2.7, 0.2) {$X \setminus A$};
+
+  \node[above, font=\normalsize\bfseries] at (2.5, 3.7) {Topologie auf $X$};
+
+  % Pfeile/Annotations
+  \draw[->, bend left=20, orange!80!black, thick]
+    (0.7, 2.7) to node[above, font=\footnotesize]{$f \geq 1-\epsilon$} (1.5, 2.7);
+  \draw[->, bend right=20, orange!80!black, thick]
+    (3.5, 0.7) to node[below, font=\footnotesize]{$f \leq \epsilon$} (2.8, 0.7);
+
+\end{scope}
+
+% Verbindungspfeil zwischen den beiden Bildern
+\draw[->, thick, gray!70] (5.6, 1.5) -- (6.8, 1.5)
+  node[midway, above, font=\footnotesize] {$f$};
+
+\end{tikzpicture}
 
 \begin{proof}{Lemma 10.1.1 (starke Variante)}\\
 Wir gehen den beweis schritt für schritt durch
@@ -136,11 +294,22 @@ Nach diesem einschub kommen wir nun zum Nächsten Punkt (alias Satz 10.2.4)
 
 \begin{proof}{Satz; 10.2.1}\\
     Sei $B=\{f\in \mathcal{A}\mid f(x)\in \mathbb{R}\}\subseteq C(X,\mathbb{R})$
-    Unteralgebra von $\mathcal{A}$.
-    Es gelte $\forall \in \mathcal{A}: Re f, im f\in B: Re f = \frac{1}{2}(f+\overline{f})$\\
-    $Im f = \frac{1}{2i}(f-\overline{f})$\\
-    Sei $x \in X$ Wähle $f \in \mathcal{A}: f(x) \neq f(y) \Rightarrow$ entweder $Re f(x) \neq Re f(y)$
-    oder $Im f(x) \neq Im f(y) \Rightarrow B$ ist punktetrennend.\\
+    Unteralgebra von $\mathcal{A}$.\\
+
+    Es gelte: 
+  $$
+    \begin{cases}
+        \forall f \in \mathcal{A}:Re f = \frac{1}{2}(f+\overline{f})\\
+        \forall f \in \mathcal{B}: Im f = \frac{1}{2i}(f-\overline{f})
+    \end{cases}
+ $$
+    Sei $x \in X$ Wähle $f \in \mathcal{A}: f(x) \neq f(y) \Rightarrow$ entweder 
+    $$
+    \begin{cases}
+    Re f(x) \neq Re f(y)\\
+    \text{oder } Im f(x) \neq Im f(y)
+    \end{cases}$$
+     $\Rightarrow B$ ist punktetrennend.\\
     Aus dem Korollar folgt nun $\overline{B}^{\infty} = C(X,\mathbb{R}) \Rightarrow
     \overline{\mathcal{A}}^{\infty} = C(X,\mathbb{R})$
     Sei $f \in C(X,\mathbb{C})$ $Re f \in \overline{B}^{\infty} \subseteq \overline{\mathcal{A}}^{\infty} \Rightarrow
